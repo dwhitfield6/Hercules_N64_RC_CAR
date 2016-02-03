@@ -6,6 +6,7 @@
 C_SRCS += \
 ../INTERRUPTS.c \
 ../LED.c \
+../MISC.c \
 ../SYSTEM.c \
 ../USER.c \
 ../main.c 
@@ -13,6 +14,7 @@ C_SRCS += \
 OBJS += \
 ./INTERRUPTS.obj \
 ./LED.obj \
+./MISC.obj \
 ./SYSTEM.obj \
 ./USER.obj \
 ./main.obj 
@@ -20,6 +22,7 @@ OBJS += \
 C_DEPS += \
 ./INTERRUPTS.pp \
 ./LED.pp \
+./MISC.pp \
 ./SYSTEM.pp \
 ./USER.pp \
 ./main.pp 
@@ -27,6 +30,7 @@ C_DEPS += \
 C_DEPS__QUOTED += \
 "INTERRUPTS.pp" \
 "LED.pp" \
+"MISC.pp" \
 "SYSTEM.pp" \
 "USER.pp" \
 "main.pp" 
@@ -34,6 +38,7 @@ C_DEPS__QUOTED += \
 OBJS__QUOTED += \
 "INTERRUPTS.obj" \
 "LED.obj" \
+"MISC.obj" \
 "SYSTEM.obj" \
 "USER.obj" \
 "main.obj" 
@@ -41,6 +46,7 @@ OBJS__QUOTED += \
 C_SRCS__QUOTED += \
 "../INTERRUPTS.c" \
 "../LED.c" \
+"../MISC.c" \
 "../SYSTEM.c" \
 "../USER.c" \
 "../main.c" 

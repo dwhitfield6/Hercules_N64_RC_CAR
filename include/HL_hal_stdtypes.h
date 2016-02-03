@@ -162,19 +162,8 @@ typedef struct
     #define NULL ((void *) 0U)
 #endif
 
-/** @def TRUE
-*   @brief definition for TRUE
-*/
-#ifndef TRUE
-    #define TRUE true
-#endif
-
-/** @def FALSE
-*   @brief BOOLEAN definition for FALSE
-*/
-#ifndef FALSE
-    #define FALSE false
-#endif
+#define TRUE 1
+#define FALSE 0
 
 /*****************************************************************************/
 /* Define:       NULL_PTR                                                    */

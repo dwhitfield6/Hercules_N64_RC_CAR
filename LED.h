@@ -40,5 +40,6 @@
 /* Function prototypes                                                        */
 /******************************************************************************/
 void InitLEDs(void);
+void LED_Green(unsigned char state);
 
 #endif	/* LED_H */

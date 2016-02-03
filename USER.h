@@ -42,10 +42,8 @@
 /******************************************************************************/
 #define ON 1
 #define OFF 0
-#define TRUE 1
-#define FALSE 0
-#define INPUT 1
-#define OUTPUT 0
+#define INPUT 0
+#define OUTPUT 1
 #define PASS 1
 #define YES 1
 #define NO 0
@@ -69,8 +67,8 @@
 /******************************************************************************/
 
 /************* LEDs *************/
-/* Connected to the Red LED portion of the RED/GREEN LED */
-#define RED_LED_GPIO 13 // GPIO13
+/* Connected to the green LED on the Launchpad */
+#define GREEN_LED_GPIO 6L // GPIO B6
 
 /******************************************************************************/
 /* Version variables                                                          */

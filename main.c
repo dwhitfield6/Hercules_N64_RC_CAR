@@ -41,8 +41,6 @@
 /******************************************************************************/
 int main (void)
 {
-	int i = 1000000;
-
 	/* initialize the gpio pins */
 	Init_Pins();
 
@@ -51,12 +49,7 @@ int main (void)
 
     while(1)
     {
-		gioToggleBit(gioPORTB, 6);
-		while(i)
-		{
-			i--;
-		}
-		i = 1000000;
+
     }
 }
 

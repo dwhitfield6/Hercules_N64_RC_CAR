@@ -24,7 +24,10 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "HL_gio.h"
+
 #include "LED.h"
+#include "MISC.h"
 
 /******************************************************************************/
 /* Private Variable Declaration		                                          */
@@ -49,7 +52,33 @@
 /******************************************************************************/
 void InitLEDs(void)
 {
+	unsigned char i;
 
+	for(i= 0;i<20;i++)
+	{
+		LED_Green(ON);
+		MSC_DelayUS(100000);
+		LED_Green(OFF);
+		MSC_DelayUS(100000);
+	}
+	LED_Green(OFF);
+}
+
+/******************************************************************************/
+/* LED_Green
+ *
+ * The function controls the GreenLED on the launchpad.						  */
+/******************************************************************************/
+void LED_Green(unsigned char state)
+{
+	if(state)
+	{
+		gioPORTB->DSET = (1L << GREEN_LED_GPIO);
+	}
+	else
+	{
+		gioPORTB->DCLR = (1L << GREEN_LED_GPIO);
+	}
 }
 
 /*-----------------------------------------------------------------------------/
