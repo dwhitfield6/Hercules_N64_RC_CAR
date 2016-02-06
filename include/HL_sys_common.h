@@ -48,6 +48,7 @@
 #define __SYS_COMMON_H__
 
 #include "HL_hal_stdtypes.h"
+#include "HL_reg_spi.h"
 
 #ifdef __cplusplus
 extern "C" {

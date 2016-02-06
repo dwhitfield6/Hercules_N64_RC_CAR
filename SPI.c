@@ -6,12 +6,12 @@
  * Date         Revision    Comments
  * MM/DD/YY
  * --------     ---------   ----------------------------------------------------
- * 02/02/16     14.0_DW0a   New project creation.
+ * 02/05/16     14.0_DW0a   New project creation.
  *                                                                            */
 /******************************************************************************/
 
 /******************************************************************************/
-/* Contains Functions for TMS570 initialization.
+/* Contains functions for the SPI bus.
  *																			  */
 /******************************************************************************/
 
@@ -24,9 +24,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "HL_gio.h"
-
-#include "LED.h"
 #include "SPI.h"
 
 /******************************************************************************/
@@ -34,63 +31,59 @@
 /******************************************************************************/
 
 /******************************************************************************/
-/* Inline Functions															  */
+/* Inline Functions                                                           */
 /******************************************************************************/
 
 /******************************************************************************/
-/* Functions																  */
+/* Functions                                                                  */
 /******************************************************************************/
 
 /******************************************************************************/
-/* Init_Pins
+/* InitSPI
  *
- * The function initializes the gpio pins.									  */
+ * The function initializes the SPI bus.									  */
 /******************************************************************************/
-void Init_Pins(void)
+void InitSPI(void)
 {
-	    /** bring GIO module out of reset */
-	    gioREG->GCR0   = 1U;
-	    gioREG->ENACLR = 0xFFU;
-	    gioREG->LVLCLR = 0xFFU;
-
-	    /* initialize port A */
-	    gioPORTA->DOUT 	= 0; 	// all outputs off
-	    gioPORTA->DIR	= 0;	// all pins as input
-	    gioPORTA->PDR 	= 0;	// no open drain outputs
-	    gioPORTA->PSL 	= 0;	// no pull-ups or pull-downs
-	    gioPORTA->PULDIS = 0;	// no pull-ups or pull-downs
-
-	    /* initialize port B */
-	    gioPORTB->DOUT 	= 0; 	// all outputs off
-	    gioPORTB->DIR	= 0;	// all pins as input
-	    gioPORTB->PDR 	= 0;	// no open drain outputs
-	    gioPORTB->PSL 	= 0;	// no pull-ups or pull-downs
-	    gioPORTB->PULDIS = 0;	// no pull-ups or pull-downs
-
-	    /* interupt polarity */
-		gioREG->POL = 0;
-
-	    /* interrupt level */
-	    gioREG->LVLSET = 0;
-
-	    /* clear all pending interrupts */
-	    gioREG->FLG = 0xFFU;
-
-
-	    /************* LEDs *************/
-	    /* Connected to the green LED on the Launchpad */
-	    gioPORTB->DIR |= (1L << GREEN_LED_GPIO); // output
+	InitSPI1();
 }
 
 /******************************************************************************/
-/* Init_Modules
+/* InitSPI1
  *
- * The function initializes the modules.									  */
+ * The function initializes the SPI module 1 bus.							  */
 /******************************************************************************/
-void Init_Modules(void)
+void InitSPI1(void)
 {
-	InitLEDs();
-	InitSPI();
+	spiREG1->GCR0 &= ~nRESET; 			// SPI is in the reset state.
+	spiREG1->GCR0 |= nRESET; 			// SPI is out of the reset state
+
+	SPI_Parameters1(master, 0, 500L);	// set up SPI parameters
+	spiREG1->GCR1 |= SPIEN;				// Activates SPI
+}
+
+/******************************************************************************/
+/* SPI_Parameters1
+ *
+ * The function configures the SPI module.									  */
+/******************************************************************************/
+void SPI_Parameters1(ENUM_MASTER_SLAVE master_slave, unsigned char mode, unsigned long speedKhz)
+{
+    double speed = (double) speedKhz;
+    speed *= 1000.0;
+
+    if(master_slave == master)
+    {
+    	spiREG1->GCR1 |= MASTER;	// SPISOMI[7:0] pins are inputs, SPISIMO[7:0] pins are outputs
+    }
+    else
+    {
+    	spiREG1->GCR1 &= ~MASTER;	// SPISIMO[7:0] pins are inputs, SPISOMI[7:0] pins are outputs
+    }
+
+    spiREG1->GCR1 |= CLKMOD;		// Clock is internally-generated.
+
+    // = (unsigned long) MSC_Round(((double)PBCLK/(2.0 * (double) speedKhzDB)) - 1.0);
 }
 
 /*-----------------------------------------------------------------------------/
