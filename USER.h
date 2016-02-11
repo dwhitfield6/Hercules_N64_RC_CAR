@@ -40,14 +40,12 @@
 /******************************************************************************/
 /* Defines                                                                    */
 /******************************************************************************/
-#define ON 1
 #define OFF 0
-#define INPUT 0
-#define OUTPUT 1
+#define ON 1
+#define FAIL 0
 #define PASS 1
-#define YES 1
 #define NO 0
-#define NONE NO
+#define YES 1
 
 #define MAX_UCHAR 	255
 #define MAX_CHAR 	128

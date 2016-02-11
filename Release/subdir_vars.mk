@@ -4,6 +4,8 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../AUDIO.c \
+../DAC.c \
 ../INTERRUPTS.c \
 ../LED.c \
 ../MISC.c \
@@ -13,9 +15,12 @@ C_SRCS += \
 ../SYSTEM.c \
 ../TIMERS.c \
 ../USER.c \
+../WAV.c \
 ../main.c 
 
 OBJS += \
+./AUDIO.obj \
+./DAC.obj \
 ./INTERRUPTS.obj \
 ./LED.obj \
 ./MISC.obj \
@@ -25,9 +30,12 @@ OBJS += \
 ./SYSTEM.obj \
 ./TIMERS.obj \
 ./USER.obj \
+./WAV.obj \
 ./main.obj 
 
 C_DEPS += \
+./AUDIO.pp \
+./DAC.pp \
 ./INTERRUPTS.pp \
 ./LED.pp \
 ./MISC.pp \
@@ -37,9 +45,12 @@ C_DEPS += \
 ./SYSTEM.pp \
 ./TIMERS.pp \
 ./USER.pp \
+./WAV.pp \
 ./main.pp 
 
 C_DEPS__QUOTED += \
+"AUDIO.pp" \
+"DAC.pp" \
 "INTERRUPTS.pp" \
 "LED.pp" \
 "MISC.pp" \
@@ -49,9 +60,12 @@ C_DEPS__QUOTED += \
 "SYSTEM.pp" \
 "TIMERS.pp" \
 "USER.pp" \
+"WAV.pp" \
 "main.pp" 
 
 OBJS__QUOTED += \
+"AUDIO.obj" \
+"DAC.obj" \
 "INTERRUPTS.obj" \
 "LED.obj" \
 "MISC.obj" \
@@ -61,9 +75,12 @@ OBJS__QUOTED += \
 "SYSTEM.obj" \
 "TIMERS.obj" \
 "USER.obj" \
+"WAV.obj" \
 "main.obj" 
 
 C_SRCS__QUOTED += \
+"../AUDIO.c" \
+"../DAC.c" \
 "../INTERRUPTS.c" \
 "../LED.c" \
 "../MISC.c" \
@@ -73,6 +90,7 @@ C_SRCS__QUOTED += \
 "../SYSTEM.c" \
 "../TIMERS.c" \
 "../USER.c" \
+"../WAV.c" \
 "../main.c" 
 
 

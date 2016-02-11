@@ -26,8 +26,14 @@
 
 #include "HL_gio.h"
 
+#include "AUDIO.h"
+#include "DAC.h"
 #include "LED.h"
+#include "N64.h"
+#include "POT.h"
 #include "SPI.h"
+#include "TIMERS.h"
+#include "WAV.h"
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
@@ -97,6 +103,12 @@ void Init_Modules(void)
 {
 	InitLEDs();
 	InitSPI();
+	InitDAC();
+	InitPOT();
+	InitTimers();
+	InitN64();
+	InitAudio();
+	InitWAV();
 }
 
 /*-----------------------------------------------------------------------------/

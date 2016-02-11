@@ -25,6 +25,24 @@
 #include "SYSTEM.h"
 
 /******************************************************************************/
+/* Structures                                                                 */
+/******************************************************************************/
+typedef enum e_wav_files
+{
+    EMPTY	= 0,
+	START	= 1,
+	TURTLE	= 2,
+	BANANA	= 3,
+}ENUM_WAV_FILES;
+
+/******************************************************************************/
+/* WAV_PLAYING_QUEUE_SIZE
+ *
+ * This is the number of wav files that we can put on the queue.			  */
+/******************************************************************************/
+#define WAV_PLAYING_QUEUE_SIZE 20
+
+/******************************************************************************/
 /* Defines                                                                    */
 /******************************************************************************/
 
@@ -35,9 +53,20 @@
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
+extern ENUM_WAV_FILES WAV_PlayingQueue[WAV_PLAYING_QUEUE_SIZE];
 
 /******************************************************************************/
 /* Function prototypes                                                        */
 /******************************************************************************/
+void InitWAV(void);
+unsigned char WAV_IsStarted(void);
+void WAV_Started(unsigned char state);
+unsigned char WAV_IsPlaying(void);
+void WAV_Playing(unsigned char state);
+unsigned char WAV_IsFinished(void);
+void WAV_Finished(unsigned char state);
+void WAV_EraseFromQueue(void);
+unsigned char WAV_AddToQueue(ENUM_WAV_FILES file);
+unsigned char WAV_SetupPlayback(ENUM_WAV_FILES file);
 
 #endif	/* WAV_H */

@@ -111,4 +111,5 @@ SUBDIRS := \
 . \
 source \
 Linker \
+HALCoGen/source \
 

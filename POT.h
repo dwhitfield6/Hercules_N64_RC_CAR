@@ -69,5 +69,13 @@ void InitPOTSteering(void);
 void InitPOTGas(void);
 void POT_SendDataSteering(ENUM_POT_REG reg, unsigned short data);
 void POT_SendDataGas(ENUM_POT_REG reg, unsigned short data);
+unsigned char POT_GetSteeringUpdateFlag(void);
+void POT_SetSteeringUpdateFlag(void);
+void POT_ClearSteeringUpdateFlag(void);
+unsigned char POT_GetGasUpdateFlag(void);
+void POT_SetGasUpdateFlag(void);
+void POT_ClearGasUpdateFlag(void);
+void POT_SetSteering(unsigned short value);
+void POT_SetGas(unsigned short value);
 
 #endif	/* POT_H */
