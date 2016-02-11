@@ -51,10 +51,13 @@
 
 #define MAX_UCHAR 	255
 #define MAX_CHAR 	128
-#define MAX_UINT 	65535L
-#define MAX_INT 	32767L
+#define MAX_USHORT 	65535L
+#define MAX_SHORT 	32767L
 #define MAX_ULONG 	4294967295L
 #define MAX_LONG 	2147483647L
+
+#define ECAP4 		0
+#define N2HET1_11 	1
 
 /******************************************************************************/
 /* Macro functions                                                            */
@@ -69,6 +72,32 @@
 /************* LEDs *************/
 /* Connected to the green LED on the Launchpad */
 #define GREEN_LED_GPIO 6L // GPIO B6
+
+/* Connected to the green portion of the Bi-color LED */
+#define BI_GREEN_LED_GPIO 0L // GPIO A0
+
+/* Connected to the red portion of the Bi-color LED */
+#define BI_RED_LED_GPIO 1L // GPIO A1
+
+/************* Digital POT *************/
+/* pin definitions not required */
+
+/************* DAC *************/
+/* pin definitions not required */
+
+/************* Audio Amplifier *************/
+/* Connected to the diagnostic pin on the audio amp */
+#define AUDIO_DIAGNOSTIC_GPIO 5L // GPIO A5
+
+/* Connected to the standby pin on the audio amp */
+#define AUDIO_STANDBY_GPIO 2L // GPIO A2
+
+/************* N64 controller *************/
+/* Connected to the data line on the N64 controller */
+#define N64_0 0L 	// GPIO B1
+#define N64_1 1L 	// GPIO B0
+#define N64_2 ECAP4
+#define N64_3 N2HET1_11
 
 /******************************************************************************/
 /* Version variables                                                          */

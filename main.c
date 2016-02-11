@@ -26,6 +26,8 @@
 
 #include "HL_gio.h"
 #include "LED.h"
+#include "MISC.h"
+#include "SPI.h"
 #include "SYSTEM.h"
 
 /******************************************************************************/
@@ -46,6 +48,9 @@ int main (void)
 
 	/* initialize the hardware modules */
 	Init_Modules();
+
+	/* enable global interrupts */
+	_enable_interrupt_();
 
     while(1)
     {

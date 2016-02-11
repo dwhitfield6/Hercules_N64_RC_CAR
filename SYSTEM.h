@@ -33,6 +33,12 @@
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
+extern unsigned long GCLK;
+extern unsigned long HCLK;
+extern unsigned long VCLK1;
+extern unsigned long VCLK2;
+extern unsigned long VCLK3;
+extern unsigned long RTI1CLK;
 
 /******************************************************************************/
 /* Macro Functions                                                            */

@@ -41,5 +41,7 @@
 /******************************************************************************/
 void InitLEDs(void);
 void LED_Green(unsigned char state);
+void LED_Red(unsigned char state);
+void LED_BoardGreen(unsigned char state);
 
 #endif	/* LED_H */

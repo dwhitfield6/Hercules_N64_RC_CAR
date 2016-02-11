@@ -49,6 +49,7 @@
 
 #include "HL_hal_stdtypes.h"
 #include "HL_reg_spi.h"
+#include "HL_sys_core.h"
 
 #ifdef __cplusplus
 extern "C" {

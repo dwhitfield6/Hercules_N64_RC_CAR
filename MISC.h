@@ -154,11 +154,10 @@
 /******************************************************************************/
 void MSC_DelayUS(unsigned long US);
 void MSC_DelayNOP(unsigned long NOPs);
-unsigned char MSC_IsPrintable(unsigned char data);
-void MSC_StringCopy(unsigned char* from,unsigned char* to);
-unsigned char MSC_LowercaseChar(unsigned char Input);
 double MSC_Round(double input);
-unsigned long MSC_ReverseLong(unsigned long This);
-unsigned char MSC_StringMatch(unsigned char* This, unsigned char* That);
+unsigned short MSC_EndianShort(unsigned short number);
+unsigned short MSC_EndianShortArray(unsigned char* buffer);
+unsigned long MSC_EndianLong(unsigned long number);
+unsigned long MSC_EndianLongArray(unsigned char* buffer);
 
 #endif	/* MISC_H */

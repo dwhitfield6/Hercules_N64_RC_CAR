@@ -56,20 +56,61 @@ void InitLEDs(void)
 
 	for(i= 0;i<20;i++)
 	{
+		LED_BoardGreen(ON);
 		LED_Green(ON);
+		LED_Red(OFF);
 		MSC_DelayUS(100000);
+		LED_BoardGreen(OFF);
 		LED_Green(OFF);
+		LED_Red(ON);
 		MSC_DelayUS(100000);
 	}
+	LED_BoardGreen(OFF);
 	LED_Green(OFF);
+	LED_Red(OFF);
 }
 
 /******************************************************************************/
 /* LED_Green
  *
- * The function controls the GreenLED on the launchpad.						  */
+ * The function controls the Green portion of the Bi-color LED.				  */
 /******************************************************************************/
 void LED_Green(unsigned char state)
+{
+	if(state)
+	{
+		gioPORTA->DSET = (1L << BI_GREEN_LED_GPIO);
+	}
+	else
+	{
+		gioPORTA->DCLR = (1L << BI_GREEN_LED_GPIO);
+	}
+}
+
+/******************************************************************************/
+/* LED_Red
+ *
+ * The function controls the red portion of the Bi-color LED.				  */
+/******************************************************************************/
+void LED_Red(unsigned char state)
+{
+	if(state)
+	{
+		gioPORTA->DSET = (1L << BI_RED_LED_GPIO);
+	}
+	else
+	{
+		gioPORTA->DCLR = (1L << BI_RED_LED_GPIO);
+	}
+}
+
+
+/******************************************************************************/
+/* LED_BoardGreen
+ *
+ * The function controls the Green LED on the launchpad.					  */
+/******************************************************************************/
+void LED_BoardGreen(unsigned char state)
 {
 	if(state)
 	{

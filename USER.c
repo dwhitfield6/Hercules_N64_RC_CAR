@@ -80,6 +80,12 @@ void Init_Pins(void)
 	    /************* LEDs *************/
 	    /* Connected to the green LED on the Launchpad */
 	    gioPORTB->DIR |= (1L << GREEN_LED_GPIO); // output
+
+	    /* Connected to the green portion of the Bi-color LED */
+	    gioPORTA->DIR |= (1L << BI_GREEN_LED_GPIO); // output
+
+	    /* Connected to the red portion of the Bi-color LED */
+	    gioPORTA->DIR |= (1L << BI_RED_LED_GPIO); // output
 }
 
 /******************************************************************************/

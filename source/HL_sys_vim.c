@@ -44,6 +44,7 @@
 #include "HL_sys_vim.h"
 #include "HL_system.h"
 #include "HL_esm.h"
+#include "INTERRUPTS.h"
 
 /* USER CODE BEGIN (0) */
 /* USER CODE END */
@@ -81,7 +82,7 @@ static const t_isrFuncPTR s_vim_init[128U] =
     &phantomInterrupt,          /* Channel 9   */
     &phantomInterrupt,          /* Channel 10  */
     &phantomInterrupt,          /* Channel 11  */
-    &phantomInterrupt,          /* Channel 12  */
+    &ISR_SPI1_INT0,             /* Channel 12  */
     &phantomInterrupt,          /* Channel 13  */
     &phantomInterrupt,          /* Channel 14  */
     &phantomInterrupt,          /* Channel 15  */
@@ -95,7 +96,7 @@ static const t_isrFuncPTR s_vim_init[128U] =
     &phantomInterrupt,          /* Channel 23  */
     &phantomInterrupt,          /* Channel 24  */
     &phantomInterrupt,          /* Channel 25  */
-    &phantomInterrupt,          /* Channel 26  */
+    &phantomInterrupt,			/* Channel 26  */
     &phantomInterrupt,          /* Channel 27  */
     &phantomInterrupt,          /* Channel 28  */
     &phantomInterrupt,          /* Channel 29  */
@@ -373,7 +374,7 @@ void vimInit(void)
                         | (uint32)((uint32)0U << 9U)
                         | (uint32)((uint32)0U << 10U)
                         | (uint32)((uint32)0U << 11U)
-                        | (uint32)((uint32)0U << 12U)
+                        | (uint32)((uint32)1U << 12U)
                         | (uint32)((uint32)0U << 13U)
                         | (uint32)((uint32)0U << 14U)
                         | (uint32)((uint32)0U << 15U)

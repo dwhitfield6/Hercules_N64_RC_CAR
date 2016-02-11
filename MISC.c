@@ -79,7 +79,7 @@ void MSC_DelayUS(unsigned long US)
     */
 	while(US)
 	{
-		MSC_DelayNOP(100);
+		MSC_DelayNOP(10);
 		US--;
 	}
 }
@@ -99,53 +99,6 @@ void MSC_DelayNOP(unsigned long NOPs)
 }
 
 /******************************************************************************/
-/* MSC_IsPrintable
- *
- * The function returns true if the data is printable.						  */
-/******************************************************************************/
-unsigned char MSC_IsPrintable(unsigned char data)
-{
-    if(data >= 0x20 && data <0x7F)
-    {
-        return TRUE;
-    }
-    return FALSE;
-}
-
-/******************************************************************************/
-/* MSC_StringCopy
- *
- * This function copies a string from over to.								  */
-/******************************************************************************/
-void MSC_StringCopy(unsigned char* from,unsigned char* to)
-{
-    while(*from != 0)
-    {
-        *to = *from;
-        from++;
-        to++;
-    }
-    *to = *from;
-}
-
-/******************************************************************************/
-/* MSC_LowercaseChar
- *
- * This function turns the character to lowercase.							  */
-/******************************************************************************/
-unsigned char MSC_LowercaseChar(unsigned char Input)
-{
-    if((Input >= 65) && (Input <= 90 ))
-    {
-        return Input + 32;
-    }
-    else
-    {
-        return Input;
-    }
-}
-
-/******************************************************************************/
 /* MSC_Round
  *
  * This function rounds to the nearest whole number.						  */
@@ -158,75 +111,75 @@ double MSC_Round(double input)
 }
 
 /******************************************************************************/
-/* MSC_ReverseLong
+/* MSC_EndianShort
  *
- * The function reads the value of 'This' and returns the reverse of the
- *  data.																	  */
+ * This function converts a 2 byte number from big endian to little endian or
+ * vice versa.																  */
 /******************************************************************************/
-unsigned long MSC_ReverseLong(unsigned long This)
+unsigned short MSC_EndianShort(unsigned short number)
 {
-    unsigned long temp=0;
+    unsigned char temp1, temp2;
 
-    temp += (This & 0x00000001) << 31;
-    temp += (This & 0x00000002) << 29;
-    temp += (This & 0x00000004) << 27;
-    temp += (This & 0x00000008) << 25;
-    temp += (This & 0x00000010) << 23;
-    temp += (This & 0x00000020) << 21;
-    temp += (This & 0x00000040) << 19;
-    temp += (This & 0x00000080) << 17;
-    temp += (This & 0x00000100) << 15;
-    temp += (This & 0x00000200) << 13;
-    temp += (This & 0x00000400) << 11;
-    temp += (This & 0x00000800) << 9;
-    temp += (This & 0x00001000) << 7;
-    temp += (This & 0x00002000) << 5;
-    temp += (This & 0x00004000) << 3;
-    temp += (This & 0x00008000) << 1;
-    temp += (This & 0x00010000) >> 1;
-    temp += (This & 0x00020000) >> 3;
-    temp += (This & 0x00040000) >> 5;
-    temp += (This & 0x00080000) >> 7;
-    temp += (This & 0x00100000) >> 9;
-    temp += (This & 0x00200000) >> 11;
-    temp += (This & 0x00400000) >> 13;
-    temp += (This & 0x00800000) >> 15;
-    temp += (This & 0x01000000) >> 17;
-    temp += (This & 0x02000000) >> 19;
-    temp += (This & 0x04000000) >> 21;
-    temp += (This & 0x08000000) >> 23;
-    temp += (This & 0x10000000) >> 25;
-    temp += (This & 0x20000000) >> 27;
-    temp += (This & 0x40000000) >> 29;
-    temp += (This & 0x80000000) >> 31;
+    temp1 = (unsigned char) (number & 0x00FF);
+    temp2 = (unsigned char) (number & 0xFF00) >> 8;
 
-    return temp;
+    return (temp2 | (temp1 << 8));
 }
 
 /******************************************************************************/
-/* MSC_StringMatch
+/* MSC_EndianShortArray
  *
- * This function returns TRUE if the array 'This' matches the array 'That'.   */
+ * This function converts an array from big endian to little endian or
+ * vice versa.																  */
 /******************************************************************************/
-unsigned char MSC_StringMatch(unsigned char* This, unsigned char* That)
+unsigned short MSC_EndianShortArray(unsigned char* buffer)
 {
-    while(*This != 0)
-    {
-       if(*This != *That || *That == 0)
-       {
-           return FALSE;
-       }
-       This++;
-       That++;
-    }
-    if(*That == 0)
-    {
-        return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
+    unsigned char temp1, temp2;
+
+    temp1 = *buffer;
+    buffer++;
+    temp2 = *buffer;
+
+    return (temp1 | ((unsigned int) temp2 << 8));
+}
+
+/******************************************************************************/
+/* MSC_EndianLong
+ *
+ * This function converts a 4 byte number from big endian to little endian or
+ * vice versa.																  */
+/******************************************************************************/
+unsigned long MSC_EndianLong(unsigned long number)
+{
+    unsigned char temp1, temp2, temp3, temp4;
+
+    temp1 = (unsigned char) (number & 0x000000FF);
+    temp2 = (unsigned char) (number & 0x0000FF00) >> 8;
+    temp3 = (unsigned char) (number & 0x00FF0000) >> 16;
+    temp4 = (unsigned char) (number & 0xFF000000) >> 24;
+
+    return ((temp4 << 24) | (temp3 << 16) | (temp2 << 8) | temp1);
+}
+
+/******************************************************************************/
+/* MSC_EndianLongArray
+ *
+ * This function converts an array from big endian to little endian or
+ * vice versa.																  */
+/******************************************************************************/
+unsigned long MSC_EndianLongArray(unsigned char* buffer)
+{
+    unsigned char temp1, temp2, temp3, temp4;
+
+    temp1 = *buffer;
+    buffer++;
+    temp2 = *buffer;
+    buffer++;
+    temp3 = *buffer;
+    buffer++;
+    temp4 = *buffer;
+
+    return ((unsigned long)temp1 | ((unsigned long) temp2 << 8) | ((unsigned long) temp3 << 16) | ((unsigned long) temp4 << 24));
 }
 
 /*-----------------------------------------------------------------------------/

@@ -28,7 +28,12 @@
 /******************************************************************************/
 /* Global Variable Declaration 		                                          */
 /******************************************************************************/
-unsigned long GCLK = 300000000;	// main system clock is 300MHz
+unsigned long GCLK 		= 300000000;
+unsigned long HCLK 		= 150000000;
+unsigned long VCLK1 	=  75000000;
+unsigned long VCLK2 	=  75000000;
+unsigned long VCLK3 	=  75000000;
+unsigned long RTI1CLK 	=  75000000;
 
 /******************************************************************************/
 /* Functions																  */
