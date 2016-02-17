@@ -26,5 +26,7 @@
 /* ISR prototypes                                                        	  */
 /******************************************************************************/
 void ISR_SPI1_INT0(void);
+void ISR_Timer1(void);
+void ISR_Timer2(void);
 
 #endif	/* INTERRUPTS_H */

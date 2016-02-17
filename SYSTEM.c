@@ -28,12 +28,11 @@
 /******************************************************************************/
 /* Global Variable Declaration 		                                          */
 /******************************************************************************/
-unsigned long GCLK 		= 300000000;
+unsigned long GCLK 		= 300000000; // see datasheet page 85
 unsigned long HCLK 		= 150000000;
 unsigned long VCLK1 	=  75000000;
 unsigned long VCLK2 	=  75000000;
 unsigned long VCLK3 	=  75000000;
-unsigned long RTI1CLK 	=  75000000;
 
 /******************************************************************************/
 /* Functions																  */

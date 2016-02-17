@@ -32,6 +32,7 @@
 #include "POT.h"
 #include "SPI.h"
 #include "SYSTEM.h"
+#include "TIMERS.h"
 #include "WAV.h"
 
 /******************************************************************************/
@@ -52,9 +53,6 @@ int main (void)
 
 	/* initialize the hardware modules */
 	Init_Modules();
-
-	/* enable global interrupts */
-	_enable_interrupt_();
 
 	/* play the N64 starting sound */
 	WAV_AddToQueue(START);
@@ -172,6 +170,14 @@ int main (void)
     			WAV_AddToQueue(BANANA);
     		}
     		memcpy(&N64_Old, &N64_New, sizeof(TYPE_N64_BUT));
+    		N64_SetUpdateFlag(FALSE);
+    	}
+
+    	N64_ControllerCount++;
+    	if(N64_ControllerCount >= N64_SAMPLERATE)
+    	{
+    		N64_ControllerCount = 0;
+    		N64_SetUpdateFlag(TRUE);
     	}
     }
 }

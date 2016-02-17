@@ -31,115 +31,115 @@
 /******************************************************************************/
 /* Bit Defines                                                                */
 /******************************************************************************/
-#define b0 			0x00
-#define b00 		0x00
-#define b000 		0x00
-#define b0000 		0x00
-#define b00000 		0x00
-#define b000000 	0x00
-#define b0000000 	0x00
-#define b00000000 	0x00
+#define b0 			0x00L
+#define b00 		0x00L
+#define b000 		0x00L
+#define b0000 		0x00L
+#define b00000 		0x00L
+#define b000000 	0x00L
+#define b0000000 	0x00L
+#define b00000000 	0x00L
 
-#define b1 			0x01
-#define b01 		0x01
-#define b001 		0x01
-#define b0001 		0x01
-#define b00001 		0x01
-#define b000001 	0x01
-#define b0000001 	0x01
-#define b00000001 	0x01
+#define b1 			0x01L
+#define b01 		0x01L
+#define b001 		0x01L
+#define b0001 		0x01L
+#define b00001 		0x01L
+#define b000001 	0x01L
+#define b0000001 	0x01L
+#define b00000001 	0x01L
 
-#define b10 		0x02
-#define b010 		0x02
-#define b0010 		0x02
-#define b00010 		0x02
-#define b000010 	0x02
-#define b0000010 	0x02
-#define b00000010 	0x02
+#define b10 		0x02L
+#define b010 		0x02L
+#define b0010 		0x02L
+#define b00010 		0x02L
+#define b000010 	0x02L
+#define b0000010 	0x02L
+#define b00000010 	0x02L
 
-#define b11 		0x03
-#define b011 		0x03
-#define b0011 		0x03
-#define b00011 		0x03
-#define b000011 	0x03
-#define b0000011 	0x03
-#define b00000011 	0x03
+#define b11 		0x03L
+#define b011 		0x03L
+#define b0011 		0x03L
+#define b00011 		0x03L
+#define b000011 	0x03L
+#define b0000011 	0x03L
+#define b00000011 	0x03L
 
-#define b100 		0x04
-#define b0100 		0x04
-#define b00100 		0x04
-#define b000100 	0x04
-#define b0000100 	0x04
-#define b00000100 	0x04
+#define b100 		0x04L
+#define b0100 		0x04L
+#define b00100 		0x04L
+#define b000100 	0x04L
+#define b0000100 	0x04L
+#define b00000100 	0x04L
 
-#define b101 		0x05
-#define b0101 		0x05
-#define b00101 		0x05
-#define b000101 	0x05
-#define b0000101 	0x05
-#define b00000101 	0x05
+#define b101 		0x05L
+#define b0101 		0x05L
+#define b00101 		0x05L
+#define b000101 	0x05L
+#define b0000101 	0x05L
+#define b00000101 	0x05L
 
-#define b110 		0x06
-#define b0110 		0x06
-#define b00110 		0x06
-#define b000110 	0x06
-#define b0000110 	0x06
-#define b00000110 	0x06
+#define b110 		0x06L
+#define b0110 		0x06L
+#define b00110 		0x06L
+#define b000110 	0x06L
+#define b0000110 	0x06L
+#define b00000110 	0x06L
 
-#define b111 		0x07
-#define b0111 		0x07
-#define b00111 		0x07
-#define b000111 	0x07
-#define b0000111 	0x07
-#define b00000111 	0x07
+#define b111 		0x07L
+#define b0111 		0x07L
+#define b00111 		0x07L
+#define b000111 	0x07L
+#define b0000111 	0x07L
+#define b00000111 	0x07L
 
-#define b1000 		0x08
-#define b01000 		0x08
-#define b001000 	0x08
-#define b0001000 	0x08
-#define b00001000 	0x08
+#define b1000 		0x08L
+#define b01000 		0x08L
+#define b001000 	0x08L
+#define b0001000 	0x08L
+#define b00001000 	0x08L
 
-#define b1001 		0x09
-#define b01001 		0x09
-#define b001001 	0x09
-#define b0001001 	0x09
-#define b00001001 	0x09
+#define b1001 		0x09L
+#define b01001 		0x09L
+#define b001001 	0x09L
+#define b0001001 	0x09L
+#define b00001001 	0x09L
 
-#define b1010 		0x0A
-#define b01010 		0x0A
-#define b001010 	0x0A
-#define b0001010 	0x0A
-#define b00001010 	0x0A
+#define b1010 		0x0AL
+#define b01010 		0x0AL
+#define b001010 	0x0AL
+#define b0001010 	0x0AL
+#define b00001010 	0x0AL
 
-#define b1011 		0x0B
-#define b01011 		0x0B
-#define b001011 	0x0B
-#define b0001011 	0x0B
-#define b00001011 	0x0B
+#define b1011 		0x0BL
+#define b01011 		0x0BL
+#define b001011 	0x0BL
+#define b0001011 	0x0BL
+#define b00001011 	0x0BL
 
-#define b1100 		0x0C
-#define b01100 		0x0C
-#define b001100 	0x0C
-#define b0001100 	0x0C
-#define b00001100 	0x0C
+#define b1100 		0x0CL
+#define b01100 		0x0CL
+#define b001100 	0x0CL
+#define b0001100 	0x0CL
+#define b00001100 	0x0CL
 
-#define b1101 		0x0D
-#define b01101 		0x0D
-#define b001101 	0x0D
-#define b00011101 	0x0D
-#define b00001101 	0x0D
+#define b1101 		0x0DL
+#define b01101 		0x0DL
+#define b001101 	0x0DL
+#define b00011101 	0x0DL
+#define b00001101 	0x0DL
 
-#define b1110 		0x0E
-#define b01110 		0x0E
-#define b001110 	0x0E
-#define b0001110 	0x0E
-#define b00001110 	0x0E
+#define b1110 		0x0EL
+#define b01110 		0x0EL
+#define b001110 	0x0EL
+#define b0001110 	0x0EL
+#define b00001110 	0x0EL
 
-#define b1111 		0x0F
-#define b01111 		0x0F
-#define b001111 	0x0F
-#define b0001111 	0x0F
-#define b00001111 	0x0F
+#define b1111 		0x0FL
+#define b01111 		0x0FL
+#define b001111 	0x0FL
+#define b0001111 	0x0FL
+#define b00001111 	0x0FL
 
 /******************************************************************************/
 /* Macro Functions                                                            */

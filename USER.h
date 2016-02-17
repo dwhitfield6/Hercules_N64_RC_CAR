@@ -97,6 +97,13 @@
 #define N64_2 ECAP4
 #define N64_3 N2HET1_11
 
+/************* Test points *************/
+/* Connected to test point 1 (j1 pin 8) */
+#define TEST_POINT_1 6L // GPIO A6
+
+/* Connected to test point 1 (j1 pin 5) */
+#define TEST_POINT_2 7L // GPIO A6
+
 /******************************************************************************/
 /* Version variables                                                          */
 /******************************************************************************/

@@ -25,6 +25,7 @@
 #include <string.h>
 
 #include "MISC.h"
+#include "TIMERS.h"
 #include "USER.h"
 
 /******************************************************************************/
@@ -46,7 +47,7 @@
 /******************************************************************************/
 void MSC_DelayUS(unsigned long US)
 {
-   /* double prescalerD;
+    double prescalerD;
     long prescalerL;
 
     if(US == 0)
@@ -54,34 +55,27 @@ void MSC_DelayUS(unsigned long US)
     	return;
     }
 
-    prescalerD = MSC_Round(((double)SYSCLK * (double) US) / (16.0 * 1000000.0));
+    prescalerD = MSC_Round(((double)VCLK2 * (double) US) / (15.0 * 1000000.0));
     prescalerL = (long) prescalerD;
 
-    while(prescalerL > MAX_ULONG)
+    while(prescalerL > 0x1FFFFFF)
     {
-    	TMR_ClearTimerFlag0();	// reset timer flag
-        TMR_StartTimer0(FALSE);	// stop timer
-        TMR_SetTimerPeriod0(MAX_ULONG);
-        TMR_SetTimerWithPeriod0();
-        TMR_Interrupt0(ON);
-        TMR_StartTimer0(TRUE);	// start timer
-        while(!TMR_GetTimerFlag0());
-        prescalerL -= MAX_ULONG;
+    	TMR_ClearTimerFlag2();	// reset timer flag
+    	TMR_N2HET2_ON(FALSE);
+        TMR_SetTimerPeriod2(0x1FFFFFF);
+    	TMR_N2HET2_Interrupt(TRUE);
+        TMR_N2HET2_ON(TRUE);
+        while(!TMR_GetTimerFlag2());
+        prescalerL -= 0x1FFFFFF;
     }
 
-	TMR_ClearTimerFlag0();	// reset timer flag
-    TMR_StartTimer0(FALSE);	// stop timer
-    TMR_SetTimerPeriod0(prescalerL);
-    TMR_SetTimerWithPeriod0();
-    TMR_Interrupt0(ON);
-    TMR_StartTimer0(TRUE);	// start timer
-    while(!TMR_GetTimerFlag0());
-    */
-	while(US)
-	{
-		MSC_DelayNOP(10);
-		US--;
-	}
+	TMR_ClearTimerFlag2();	// reset timer flag
+	TMR_N2HET2_ON(FALSE);
+    TMR_SetTimerPeriod2(prescalerL);
+	TMR_N2HET2_Interrupt(TRUE);
+    TMR_N2HET2_ON(TRUE);
+    while(!TMR_GetTimerFlag2());
+
 }
 
 /******************************************************************************/

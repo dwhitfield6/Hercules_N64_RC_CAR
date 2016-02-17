@@ -170,7 +170,7 @@ all: Hercules_N64_RC_CAR.out
 Hercules_N64_RC_CAR.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" -mv7R5 --code_state=32 --float_support=VFPv3D16 --abi=eabi --opt_for_speed=0 -g --diag_warning=225 --display_error_number --diag_wrap=off --enum_type=packed -z -m"Hercules_N64_RC_CAR.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include" -i"C:/Users/dwhitfield/Documents/GitHub/Hercules_N64_RC_CAR/Linker" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="Hercules_N64_RC_CAR_linkInfo.xml" --rom_model --be32 -o "Hercules_N64_RC_CAR.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" -mv7R5 --code_state=32 --float_support=VFPv3D16 --abi=eabi -O2 --fp_mode=relaxed --opt_for_speed=3 -g --diag_warning=225 --display_error_number --diag_wrap=off --enum_type=packed --opt_for_cache -z -m"Hercules_N64_RC_CAR.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include" -i"C:/Users/dwhitfield/Documents/GitHub/Hercules_N64_RC_CAR/Linker" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="Hercules_N64_RC_CAR_linkInfo.xml" --rom_model --be32 -o "Hercules_N64_RC_CAR.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

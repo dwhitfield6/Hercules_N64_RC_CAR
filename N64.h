@@ -38,6 +38,14 @@ typedef struct t_n64_buttons
 	unsigned short Joystick[2];	// controler joystick x,y
 }TYPE_N64_BUT;
 
+typedef enum e_n64
+{
+    RESET 	= 0xFF,
+	READ	= 0x02,
+	WRITE	= 0x03,
+}ENUM_N64_REG;
+
+
 /******************************************************************************/
 /* Y_MIDPOINT_HIGH
  *
@@ -55,6 +63,22 @@ typedef struct t_n64_buttons
 #define Y_MIDPOINT_LOW 900
 
 /******************************************************************************/
+/* N64_CODE_SECTIONS
+ *
+ * This is the nuber of 1uS code sections. There are 4 for each bit and 9
+ *  bits (code + stop bit).													  */
+/******************************************************************************/
+#define N64_CODE_SECTIONS 36
+
+/******************************************************************************/
+/* N64_SAMPLERATE
+ *
+ * This is the nuber of loops around the main line that we wait to sample the
+ *  N64 controller.															  */
+/******************************************************************************/
+#define N64_SAMPLERATE 1000
+
+/******************************************************************************/
 /* Defines                                                                    */
 /******************************************************************************/
 #define X 0
@@ -69,6 +93,9 @@ typedef struct t_n64_buttons
 /******************************************************************************/
 extern TYPE_N64_BUT N64_New;
 extern TYPE_N64_BUT N64_Old;
+extern unsigned char N64_Buffer_Code[N64_CODE_SECTIONS];
+extern unsigned char N64_CodeSectionBit;
+extern unsigned long N64_ControllerCount;
 
 /******************************************************************************/
 /* Function prototypes                                                        */

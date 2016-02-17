@@ -30,9 +30,9 @@
 /******************************************************************************/
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
-static unsigned char WAV_PlayingFlag = FALSE;
-static unsigned char WAV_StartedFlag = FALSE;
-static unsigned char WAV_FinishedFlag = FALSE;
+static volatile unsigned char WAV_PlayingFlag = FALSE;
+static volatile unsigned char WAV_StartedFlag = FALSE;
+static volatile unsigned char WAV_FinishedFlag = FALSE;
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */

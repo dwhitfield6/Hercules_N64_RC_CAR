@@ -30,8 +30,8 @@
 /******************************************************************************/
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
-static unsigned char POT_SteeringFlag = FALSE;
-static unsigned char POT_GasFlag = FALSE;
+static volatile unsigned char POT_SteeringFlag = FALSE;
+static volatile unsigned char POT_GasFlag = FALSE;
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */

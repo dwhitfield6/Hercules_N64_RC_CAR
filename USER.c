@@ -92,6 +92,13 @@ void Init_Pins(void)
 
 	    /* Connected to the red portion of the Bi-color LED */
 	    gioPORTA->DIR |= (1L << BI_RED_LED_GPIO); // output
+
+	    /************* Test points *************/
+	    /* Connected to test point 1 (j1 pin 8) */
+	    gioPORTA->DIR |= (1L << TEST_POINT_1); // output
+
+	    /* Connected to test point 1 (j1 pin 5) */
+	    gioPORTA->DIR |= (1L << TEST_POINT_2); // output
 }
 
 /******************************************************************************/
@@ -101,11 +108,14 @@ void Init_Pins(void)
 /******************************************************************************/
 void Init_Modules(void)
 {
+	/* enable global interrupts */
+	_enable_interrupt_();
+
+	InitTimers();
 	InitLEDs();
 	InitSPI();
 	InitDAC();
 	InitPOT();
-	InitTimers();
 	InitN64();
 	InitAudio();
 	InitWAV();

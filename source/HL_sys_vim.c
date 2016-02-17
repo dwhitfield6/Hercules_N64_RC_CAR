@@ -69,6 +69,7 @@ typedef volatile struct vimRam
 
 static const t_isrFuncPTR s_vim_init[128U] =
 {
+	/* see page 119 in data sheet */
     &phantomInterrupt,
     &esmHighInterrupt,        /* Channel 0   */
     &phantomInterrupt,        /* Channel 1   */
@@ -80,7 +81,7 @@ static const t_isrFuncPTR s_vim_init[128U] =
     &phantomInterrupt,          /* Channel 7   */
     &phantomInterrupt,          /* Channel 8   */
     &phantomInterrupt,          /* Channel 9   */
-    &phantomInterrupt,          /* Channel 10  */
+    &ISR_Timer1,          		/* Channel 10  */
     &phantomInterrupt,          /* Channel 11  */
     &ISR_SPI1_INT0,             /* Channel 12  */
     &phantomInterrupt,          /* Channel 13  */
@@ -133,7 +134,7 @@ static const t_isrFuncPTR s_vim_init[128U] =
     &phantomInterrupt,          /* Channel 60  */
     &phantomInterrupt,          /* Channel 61  */
     &phantomInterrupt,          /* Channel 62  */
-    &phantomInterrupt,          /* Channel 63  */
+    &ISR_Timer2,          		/* Channel 63  */
     &phantomInterrupt,          /* Channel 64  */
     &phantomInterrupt,          /* Channel 65  */
     &phantomInterrupt,          /* Channel 66  */
@@ -372,7 +373,7 @@ void vimInit(void)
                         | (uint32)((uint32)0U << 7U)
                         | (uint32)((uint32)0U << 8U)
                         | (uint32)((uint32)0U << 9U)
-                        | (uint32)((uint32)0U << 10U)
+                        | (uint32)((uint32)1U << 10U)
                         | (uint32)((uint32)0U << 11U)
                         | (uint32)((uint32)1U << 12U)
                         | (uint32)((uint32)0U << 13U)
@@ -426,7 +427,7 @@ void vimInit(void)
                         | (uint32)((uint32)0U << 28U)
                         | (uint32)((uint32)0U << 29U)
                         | (uint32)((uint32)0U << 30U)
-                        | (uint32)((uint32)0U << 31U);
+                        | (uint32)((uint32)1U << 31U);
 
     vimREG->REQMASKSET2 = (uint32)((uint32)0U << 0U)
                         | (uint32)((uint32)0U << 1U)

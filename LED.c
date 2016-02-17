@@ -54,7 +54,7 @@ void InitLEDs(void)
 {
 	unsigned char i;
 
-	for(i= 0;i<20;i++)
+	for(i= 0;i<10;i++)
 	{
 		LED_BoardGreen(ON);
 		LED_Green(ON);

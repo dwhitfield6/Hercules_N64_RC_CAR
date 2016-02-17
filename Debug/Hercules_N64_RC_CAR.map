@@ -1,10 +1,10 @@
 ******************************************************************************
                   TI ARM Linker PC v5.2.6                      
 ******************************************************************************
->> Linked Thu Feb 11 13:18:15 2016
+>> Linked Wed Feb 17 12:08:25 2016
 
 OUTPUT FILE NAME:   <Hercules_N64_RC_CAR.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 000042fc
+ENTRY POINT SYMBOL: "_c_int00"  address: 00003750
 
 
 MEMORY CONFIGURATION
@@ -12,24 +12,24 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   VECTORS               00000000   00000020  00000020  00000000     X
-  FLASH0                00000020   001fffe0  00004ab0  001fb530  R  X
+  FLASH0                00000020   001fffe0  00003c5c  001fc384  R  X
   FLASH1                00200000   00200000  00000000  00200000  R  X
   STACKS                08000000   00001500  00000000  00001500  RW  
-  RAM                   08001500   0007eb00  00000196  0007e96a  RW  
+  RAM                   08001500   0007eb00  000001e9  0007e917  RW  
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00004ad0   00004ad0    r-x
+00000000    00000000    00003c80   00003c80    r-x
   00000000    00000000    00000020   00000020    r-x .intvecs
-  00000020    00000020    00004860   00004860    r-x .text
-  00004880    00004880    00000200   00000200    r-- .const
-  00004a80    00004a80    00000050   00000050    r-- .cinit
-08001500    08001500    00000196   00000000    rw-
-  08001500    08001500    00000164   00000000    rw- .bss
-  08001664    08001664    00000032   00000000    rw- .data
+  00000020    00000020    000039f4   000039f4    r-x .text
+  00003a18    00003a18    00000200   00000200    r-- .const
+  00003c18    00003c18    00000068   00000068    r-- .cinit
+08001500    08001500    000001e9   00000000    rw-
+  08001500    08001500    00000188   00000000    rw- .bss
+  08001688    08001688    00000061   00000000    rw- .data
 
 
 SECTION ALLOCATION MAP
@@ -40,83 +40,101 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000020     
                   00000000    00000020     HL_sys_intvecs.obj (.intvecs)
 
-.text      0    00000020    00004860     
-                  00000020    000009c0     HL_pinmux.obj (.text)
-                  000009e0    00000984     HL_system.obj (.text)
-                  00001364    00000938     HL_sys_vim.obj (.text)
-                  00001c9c    000007c4     HL_esm.obj (.text)
-                  00002460    000004d8     SPI.obj (.text)
-                  00002938    00000418     HL_sys_core.obj (.text)
-                  00002d50    00000394     HL_sys_mpu.obj (.text)
-                  000030e4    0000034c     HL_sys_vim.obj (.text:retain)
-                  00003430    00000280     main.obj (.text)
-                  000036b0    000001f4     MISC.obj (.text)
-                  000038a4    000001d4     WAV.obj (.text)
-                  00003a78    000001b8     POT.obj (.text)
-                  00003c30    00000180     rtsv7R4_A_be_v3D16_eabi.lib : memcpy32.obj (.text)
-                  00003db0    00000178     HL_esm.obj (.text:retain)
-                  00003f28    0000015c     USER.obj (.text)
-                  00004084    00000148     LED.obj (.text)
-                  000041cc    00000130     INTERRUPTS.obj (.text:retain)
-                  000042fc    000000bc     HL_sys_startup.obj (.text:retain)
-                  000043b8    000000b0     rtsv7R4_A_be_v3D16_eabi.lib : memset32.obj (.text)
-                  00004468    000000a4     DAC.obj (.text)
-                  0000450c    000000a4     rtsv7R4_A_be_v3D16_eabi.lib : autoinit.obj (.text)
-                  000045b0    0000009c                                 : copy_decompress_rle.obj (.text)
-                  0000464c    00000084                                 : cpy_tbl.obj (.text)
-                  000046d0    00000078                                 : exit.obj (.text)
-                  00004748    00000074     HL_notification.obj (.text)
-                  000047bc    00000068     N64.obj (.text)
-                  00004824    00000024     rtsv7R4_A_be_v3D16_eabi.lib : _lock.obj (.text)
-                  00004848    00000014                                 : copy_decompress_none.obj (.text:decompress:none)
-                  0000485c    00000010                                 : copy_zero_init.obj (.text:decompress:ZI)
-                  0000486c    00000008                                 : copy_decompress_rle.obj (.text:decompress:rle24)
-                  00004874    00000004     AUDIO.obj (.text)
-                  00004878    00000004     TIMERS.obj (.text)
-                  0000487c    00000004     HL_sys_phantom.obj (.text:retain)
+.text      0    00000020    000039f4     
+                  00000020    000005f0     HL_system.obj (.text)
+                  00000610    000005ac     HL_sys_vim.obj (.text)
+                  00000bbc    00000004     --HOLE-- [fill = 0]
+                  00000bc0    000004f0     HL_pinmux.obj (.text)
+                  000010b0    00000434     HL_esm.obj (.text)
+                  000014e4    00000418     HL_sys_core.obj (.text)
+                  000018fc    00000004     --HOLE-- [fill = 0]
+                  00001900    000003c0     SPI.obj (.text)
+                  00001cc0    00000394     HL_sys_mpu.obj (.text)
+                  00002054    00000008     rtsv7R4_A_be_v3D16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  0000205c    00000004     --HOLE-- [fill = 0]
+                  00002060    00000304     WAV.obj (.text)
+                  00002364    0000000c     --HOLE-- [fill = 0]
+                  00002370    00000228     main.obj (.text)
+                  00002598    00000008     --HOLE-- [fill = 0]
+                  000025a0    00000208     TIMERS.obj (.text)
+                  000027a8    00000008     --HOLE-- [fill = 0]
+                  000027b0    000001f8     N64.obj (.text)
+                  000029a8    00000008     --HOLE-- [fill = 0]
+                  000029b0    000001e0     INTERRUPTS.obj (.text:retain)
+                  00002b90    000001b8     MISC.obj (.text)
+                  00002d48    00000008     --HOLE-- [fill = 0]
+                  00002d50    000001b4     HL_sys_vim.obj (.text:retain)
+                  00002f04    0000000c     --HOLE-- [fill = 0]
+                  00002f10    000001b0     POT.obj (.text)
+                  000030c0    00000180     rtsv7R4_A_be_v3D16_eabi.lib : memcpy32.obj (.text)
+                  00003240    0000013c     LED.obj (.text)
+                  0000337c    00000004     --HOLE-- [fill = 0]
+                  00003380    0000010c     HL_esm.obj (.text:retain)
+                  0000348c    00000004     --HOLE-- [fill = 0]
+                  00003490    000000cc     USER.obj (.text)
+                  0000355c    000000b0     rtsv7R4_A_be_v3D16_eabi.lib : memset32.obj (.text)
+                  0000360c    000000a4                                 : autoinit.obj (.text)
+                  000036b0    0000009c                                 : copy_decompress_rle.obj (.text)
+                  0000374c    00000004     --HOLE-- [fill = 0]
+                  00003750    00000094     HL_sys_startup.obj (.text:retain)
+                  000037e4    00000084     rtsv7R4_A_be_v3D16_eabi.lib : cpy_tbl.obj (.text)
+                  00003868    00000078                                 : exit.obj (.text)
+                  000038e0    00000064     HL_notification.obj (.text)
+                  00003944    0000000c     --HOLE-- [fill = 0]
+                  00003950    00000060     DAC.obj (.text)
+                  000039b0    00000024     rtsv7R4_A_be_v3D16_eabi.lib : _lock.obj (.text)
+                  000039d4    00000014                                 : copy_decompress_none.obj (.text:decompress:none)
+                  000039e8    00000010                                 : copy_zero_init.obj (.text:decompress:ZI)
+                  000039f8    00000008     --HOLE-- [fill = 0]
+                  00003a00    00000004     AUDIO.obj (.text)
+                  00003a04    0000000c     --HOLE-- [fill = 0]
+                  00003a10    00000004     HL_sys_phantom.obj (.text:retain)
 
-.const     0    00004880    00000200     
-                  00004880    00000200     HL_sys_vim.obj (.const:s_vim_init)
+.const     0    00003a18    00000200     
+                  00003a18    00000200     HL_sys_vim.obj (.const:s_vim_init)
 
-.cinit     0    00004a80    00000050     
-                  00004a80    00000029     (.cinit..data.load) [load image, compression = rle]
-                  00004aa9    00000003     --HOLE-- [fill = 0]
-                  00004aac    0000000c     (__TI_handler_table)
-                  00004ab8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00004ac0    00000010     (__TI_cinit_table)
+.cinit     0    00003c18    00000068     
+                  00003c18    0000003d     (.cinit..data.load) [load image, compression = rle]
+                  00003c55    00000003     --HOLE-- [fill = 0]
+                  00003c58    0000000c     (__TI_handler_table)
+                  00003c64    00000004     --HOLE-- [fill = 0]
+                  00003c68    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00003c70    00000010     (__TI_cinit_table)
 
-.bss       0    08001500    00000164     UNINITIALIZED
+.bss       0    08001500    00000188     UNINITIALIZED
                   08001500    0000012c     SPI.obj (.bss:SPI_TX_Buffer)
-                  0800162c    00000014     (.common:WAV_PlayingQueue)
-                  08001640    00000012     (.common:N64_New)
-                  08001652    00000012     (.common:N64_Old)
+                  0800162c    00000024     N64.obj (.bss:N64_Buffer_Code)
+                  08001650    00000014     (.common:WAV_PlayingQueue)
+                  08001664    00000012     (.common:N64_New)
+                  08001676    00000012     (.common:N64_Old)
 
 .TI.noinit 
 *          0    08001500    00000000     UNINITIALIZED
 
-.data      0    08001664    00000032     UNINITIALIZED
-                  08001664    00000018     SYSTEM.obj (.data)
-                  0800167c    00000008     rtsv7R4_A_be_v3D16_eabi.lib : _lock.obj (.data)
-                  08001684    00000008                                 : exit.obj (.data)
-                  0800168c    00000004     SPI.obj (.data)
-                  08001690    00000003     WAV.obj (.data)
-                  08001693    00000002     POT.obj (.data)
-                  08001695    00000001     N64.obj (.data)
+.data      0    08001688    00000061     UNINITIALIZED
+                  08001688    0000002c     TIMERS.obj (.data)
+                  080016b4    00000014     SYSTEM.obj (.data)
+                  080016c8    00000008     N64.obj (.data)
+                  080016d0    00000008     rtsv7R4_A_be_v3D16_eabi.lib : _lock.obj (.data)
+                  080016d8    00000008                                 : exit.obj (.data)
+                  080016e0    00000004     SPI.obj (.data)
+                  080016e4    00000003     WAV.obj (.data)
+                  080016e7    00000002     POT.obj (.data)
 
 .TI.persistent 
-*          0    08001664    00000000     UNINITIALIZED
+*          0    08001688    00000000     UNINITIALIZED
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00004ac0 records: 2, size/record: 8, table size: 16
-	.data: load addr=00004a80, load size=00000029 bytes, run addr=08001664, run size=00000032 bytes, compression=rle
-	.bss: load addr=00004ab8, load size=00000008 bytes, run addr=08001500, run size=00000164 bytes, compression=zero_init
+__TI_cinit_table @ 00003c70 records: 2, size/record: 8, table size: 16
+	.data: load addr=00003c18, load size=0000003d bytes, run addr=08001688, run size=00000061 bytes, compression=rle
+	.bss: load addr=00003c68, load size=00000008 bytes, run addr=08001500, run size=00000188 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00004aac records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00003c58 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_rle24
 	index: 2, handler: __TI_decompress_none
@@ -126,207 +144,220 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                                
 -------   ----                                
-000046d0  C$$EXIT                             
-00004488  DAC_SendData                        
-08001664  GCLK                                
-08001668  HCLK                                
-000041cc  ISR_SPI1_INT0                       
-00004874  InitAudio                           
-00004468  InitDAC                             
-00004084  InitLEDs                            
-000047bc  InitN64                             
-00003a78  InitPOT                             
-00003aa4  InitPOTGas                          
-00003a88  InitPOTSteering                     
-00002460  InitSPI                             
-0000246c  InitSPI1                            
-00004878  InitTimers                          
-000038a4  InitWAV                             
-0000401c  Init_Modules                        
-00003f28  Init_Pins                           
-00004180  LED_BoardGreen                      
-00004110  LED_Green                           
-00004148  LED_Red                             
-000036e8  MSC_DelayNOP                        
-000036b0  MSC_DelayUS                         
-000037d4  MSC_EndianLong                      
-00003824  MSC_EndianLongArray                 
-00003760  MSC_EndianShort                     
-00003790  MSC_EndianShortArray                
-00003730  MSC_Round                           
-000047dc  N64_GetButtonState                  
-000047f0  N64_GetUpdateFlag                   
-08001640  N64_New                             
-08001652  N64_Old                             
-000047fc  N64_SetUpdateFlag                   
-00003bb8  POT_ClearGasUpdateFlag              
-00003b8c  POT_ClearSteeringUpdateFlag         
-00003b9c  POT_GetGasUpdateFlag                
-00003b70  POT_GetSteeringUpdateFlag           
-00003b18  POT_SendDataGas                     
-00003ac0  POT_SendDataSteering                
-00003bf8  POT_SetGas                          
-00003ba8  POT_SetGasUpdateFlag                
-00003bc8  POT_SetSteering                     
-00003b7c  POT_SetSteeringUpdateFlag           
-08001678  RTI1CLK                             
+00003868  C$$EXIT                             
+00003950  DAC_SendData                        
+080016b4  GCLK                                
+080016b8  HCLK                                
+00002a90  ISR_SPI1_INT0                       
+00002a00  ISR_Timer1                          
+000029b0  ISR_Timer2                          
+00003a00  InitAudio                           
+00003990  InitDAC                             
+00003300  InitLEDs                            
+000026d0  InitN2HET1                          
+00002730  InitN2HET2                          
+00002980  InitN64                             
+000030b0  InitPOT                             
+00003090  InitPOTGas                          
+00003070  InitPOTSteering                     
+00001c50  InitSPI                             
+00001c50  InitSPI1                            
+00002790  InitTimers                          
+00002350  InitWAV                             
+00003530  Init_Modules                        
+00003490  Init_Pins                           
+000032c0  LED_BoardGreen                      
+00003280  LED_Green                           
+00003240  LED_Red                             
+00002d20  MSC_DelayNOP                        
+00002c10  MSC_DelayUS                         
+00002c00  MSC_EndianLong                      
+00002be0  MSC_EndianLongArray                 
+00002bd0  MSC_EndianShort                     
+00002bb0  MSC_EndianShortArray                
+00002b90  MSC_Round                           
+0800162c  N64_Buffer_Code                     
+000027d0  N64_BuildCode                       
+080016c9  N64_CodeSectionBit                  
+080016cc  N64_ControllerCount                 
+00002930  N64_GetButtonState                  
+000027c0  N64_GetUpdateFlag                   
+08001664  N64_New                             
+08001676  N64_Old                             
+000027b0  N64_SetUpdateFlag                   
+00003050  POT_ClearGasUpdateFlag              
+00003030  POT_ClearSteeringUpdateFlag         
+00003020  POT_GetGasUpdateFlag                
+00003010  POT_GetSteeringUpdateFlag           
+00002fb0  POT_SendDataGas                     
+00002f30  POT_SendDataSteering                
+00002ff0  POT_SetGas                          
+00002f90  POT_SetGasUpdateFlag                
+00002f70  POT_SetSteering                     
+00002f10  POT_SetSteeringUpdateFlag           
 UNDEFED   SHT$$INIT_ARRAY$$Base               
 UNDEFED   SHT$$INIT_ARRAY$$Limit              
-000027bc  SPI_AddToTXBuffer                   
-0000271c  SPI_IsTransmitBufferFull            
-000024dc  SPI_Parameters1                     
-000026dc  SPI_ReceiveInterrupt1               
-00002784  SPI_SendByte                        
-0000273c  SPI_SetPins                         
+00001b50  SPI_AddToTXBuffer                   
+00001b30  SPI_IsTransmitBufferFull            
+000019c0  SPI_Parameters1                     
+00001990  SPI_ReceiveInterrupt1               
+00001970  SPI_SendByte                        
+00001930  SPI_SetPins                         
 08001500  SPI_TX_Buffer                       
-0800168c  SPI_TX_Buffer_Add_place             
-0800168e  SPI_TX_Buffer_Remove_place          
-0000269c  SPI_TransmitInterrupt1              
-0800166c  VCLK1                               
-08001670  VCLK2                               
-08001674  VCLK3                               
-00003994  WAV_AddToQueue                      
-00003934  WAV_EraseFromQueue                  
-00003918  WAV_Finished                        
-0000390c  WAV_IsFinished                      
-000038e4  WAV_IsPlaying                       
-000038bc  WAV_IsStarted                       
-000038f0  WAV_Playing                         
-0800162c  WAV_PlayingQueue                    
-00003a50  WAV_SetupPlayback                   
-000038c8  WAV_Started                         
-00004ac0  __TI_CINIT_Base                     
-00004ad0  __TI_CINIT_Limit                    
-00004aac  __TI_Handler_Table_Base             
-00004ab8  __TI_Handler_Table_Limit            
-00002d48  __TI_PINIT_Base                     
-00002d4c  __TI_PINIT_Limit                    
-0000450c  __TI_auto_init                      
-08001684  __TI_cleanup_ptr                    
-00004848  __TI_decompress_none                
-0000486c  __TI_decompress_rle24               
-08001688  __TI_dtors_ptr                      
+080016e0  SPI_TX_Buffer_Add_place             
+080016e2  SPI_TX_Buffer_Remove_place          
+00001900  SPI_TransmitInterrupt1              
+08001688  TMR_Flag2                           
+00002640  TMR_SetTimerMicroSeconds1           
+000025d0  TMR_SetTimerPeriod2                 
+000025a0  TMR_TestTimer2                      
+0800168c  Timer1Program                       
+0800169c  Timer2Program                       
+080016bc  VCLK1                               
+080016c0  VCLK2                               
+080016c4  VCLK3                               
+00002180  WAV_AddToQueue                      
+000020d0  WAV_EraseFromQueue                  
+000020c0  WAV_Finished                        
+000020b0  WAV_IsFinished                      
+000020a0  WAV_IsPlaying                       
+00002090  WAV_IsStarted                       
+00002080  WAV_Playing                         
+08001650  WAV_PlayingQueue                    
+00002070  WAV_SetupPlayback                   
+00002060  WAV_Started                         
+00003c70  __TI_CINIT_Base                     
+00003c80  __TI_CINIT_Limit                    
+00003c58  __TI_Handler_Table_Base             
+00003c64  __TI_Handler_Table_Limit            
+000018f4  __TI_PINIT_Base                     
+000018f8  __TI_PINIT_Limit                    
+0000360c  __TI_auto_init                      
+080016d8  __TI_cleanup_ptr                    
+000039d4  __TI_decompress_none                
+00002054  __TI_decompress_rle24               
+080016dc  __TI_dtors_ptr                      
 00000000  __TI_static_base__                  
-0000485c  __TI_zero_init                      
-000043b8  __aeabi_memclr                      
-000043b8  __aeabi_memclr4                     
-000043b8  __aeabi_memclr8                     
-00003c30  __aeabi_memcpy                      
-00003c30  __aeabi_memcpy4                     
-00003c30  __aeabi_memcpy8                     
-000043bc  __aeabi_memset                      
-000043bc  __aeabi_memset4                     
-000043bc  __aeabi_memset8                     
+000039e8  __TI_zero_init                      
+0000355c  __aeabi_memclr                      
+0000355c  __aeabi_memclr4                     
+0000355c  __aeabi_memclr8                     
+000030c0  __aeabi_memcpy                      
+000030c0  __aeabi_memcpy4                     
+000030c0  __aeabi_memcpy8                     
+00003560  __aeabi_memset                      
+00003560  __aeabi_memset4                     
+00003560  __aeabi_memset8                     
 ffffffff  __binit__                           
 ffffffff  __c_args__                          
-000042fc  _c_int00                            
-00002cec  _cacheDisable_                      
-00002cb4  _cacheEnable_                       
-00002c94  _checkMemInitOn_                    
-00002b90  _coreClearAuxiliaryDataFault_       
-00002bac  _coreClearAuxiliaryInstructionFault_
-00002b58  _coreClearDataFaultAddress_         
-00002b20  _coreClearDataFault_                
-00002b74  _coreClearInstructionFaultAddress_  
-00002b3c  _coreClearInstructionFault_         
-00002ae8  _coreDisableEventBusExport_         
-00002ad0  _coreEnableEventBusExport_          
-00002b00  _coreEnableIrqVicOffset_            
-00002ab0  _coreEnableVfp_                     
-00002b88  _coreGetAuxiliaryDataFault_         
-00002ba4  _coreGetAuxiliaryInstructionFault_  
-00002b50  _coreGetDataFaultAddress_           
-00002b18  _coreGetDataFault_                  
-00002b6c  _coreGetInstructionFaultAddress_    
-00002b34  _coreGetInstructionFault_           
-00002938  _coreInitRegisters_                 
-00002a44  _coreInitStackPointer_              
-00002d10  _dCacheInvalidate_                  
-00002bc0  _disable_IRQ_interrupt_             
-00002bc8  _enable_IRQ_interrupt_              
-00002bd0  _enable_interrupt_                  
-00002bd8  _esmCcmErrorsClear_                 
-00002a90  _getCPSRValue_                      
-00002a98  _gotoCPUIdle_                       
-00002d2c  _iCacheInvalidate_                  
-0800167c  _lock                               
-00002c60  _memInit_                           
-0000308c  _mpuAreRegionsSeparate_             
-00003068  _mpuDisableBackgroundRegion_        
-00003030  _mpuDisable_                        
-00003050  _mpuEnableBackgroundRegion_         
-00003010  _mpuEnable_                         
-00003080  _mpuGetNumberOfRegions_             
-000030b0  _mpuGetRegionBaseAddress_           
-000030d0  _mpuGetRegionPermission_            
-000030c4  _mpuGetRegionType_                  
-000030a0  _mpuGetRegion_                      
-00002d50  _mpuInit_                           
-000030a8  _mpuSetRegionBaseAddress_           
-000030dc  _mpuSetRegionSizeRegister_          
-000030b8  _mpuSetRegionTypeAndPermission_     
-00003098  _mpuSetRegion_                      
-0000483c  _nop                                
-00004830  _register_lock                      
-00004824  _register_unlock                    
-08001680  _unlock                             
-000046d8  abort                               
+00003750  _c_int00                            
+00001898  _cacheDisable_                      
+00001860  _cacheEnable_                       
+00001840  _checkMemInitOn_                    
+0000173c  _coreClearAuxiliaryDataFault_       
+00001758  _coreClearAuxiliaryInstructionFault_
+00001704  _coreClearDataFaultAddress_         
+000016cc  _coreClearDataFault_                
+00001720  _coreClearInstructionFaultAddress_  
+000016e8  _coreClearInstructionFault_         
+00001694  _coreDisableEventBusExport_         
+0000167c  _coreEnableEventBusExport_          
+000016ac  _coreEnableIrqVicOffset_            
+0000165c  _coreEnableVfp_                     
+00001734  _coreGetAuxiliaryDataFault_         
+00001750  _coreGetAuxiliaryInstructionFault_  
+000016fc  _coreGetDataFaultAddress_           
+000016c4  _coreGetDataFault_                  
+00001718  _coreGetInstructionFaultAddress_    
+000016e0  _coreGetInstructionFault_           
+000014e4  _coreInitRegisters_                 
+000015f0  _coreInitStackPointer_              
+000018bc  _dCacheInvalidate_                  
+0000176c  _disable_IRQ_interrupt_             
+00001774  _enable_IRQ_interrupt_              
+0000177c  _enable_interrupt_                  
+00001784  _esmCcmErrorsClear_                 
+0000163c  _getCPSRValue_                      
+00001644  _gotoCPUIdle_                       
+000018d8  _iCacheInvalidate_                  
+080016d0  _lock                               
+0000180c  _memInit_                           
+00001ffc  _mpuAreRegionsSeparate_             
+00001fd8  _mpuDisableBackgroundRegion_        
+00001fa0  _mpuDisable_                        
+00001fc0  _mpuEnableBackgroundRegion_         
+00001f80  _mpuEnable_                         
+00001ff0  _mpuGetNumberOfRegions_             
+00002020  _mpuGetRegionBaseAddress_           
+00002040  _mpuGetRegionPermission_            
+00002034  _mpuGetRegionType_                  
+00002010  _mpuGetRegion_                      
+00001cc0  _mpuInit_                           
+00002018  _mpuSetRegionBaseAddress_           
+0000204c  _mpuSetRegionSizeRegister_          
+00002028  _mpuSetRegionTypeAndPermission_     
+00002008  _mpuSetRegion_                      
+000039c8  _nop                                
+000039bc  _register_lock                      
+000039b0  _register_unlock                    
+080016d4  _unlock                             
+00003870  abort                               
 ffffffff  binit                               
-0000464c  copy_in                             
-00004780  dmaGroupANotification               
-000047a8  epcCAMFullNotification              
-000047ac  epcFIFOFullNotification             
-00001eb4  esmActivateNormalOperation          
-00002010  esmClearStatus                      
-00002084  esmClearStatusBuffer                
-0000205c  esmClearStatusUpper                 
-00001e5c  esmDisableError                     
-00001e88  esmDisableErrorUpper                
-00001f0c  esmDisableInterrupt                 
-00001f38  esmDisableInterruptUpper            
-00001e14  esmEnableError                      
-00001e40  esmEnableErrorUpper                 
-00001ec4  esmEnableInterrupt                  
-00001ef0  esmEnableInterruptUpper             
-000021c4  esmEnterSelfTest                    
-00001df8  esmError                            
-0000229c  esmGetConfigValue                   
-000020c0  esmGetStatus                        
-0000219c  esmGetStatusBuffer                  
-0000214c  esmGetStatusUpper                   
-00004748  esmGroup1Notification               
-0000475c  esmGroup2Notification               
-00004770  esmGroup3Notification               
-00003db0  esmHighInterrupt                    
-00001c9c  esmInit                             
-0000224c  esmSelfTestStatus                   
-000020a0  esmSetCounterPreloadValue           
-00001f54  esmSetInterruptLevel                
-00001fd0  esmSetInterruptLevelUpper           
-00001ea4  esmTriggerErrorPinReset             
-000046e4  exit                                
-00000d4c  getResetSource                      
-00004794  gioNotification                     
-00003430  main                                
-00000b7c  mapClocks                           
-00003c30  memcpy                              
-000043c8  memset                              
-00000020  muxInit                             
-00000ac8  periphInit                          
-0000487c  phantomInterrupt                    
+000037e4  copy_in                             
+00003940  dmaGroupANotification               
+00003930  epcCAMFullNotification              
+00003920  epcFIFOFullNotification             
+000014d0  esmActivateNormalOperation          
+000014a0  esmClearStatus                      
+00001490  esmClearStatusBuffer                
+00001470  esmClearStatusUpper                 
+00001450  esmDisableError                     
+00001440  esmDisableErrorUpper                
+00001420  esmDisableInterrupt                 
+00001410  esmDisableInterruptUpper            
+000013f0  esmEnableError                      
+000013e0  esmEnableErrorUpper                 
+000013c0  esmEnableInterrupt                  
+000013b0  esmEnableInterruptUpper             
+00001360  esmEnterSelfTest                    
+00001350  esmError                            
+000012a0  esmGetConfigValue                   
+00001260  esmGetStatus                        
+00001240  esmGetStatusBuffer                  
+00001220  esmGetStatusUpper                   
+00003910  esmGroup1Notification               
+00003900  esmGroup2Notification               
+000038f0  esmGroup3Notification               
+00003380  esmHighInterrupt                    
+00001180  esmInit                             
+00001150  esmSelfTestStatus                   
+00001130  esmSetCounterPreloadValue           
+000010f0  esmSetInterruptLevel                
+000010d0  esmSetInterruptLevelUpper           
+000010b0  esmTriggerErrorPinReset             
+0000387c  exit                                
+00000550  getResetSource                      
+000038e0  gioNotification                     
+00002370  main                                
+000001a0  mapClocks                           
+000030c0  memcpy                              
+0000356c  memset                              
+00000bc0  muxInit                             
+000000f0  periphInit                          
+00003a10  phantomInterrupt                    
 00000000  resetEntry                          
-00000a88  setupFlash                          
-000009e0  setupPLL                            
-00000e98  systemGetConfigValue                
-00000ca8  systemInit                          
-00000d1c  systemPowerDown                     
-00000a40  trimLPO                             
-00001438  vimChannelMap                       
-000016a4  vimDisableInterrupt                 
-000030e4  vimECCErrorHandler                  
-000014dc  vimEnableInterrupt                  
-00001750  vimGetConfigValue                   
-00001364  vimInit                             
+00000160  setupFlash                          
+00000090  setupPLL                            
+000002d0  systemGetConfigValue                
+00000280  systemInit                          
+00000070  systemPowerDown                     
+00000020  trimLPO                             
+00000b70  vimChannelMap                       
+00000ac0  vimDisableInterrupt                 
+00002d50  vimECCErrorHandler                  
+00000960  vimEnableInterrupt                  
+000006b0  vimGetConfigValue                   
+00000610  vimInit                             
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -335,204 +366,217 @@ address   name
 -------   ----                                
 00000000  __TI_static_base__                  
 00000000  resetEntry                          
-00000020  muxInit                             
-000009e0  setupPLL                            
-00000a40  trimLPO                             
-00000a88  setupFlash                          
-00000ac8  periphInit                          
-00000b7c  mapClocks                           
-00000ca8  systemInit                          
-00000d1c  systemPowerDown                     
-00000d4c  getResetSource                      
-00000e98  systemGetConfigValue                
-00001364  vimInit                             
-00001438  vimChannelMap                       
-000014dc  vimEnableInterrupt                  
-000016a4  vimDisableInterrupt                 
-00001750  vimGetConfigValue                   
-00001c9c  esmInit                             
-00001df8  esmError                            
-00001e14  esmEnableError                      
-00001e40  esmEnableErrorUpper                 
-00001e5c  esmDisableError                     
-00001e88  esmDisableErrorUpper                
-00001ea4  esmTriggerErrorPinReset             
-00001eb4  esmActivateNormalOperation          
-00001ec4  esmEnableInterrupt                  
-00001ef0  esmEnableInterruptUpper             
-00001f0c  esmDisableInterrupt                 
-00001f38  esmDisableInterruptUpper            
-00001f54  esmSetInterruptLevel                
-00001fd0  esmSetInterruptLevelUpper           
-00002010  esmClearStatus                      
-0000205c  esmClearStatusUpper                 
-00002084  esmClearStatusBuffer                
-000020a0  esmSetCounterPreloadValue           
-000020c0  esmGetStatus                        
-0000214c  esmGetStatusUpper                   
-0000219c  esmGetStatusBuffer                  
-000021c4  esmEnterSelfTest                    
-0000224c  esmSelfTestStatus                   
-0000229c  esmGetConfigValue                   
-00002460  InitSPI                             
-0000246c  InitSPI1                            
-000024dc  SPI_Parameters1                     
-0000269c  SPI_TransmitInterrupt1              
-000026dc  SPI_ReceiveInterrupt1               
-0000271c  SPI_IsTransmitBufferFull            
-0000273c  SPI_SetPins                         
-00002784  SPI_SendByte                        
-000027bc  SPI_AddToTXBuffer                   
-00002938  _coreInitRegisters_                 
-00002a44  _coreInitStackPointer_              
-00002a90  _getCPSRValue_                      
-00002a98  _gotoCPUIdle_                       
-00002ab0  _coreEnableVfp_                     
-00002ad0  _coreEnableEventBusExport_          
-00002ae8  _coreDisableEventBusExport_         
-00002b00  _coreEnableIrqVicOffset_            
-00002b18  _coreGetDataFault_                  
-00002b20  _coreClearDataFault_                
-00002b34  _coreGetInstructionFault_           
-00002b3c  _coreClearInstructionFault_         
-00002b50  _coreGetDataFaultAddress_           
-00002b58  _coreClearDataFaultAddress_         
-00002b6c  _coreGetInstructionFaultAddress_    
-00002b74  _coreClearInstructionFaultAddress_  
-00002b88  _coreGetAuxiliaryDataFault_         
-00002b90  _coreClearAuxiliaryDataFault_       
-00002ba4  _coreGetAuxiliaryInstructionFault_  
-00002bac  _coreClearAuxiliaryInstructionFault_
-00002bc0  _disable_IRQ_interrupt_             
-00002bc8  _enable_IRQ_interrupt_              
-00002bd0  _enable_interrupt_                  
-00002bd8  _esmCcmErrorsClear_                 
-00002c60  _memInit_                           
-00002c94  _checkMemInitOn_                    
-00002cb4  _cacheEnable_                       
-00002cec  _cacheDisable_                      
-00002d10  _dCacheInvalidate_                  
-00002d2c  _iCacheInvalidate_                  
-00002d48  __TI_PINIT_Base                     
-00002d4c  __TI_PINIT_Limit                    
-00002d50  _mpuInit_                           
-00003010  _mpuEnable_                         
-00003030  _mpuDisable_                        
-00003050  _mpuEnableBackgroundRegion_         
-00003068  _mpuDisableBackgroundRegion_        
-00003080  _mpuGetNumberOfRegions_             
-0000308c  _mpuAreRegionsSeparate_             
-00003098  _mpuSetRegion_                      
-000030a0  _mpuGetRegion_                      
-000030a8  _mpuSetRegionBaseAddress_           
-000030b0  _mpuGetRegionBaseAddress_           
-000030b8  _mpuSetRegionTypeAndPermission_     
-000030c4  _mpuGetRegionType_                  
-000030d0  _mpuGetRegionPermission_            
-000030dc  _mpuSetRegionSizeRegister_          
-000030e4  vimECCErrorHandler                  
-00003430  main                                
-000036b0  MSC_DelayUS                         
-000036e8  MSC_DelayNOP                        
-00003730  MSC_Round                           
-00003760  MSC_EndianShort                     
-00003790  MSC_EndianShortArray                
-000037d4  MSC_EndianLong                      
-00003824  MSC_EndianLongArray                 
-000038a4  InitWAV                             
-000038bc  WAV_IsStarted                       
-000038c8  WAV_Started                         
-000038e4  WAV_IsPlaying                       
-000038f0  WAV_Playing                         
-0000390c  WAV_IsFinished                      
-00003918  WAV_Finished                        
-00003934  WAV_EraseFromQueue                  
-00003994  WAV_AddToQueue                      
-00003a50  WAV_SetupPlayback                   
-00003a78  InitPOT                             
-00003a88  InitPOTSteering                     
-00003aa4  InitPOTGas                          
-00003ac0  POT_SendDataSteering                
-00003b18  POT_SendDataGas                     
-00003b70  POT_GetSteeringUpdateFlag           
-00003b7c  POT_SetSteeringUpdateFlag           
-00003b8c  POT_ClearSteeringUpdateFlag         
-00003b9c  POT_GetGasUpdateFlag                
-00003ba8  POT_SetGasUpdateFlag                
-00003bb8  POT_ClearGasUpdateFlag              
-00003bc8  POT_SetSteering                     
-00003bf8  POT_SetGas                          
-00003c30  __aeabi_memcpy                      
-00003c30  __aeabi_memcpy4                     
-00003c30  __aeabi_memcpy8                     
-00003c30  memcpy                              
-00003db0  esmHighInterrupt                    
-00003f28  Init_Pins                           
-0000401c  Init_Modules                        
-00004084  InitLEDs                            
-00004110  LED_Green                           
-00004148  LED_Red                             
-00004180  LED_BoardGreen                      
-000041cc  ISR_SPI1_INT0                       
-000042fc  _c_int00                            
-000043b8  __aeabi_memclr                      
-000043b8  __aeabi_memclr4                     
-000043b8  __aeabi_memclr8                     
-000043bc  __aeabi_memset                      
-000043bc  __aeabi_memset4                     
-000043bc  __aeabi_memset8                     
-000043c8  memset                              
-00004468  InitDAC                             
-00004488  DAC_SendData                        
-0000450c  __TI_auto_init                      
-0000464c  copy_in                             
-000046d0  C$$EXIT                             
-000046d8  abort                               
-000046e4  exit                                
-00004748  esmGroup1Notification               
-0000475c  esmGroup2Notification               
-00004770  esmGroup3Notification               
-00004780  dmaGroupANotification               
-00004794  gioNotification                     
-000047a8  epcCAMFullNotification              
-000047ac  epcFIFOFullNotification             
-000047bc  InitN64                             
-000047dc  N64_GetButtonState                  
-000047f0  N64_GetUpdateFlag                   
-000047fc  N64_SetUpdateFlag                   
-00004824  _register_unlock                    
-00004830  _register_lock                      
-0000483c  _nop                                
-00004848  __TI_decompress_none                
-0000485c  __TI_zero_init                      
-0000486c  __TI_decompress_rle24               
-00004874  InitAudio                           
-00004878  InitTimers                          
-0000487c  phantomInterrupt                    
-00004aac  __TI_Handler_Table_Base             
-00004ab8  __TI_Handler_Table_Limit            
-00004ac0  __TI_CINIT_Base                     
-00004ad0  __TI_CINIT_Limit                    
+00000020  trimLPO                             
+00000070  systemPowerDown                     
+00000090  setupPLL                            
+000000f0  periphInit                          
+00000160  setupFlash                          
+000001a0  mapClocks                           
+00000280  systemInit                          
+000002d0  systemGetConfigValue                
+00000550  getResetSource                      
+00000610  vimInit                             
+000006b0  vimGetConfigValue                   
+00000960  vimEnableInterrupt                  
+00000ac0  vimDisableInterrupt                 
+00000b70  vimChannelMap                       
+00000bc0  muxInit                             
+000010b0  esmTriggerErrorPinReset             
+000010d0  esmSetInterruptLevelUpper           
+000010f0  esmSetInterruptLevel                
+00001130  esmSetCounterPreloadValue           
+00001150  esmSelfTestStatus                   
+00001180  esmInit                             
+00001220  esmGetStatusUpper                   
+00001240  esmGetStatusBuffer                  
+00001260  esmGetStatus                        
+000012a0  esmGetConfigValue                   
+00001350  esmError                            
+00001360  esmEnterSelfTest                    
+000013b0  esmEnableInterruptUpper             
+000013c0  esmEnableInterrupt                  
+000013e0  esmEnableErrorUpper                 
+000013f0  esmEnableError                      
+00001410  esmDisableInterruptUpper            
+00001420  esmDisableInterrupt                 
+00001440  esmDisableErrorUpper                
+00001450  esmDisableError                     
+00001470  esmClearStatusUpper                 
+00001490  esmClearStatusBuffer                
+000014a0  esmClearStatus                      
+000014d0  esmActivateNormalOperation          
+000014e4  _coreInitRegisters_                 
+000015f0  _coreInitStackPointer_              
+0000163c  _getCPSRValue_                      
+00001644  _gotoCPUIdle_                       
+0000165c  _coreEnableVfp_                     
+0000167c  _coreEnableEventBusExport_          
+00001694  _coreDisableEventBusExport_         
+000016ac  _coreEnableIrqVicOffset_            
+000016c4  _coreGetDataFault_                  
+000016cc  _coreClearDataFault_                
+000016e0  _coreGetInstructionFault_           
+000016e8  _coreClearInstructionFault_         
+000016fc  _coreGetDataFaultAddress_           
+00001704  _coreClearDataFaultAddress_         
+00001718  _coreGetInstructionFaultAddress_    
+00001720  _coreClearInstructionFaultAddress_  
+00001734  _coreGetAuxiliaryDataFault_         
+0000173c  _coreClearAuxiliaryDataFault_       
+00001750  _coreGetAuxiliaryInstructionFault_  
+00001758  _coreClearAuxiliaryInstructionFault_
+0000176c  _disable_IRQ_interrupt_             
+00001774  _enable_IRQ_interrupt_              
+0000177c  _enable_interrupt_                  
+00001784  _esmCcmErrorsClear_                 
+0000180c  _memInit_                           
+00001840  _checkMemInitOn_                    
+00001860  _cacheEnable_                       
+00001898  _cacheDisable_                      
+000018bc  _dCacheInvalidate_                  
+000018d8  _iCacheInvalidate_                  
+000018f4  __TI_PINIT_Base                     
+000018f8  __TI_PINIT_Limit                    
+00001900  SPI_TransmitInterrupt1              
+00001930  SPI_SetPins                         
+00001970  SPI_SendByte                        
+00001990  SPI_ReceiveInterrupt1               
+000019c0  SPI_Parameters1                     
+00001b30  SPI_IsTransmitBufferFull            
+00001b50  SPI_AddToTXBuffer                   
+00001c50  InitSPI                             
+00001c50  InitSPI1                            
+00001cc0  _mpuInit_                           
+00001f80  _mpuEnable_                         
+00001fa0  _mpuDisable_                        
+00001fc0  _mpuEnableBackgroundRegion_         
+00001fd8  _mpuDisableBackgroundRegion_        
+00001ff0  _mpuGetNumberOfRegions_             
+00001ffc  _mpuAreRegionsSeparate_             
+00002008  _mpuSetRegion_                      
+00002010  _mpuGetRegion_                      
+00002018  _mpuSetRegionBaseAddress_           
+00002020  _mpuGetRegionBaseAddress_           
+00002028  _mpuSetRegionTypeAndPermission_     
+00002034  _mpuGetRegionType_                  
+00002040  _mpuGetRegionPermission_            
+0000204c  _mpuSetRegionSizeRegister_          
+00002054  __TI_decompress_rle24               
+00002060  WAV_Started                         
+00002070  WAV_SetupPlayback                   
+00002080  WAV_Playing                         
+00002090  WAV_IsStarted                       
+000020a0  WAV_IsPlaying                       
+000020b0  WAV_IsFinished                      
+000020c0  WAV_Finished                        
+000020d0  WAV_EraseFromQueue                  
+00002180  WAV_AddToQueue                      
+00002350  InitWAV                             
+00002370  main                                
+000025a0  TMR_TestTimer2                      
+000025d0  TMR_SetTimerPeriod2                 
+00002640  TMR_SetTimerMicroSeconds1           
+000026d0  InitN2HET1                          
+00002730  InitN2HET2                          
+00002790  InitTimers                          
+000027b0  N64_SetUpdateFlag                   
+000027c0  N64_GetUpdateFlag                   
+000027d0  N64_BuildCode                       
+00002930  N64_GetButtonState                  
+00002980  InitN64                             
+000029b0  ISR_Timer2                          
+00002a00  ISR_Timer1                          
+00002a90  ISR_SPI1_INT0                       
+00002b90  MSC_Round                           
+00002bb0  MSC_EndianShortArray                
+00002bd0  MSC_EndianShort                     
+00002be0  MSC_EndianLongArray                 
+00002c00  MSC_EndianLong                      
+00002c10  MSC_DelayUS                         
+00002d20  MSC_DelayNOP                        
+00002d50  vimECCErrorHandler                  
+00002f10  POT_SetSteeringUpdateFlag           
+00002f30  POT_SendDataSteering                
+00002f70  POT_SetSteering                     
+00002f90  POT_SetGasUpdateFlag                
+00002fb0  POT_SendDataGas                     
+00002ff0  POT_SetGas                          
+00003010  POT_GetSteeringUpdateFlag           
+00003020  POT_GetGasUpdateFlag                
+00003030  POT_ClearSteeringUpdateFlag         
+00003050  POT_ClearGasUpdateFlag              
+00003070  InitPOTSteering                     
+00003090  InitPOTGas                          
+000030b0  InitPOT                             
+000030c0  __aeabi_memcpy                      
+000030c0  __aeabi_memcpy4                     
+000030c0  __aeabi_memcpy8                     
+000030c0  memcpy                              
+00003240  LED_Red                             
+00003280  LED_Green                           
+000032c0  LED_BoardGreen                      
+00003300  InitLEDs                            
+00003380  esmHighInterrupt                    
+00003490  Init_Pins                           
+00003530  Init_Modules                        
+0000355c  __aeabi_memclr                      
+0000355c  __aeabi_memclr4                     
+0000355c  __aeabi_memclr8                     
+00003560  __aeabi_memset                      
+00003560  __aeabi_memset4                     
+00003560  __aeabi_memset8                     
+0000356c  memset                              
+0000360c  __TI_auto_init                      
+00003750  _c_int00                            
+000037e4  copy_in                             
+00003868  C$$EXIT                             
+00003870  abort                               
+0000387c  exit                                
+000038e0  gioNotification                     
+000038f0  esmGroup3Notification               
+00003900  esmGroup2Notification               
+00003910  esmGroup1Notification               
+00003920  epcFIFOFullNotification             
+00003930  epcCAMFullNotification              
+00003940  dmaGroupANotification               
+00003950  DAC_SendData                        
+00003990  InitDAC                             
+000039b0  _register_unlock                    
+000039bc  _register_lock                      
+000039c8  _nop                                
+000039d4  __TI_decompress_none                
+000039e8  __TI_zero_init                      
+00003a00  InitAudio                           
+00003a10  phantomInterrupt                    
+00003c58  __TI_Handler_Table_Base             
+00003c64  __TI_Handler_Table_Limit            
+00003c70  __TI_CINIT_Base                     
+00003c80  __TI_CINIT_Limit                    
 08001500  SPI_TX_Buffer                       
-0800162c  WAV_PlayingQueue                    
-08001640  N64_New                             
-08001652  N64_Old                             
-08001664  GCLK                                
-08001668  HCLK                                
-0800166c  VCLK1                               
-08001670  VCLK2                               
-08001674  VCLK3                               
-08001678  RTI1CLK                             
-0800167c  _lock                               
-08001680  _unlock                             
-08001684  __TI_cleanup_ptr                    
-08001688  __TI_dtors_ptr                      
-0800168c  SPI_TX_Buffer_Add_place             
-0800168e  SPI_TX_Buffer_Remove_place          
+0800162c  N64_Buffer_Code                     
+08001650  WAV_PlayingQueue                    
+08001664  N64_New                             
+08001676  N64_Old                             
+08001688  TMR_Flag2                           
+0800168c  Timer1Program                       
+0800169c  Timer2Program                       
+080016b4  GCLK                                
+080016b8  HCLK                                
+080016bc  VCLK1                               
+080016c0  VCLK2                               
+080016c4  VCLK3                               
+080016c9  N64_CodeSectionBit                  
+080016cc  N64_ControllerCount                 
+080016d0  _lock                               
+080016d4  _unlock                             
+080016d8  __TI_cleanup_ptr                    
+080016dc  __TI_dtors_ptr                      
+080016e0  SPI_TX_Buffer_Add_place             
+080016e2  SPI_TX_Buffer_Remove_place          
 ffffffff  __binit__                           
 ffffffff  __c_args__                          
 ffffffff  binit                               
 UNDEFED   SHT$$INIT_ARRAY$$Base               
 UNDEFED   SHT$$INIT_ARRAY$$Limit              
 
-[201 symbols]
+[214 symbols]
