@@ -94,6 +94,22 @@ void Init_Pins(void)
 	    /* Connected to the red portion of the Bi-color LED */
 	    gioPORTA->DIR |= (1L << BI_RED_LED_GPIO); // output
 
+	    /************* Audio Amplifier *************/
+	    /* Connected to the diagnostic pin on the audio amp */
+	    gioPORTA->DIR &= ~(1L << AUDIO_DIAGNOSTIC_GPIO); 	// input
+	    gioPORTA->PSL |= (1L << AUDIO_DIAGNOSTIC_GPIO); 	// pull-up
+
+	    /* Connected to the standby pin on the audio amp */
+	    gioPORTA->DIR |= (1L << AUDIO_STANDBY_GPIO); 	// output
+
+	    /************* N64 controller *************/
+	    /* Connected to the data line on the N64 controller */
+	    gioPORTB->DIR |= (1L << N64_0); 	// output
+	    //gioPORTB->PDR |= (1L << N64_0); 	// open drain // TODO add this when we have a stronger pull up
+	    gioPORTB->PSL |= (1L << N64_0); 	// pull-up
+	    gioPORTB->DIR &= ~(1L << N64_1); 	// input
+	    gioPORTB->PSL |= (1L << N64_1); 	// pull-up
+
 	    /************* Test points *************/
 	    /* Connected to test point 1 (j1 pin 8) */
 	    gioPORTA->DIR |= (1L << TEST_POINT_1); // output
@@ -117,10 +133,10 @@ void Init_Modules(void)
 	InitLEDs();
 	InitDAC();
 	InitPOT();
+	InitECAP();
 	InitN64();
 	InitAudio();
 	InitWAV();
-	InitECAP();
 }
 
 /*-----------------------------------------------------------------------------/

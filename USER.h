@@ -69,40 +69,44 @@
 
 /************* LEDs *************/
 /* Connected to the green LED on the Launchpad */
-#define GREEN_LED_GPIO 6L // GPIO B6
+#define GREEN_LED_GPIO 6L // GPIO B6 on pin J2
 
 /* Connected to the green portion of the Bi-color LED */
-#define BI_GREEN_LED_GPIO 0L // GPIO A0
+#define BI_GREEN_LED_GPIO 0L // GPIO A0 on J4-10 on pin A5
 
 /* Connected to the red portion of the Bi-color LED */
-#define BI_RED_LED_GPIO 1L // GPIO A1
+#define BI_RED_LED_GPIO 1L // GPIO A1 on J4-9 on pin C2
 
 /************* Digital POT *************/
-/* pin definitions not required */
+#define POT_MOSI 	// J6-6 on pin F19
+#define DAC_SCK 	// J5-7 on pin F18
+#define POT_CS1 	// J6-8 on pin F3
+#define POT_CS2 	// J6-9 on pin G3
 
 /************* DAC *************/
-/* pin definitions not required */
+#define DAC_MOSI 	// J6-6 on pin F19
+#define DAC_SCK 	// J5-7 on pin F18
+#define DAC_CS0 	// J6-3 on pin R2
 
 /************* Audio Amplifier *************/
 /* Connected to the diagnostic pin on the audio amp */
-#define AUDIO_DIAGNOSTIC_GPIO 5L // GPIO A5
+#define AUDIO_DIAGNOSTIC_GPIO 5L // GPIO A5 on J4-7 on pin B5
 
 /* Connected to the standby pin on the audio amp */
-#define AUDIO_STANDBY_GPIO 2L // GPIO A2
+#define AUDIO_STANDBY_GPIO 2L // GPIO A2 on J4-8 on pin C1
 
 /************* N64 controller *************/
 /* Connected to the data line on the N64 controller */
-#define N64_0 0L 	// GPIO B1
-#define N64_1 1L 	// GPIO B0
-#define N64_2 ECAP4
-#define N64_3 N2HET1_11
+#define N64_0 0L 	// GPIO B0 on J8-8 on pin M2
+#define N64_1 1L 	// GPIO B1 on J8-7 on pin K2
+#define N64_2 ECAP4 // ECAP4 on pin G19
 
 /************* Test points *************/
-/* Connected to test point 1 (j1 pin 8) */
-#define TEST_POINT_1 6L // GPIO A6
+/* Connected to test point 1 */
+#define TEST_POINT_1 6L // GPIO A6 on J1-8 on pin H3
 
-/* Connected to test point 1 (j1 pin 5) */
-#define TEST_POINT_2 7L // GPIO A6
+/* Connected to test point 1 */
+#define TEST_POINT_2 7L // GPIO A7 on J1-5 on pin M1
 
 /******************************************************************************/
 /* Version variables                                                          */

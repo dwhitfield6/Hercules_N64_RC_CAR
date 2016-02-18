@@ -4,3 +4,366 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+CCMR4_ERR_CLR	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	531;"	kind:label	line:531	language:Asm
+CCMR4_STAT_REG	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	529;"	kind:label	line:529	language:Asm
+ERR_CLR_WRD	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	530;"	kind:label	line:530	language:Asm
+ESMKEY_REG	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	527;"	kind:label	line:527	language:Asm
+ESMSR1_ERR_CLR	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	532;"	kind:label	line:532	language:Asm
+ESMSR1_REG	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	524;"	kind:label	line:524	language:Asm
+ESMSR2_ERR_CLR	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	533;"	kind:label	line:533	language:Asm
+ESMSR2_REG	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	525;"	kind:label	line:525	language:Asm
+ESMSR3_REG	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	526;"	kind:label	line:526	language:Asm
+ESMSSR2_ERR_CLR	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	534;"	kind:label	line:534	language:Asm
+ESMSSR2_REG	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	528;"	kind:label	line:528	language:Asm
+ISR	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	64;"	kind:member	line:64	language:C	struct:vimRam	file:	access:public
+MINITGCR	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	579;"	kind:label	line:579	language:Asm
+MSIENA	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	580;"	kind:label	line:580	language:Asm
+MSTCGSTAT	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	581;"	kind:label	line:581	language:Asm
+PINMUX_ALT_ADC_TRIGGER_SELECT	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	116;"	kind:macro	line:116	language:C	file:
+PINMUX_ECAP1_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	146;"	kind:macro	line:146	language:C	file:
+PINMUX_ECAP2_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	149;"	kind:macro	line:149	language:C	file:
+PINMUX_ECAP3_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	152;"	kind:macro	line:152	language:C	file:
+PINMUX_ECAP4_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	155;"	kind:macro	line:155	language:C	file:
+PINMUX_ECAP5_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	158;"	kind:macro	line:158	language:C	file:
+PINMUX_ECAP6_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	161;"	kind:macro	line:161	language:C	file:
+PINMUX_EMIF_OUTPUT_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	119;"	kind:macro	line:119	language:C	file:
+PINMUX_EQEP1A_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	122;"	kind:macro	line:122	language:C	file:
+PINMUX_EQEP1B_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	125;"	kind:macro	line:125	language:C	file:
+PINMUX_EQEP1I_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	128;"	kind:macro	line:128	language:C	file:
+PINMUX_EQEP1S_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	131;"	kind:macro	line:131	language:C	file:
+PINMUX_EQEP2A_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	134;"	kind:macro	line:134	language:C	file:
+PINMUX_EQEP2B_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	137;"	kind:macro	line:137	language:C	file:
+PINMUX_EQEP2I_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	140;"	kind:macro	line:140	language:C	file:
+PINMUX_EQEP2S_FILTER_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	143;"	kind:macro	line:143	language:C	file:
+PINMUX_ETHERNET_SELECT	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	53;"	kind:macro	line:53	language:C	file:
+PINMUX_ETPWM1_EQEPERR_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	56;"	kind:macro	line:56	language:C	file:
+PINMUX_ETPWM2_EQEPERR_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	59;"	kind:macro	line:59	language:C	file:
+PINMUX_ETPWM3_EQEPERR_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	62;"	kind:macro	line:62	language:C	file:
+PINMUX_ETPWM4_EQEPERR_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	65;"	kind:macro	line:65	language:C	file:
+PINMUX_ETPWM5_EQEPERR_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	68;"	kind:macro	line:68	language:C	file:
+PINMUX_ETPWM6_EQEPERR_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	71;"	kind:macro	line:71	language:C	file:
+PINMUX_ETPWM7_EQEPERR_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	74;"	kind:macro	line:74	language:C	file:
+PINMUX_ETPWM_EPWM1SYNCI_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	86;"	kind:macro	line:86	language:C	file:
+PINMUX_ETPWM_SOC1A_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	92;"	kind:macro	line:92	language:C	file:
+PINMUX_ETPWM_SOC2A_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	95;"	kind:macro	line:95	language:C	file:
+PINMUX_ETPWM_SOC3A_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	98;"	kind:macro	line:98	language:C	file:
+PINMUX_ETPWM_SOC4A_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	101;"	kind:macro	line:101	language:C	file:
+PINMUX_ETPWM_SOC5A_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	104;"	kind:macro	line:104	language:C	file:
+PINMUX_ETPWM_SOC6A_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	107;"	kind:macro	line:107	language:C	file:
+PINMUX_ETPWM_SOC7A_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	110;"	kind:macro	line:110	language:C	file:
+PINMUX_ETPWM_TIME_BASE_SYNC_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	89;"	kind:macro	line:89	language:C	file:
+PINMUX_ETPWM_TZ1_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	77;"	kind:macro	line:77	language:C	file:
+PINMUX_ETPWM_TZ2_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	80;"	kind:macro	line:80	language:C	file:
+PINMUX_ETPWM_TZ3_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	83;"	kind:macro	line:83	language:C	file:
+PINMUX_GATE_EMIF_CLK_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	113;"	kind:macro	line:113	language:C	file:
+PINMUX_GIOA0_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	164;"	kind:macro	line:164	language:C	file:
+PINMUX_GIOA1_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	167;"	kind:macro	line:167	language:C	file:
+PINMUX_GIOA2_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	170;"	kind:macro	line:170	language:C	file:
+PINMUX_GIOA3_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	173;"	kind:macro	line:173	language:C	file:
+PINMUX_GIOA4_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	176;"	kind:macro	line:176	language:C	file:
+PINMUX_GIOA5_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	179;"	kind:macro	line:179	language:C	file:
+PINMUX_GIOA6_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	182;"	kind:macro	line:182	language:C	file:
+PINMUX_GIOA7_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	185;"	kind:macro	line:185	language:C	file:
+PINMUX_GIOA_DISABLE_HET1_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	50;"	kind:macro	line:50	language:C	file:
+PINMUX_GIOB0_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	188;"	kind:macro	line:188	language:C	file:
+PINMUX_GIOB1_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	191;"	kind:macro	line:191	language:C	file:
+PINMUX_GIOB2_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	194;"	kind:macro	line:194	language:C	file:
+PINMUX_GIOB3_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	197;"	kind:macro	line:197	language:C	file:
+PINMUX_GIOB4_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	200;"	kind:macro	line:200	language:C	file:
+PINMUX_GIOB5_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	203;"	kind:macro	line:203	language:C	file:
+PINMUX_GIOB6_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	206;"	kind:macro	line:206	language:C	file:
+PINMUX_GIOB7_DMA_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	209;"	kind:macro	line:209	language:C	file:
+PINMUX_GIOB_DISABLE_HET2_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	47;"	kind:macro	line:47	language:C	file:
+PINMUX_TEMP1_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	212;"	kind:macro	line:212	language:C	file:
+PINMUX_TEMP2_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	215;"	kind:macro	line:215	language:C	file:
+PINMUX_TEMP3_ENABLE	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	218;"	kind:macro	line:218	language:C	file:
+PMM_AUTOCLKWAKEENA	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmm.c	46;"	kind:macro	line:46	language:C	file:
+PMM_DOMAINON	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmm.c	45;"	kind:macro	line:45	language:C	file:
+PMM_LODICPWRSTAT	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmm.c	44;"	kind:macro	line:44	language:C	file:
+SpiRxStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	615;"	kind:function	line:615	language:C	signature:(spiBASE_t *spi)
+SpiTxStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	591;"	kind:function	line:591	language:C	signature:(spiBASE_t *spi)
+VIM_INTREQ	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	536;"	kind:label	line:536	language:Asm
+VIM_INT_CLR	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	535;"	kind:label	line:535	language:Asm
+__TI_PINIT_Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	672;"	kind:label	line:672	language:Asm
+__TI_PINIT_Limit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	673;"	kind:label	line:673	language:Asm
+_c_int00	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_startup.c	93;"	kind:function	line:93	language:C	signature:(void)
+_cacheDisable_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	616;"	kind:label	line:616	language:Asm
+_cacheEnable_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	589;"	kind:label	line:589	language:Asm
+_checkMemInitOn_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	571;"	kind:label	line:571	language:Asm
+_coreClearAuxiliaryDataFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	412;"	kind:label	line:412	language:Asm
+_coreClearAuxiliaryInstructionFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	442;"	kind:label	line:442	language:Asm
+_coreClearDataFaultAddress_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	350;"	kind:label	line:350	language:Asm
+_coreClearDataFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	288;"	kind:label	line:288	language:Asm
+_coreClearInstructionFaultAddress_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	381;"	kind:label	line:381	language:Asm
+_coreClearInstructionFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	319;"	kind:label	line:319	language:Asm
+_coreDisableEventBusExport_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	239;"	kind:label	line:239	language:Asm
+_coreEnableEventBusExport_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	221;"	kind:label	line:221	language:Asm
+_coreEnableIrqVicOffset_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	256;"	kind:label	line:256	language:Asm
+_coreEnableVfp_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	202;"	kind:label	line:202	language:Asm
+_coreGetAuxiliaryDataFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	398;"	kind:label	line:398	language:Asm
+_coreGetAuxiliaryInstructionFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	429;"	kind:label	line:429	language:Asm
+_coreGetDataFaultAddress_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	336;"	kind:label	line:336	language:Asm
+_coreGetDataFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	274;"	kind:label	line:274	language:Asm
+_coreGetInstructionFaultAddress_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	367;"	kind:label	line:367	language:Asm
+_coreGetInstructionFault_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	305;"	kind:label	line:305	language:Asm
+_coreInitRegisters_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	48;"	kind:label	line:48	language:Asm
+_coreInitStackPointer_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	140;"	kind:label	line:140	language:Asm
+_dCacheInvalidate_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	638;"	kind:label	line:638	language:Asm
+_disable_IRQ_interrupt_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	458;"	kind:label	line:458	language:Asm
+_enable_IRQ_interrupt_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	471;"	kind:label	line:471	language:Asm
+_enable_interrupt_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	483;"	kind:label	line:483	language:Asm
+_esmCcmErrorsClear_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	496;"	kind:label	line:496	language:Asm
+_getCPSRValue_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	171;"	kind:label	line:171	language:Asm
+_gotoCPUIdle_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	184;"	kind:label	line:184	language:Asm
+_iCacheInvalidate_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	654;"	kind:label	line:654	language:Asm
+_memInit_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	546;"	kind:label	line:546	language:Asm
+_mpuAreRegionsSeparate_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	346;"	kind:label	line:346	language:Asm
+_mpuDisableBackgroundRegion_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	313;"	kind:label	line:313	language:Asm
+_mpuDisable_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	275;"	kind:label	line:275	language:Asm
+_mpuEnableBackgroundRegion_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	295;"	kind:label	line:295	language:Asm
+_mpuEnable_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	255;"	kind:label	line:255	language:Asm
+_mpuGetNumberOfRegions_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	331;"	kind:label	line:331	language:Asm
+_mpuGetRegionBaseAddress_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	403;"	kind:label	line:403	language:Asm
+_mpuGetRegionPermission_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	447;"	kind:label	line:447	language:Asm
+_mpuGetRegionType_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	432;"	kind:label	line:432	language:Asm
+_mpuGetRegion_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	375;"	kind:label	line:375	language:Asm
+_mpuInit_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	48;"	kind:label	line:48	language:Asm
+_mpuSetRegionBaseAddress_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	389;"	kind:label	line:389	language:Asm
+_mpuSetRegionSizeRegister_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	462;"	kind:label	line:462	language:Asm
+_mpuSetRegionTypeAndPermission_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	417;"	kind:label	line:417	language:Asm
+_mpuSetRegion_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	361;"	kind:label	line:361	language:Asm
+_pmuDisableCountersGlobal_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	105;"	kind:label	line:105	language:Asm
+_pmuEnableCountersGlobal_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	88;"	kind:label	line:88	language:Asm
+_pmuGetCycleCount_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	213;"	kind:label	line:213	language:Asm
+_pmuGetEventCount_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	226;"	kind:label	line:226	language:Asm
+_pmuGetOverflow_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	240;"	kind:label	line:240	language:Asm
+_pmuInit_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	49;"	kind:label	line:49	language:Asm
+_pmuResetCounters_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	156;"	kind:label	line:156	language:Asm
+_pmuResetCycleCounter_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	122;"	kind:label	line:122	language:Asm
+_pmuResetEventCounters_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	139;"	kind:label	line:139	language:Asm
+_pmuSetCountEvent_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	199;"	kind:label	line:199	language:Asm
+_pmuStartCounters_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	173;"	kind:label	line:173	language:Asm
+_pmuStopCounters_	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmu.asm	186;"	kind:label	line:186	language:Asm
+abortSp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	160;"	kind:label	line:160	language:Asm
+capGetSignal	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1831;"	kind:function	line:1831	language:C	signature:(hetRAMBASE_t * hetRAM, uint32 cap, hetSIGNAL_t *signal)
+dataEntry	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_intvecs.asm	59;"	kind:label	line:59	language:Asm
+dmaDefineRegion	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	303;"	kind:function	line:303	language:C	signature:(dmaMPURegion_t region, uint32 start_add, uint32 end_add)
+dmaDisable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	74;"	kind:function	line:74	language:C	signature:(void)
+dmaDisableECC	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	435;"	kind:function	line:435	language:C	signature:(void)
+dmaDisableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	265;"	kind:function	line:265	language:C	signature:(dmaChannel_t channel, dmaInterrupt_t inttype)
+dmaDisableRegion	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	392;"	kind:function	line:392	language:C	signature:(dmaMPURegion_t region)
+dmaEnable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	57;"	kind:function	line:57	language:C	signature:(void)
+dmaEnableECC	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	419;"	kind:function	line:419	language:C	signature:(void)
+dmaEnableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	225;"	kind:function	line:225	language:C	signature:(dmaChannel_t channel, dmaInterrupt_t inttype, dmaIntGroup_t group)
+dmaEnableRegion	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	346;"	kind:function	line:346	language:C	signature:(dmaMPURegion_t region, dmaRegionAccess_t access, dmaMPUInt_t intenable)
+dmaGetInterruptStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	526;"	kind:function	line:526	language:C	signature:(dmaChannel_t channel, dmaInterrupt_t inttype)
+dmaGetReq	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	452;"	kind:function	line:452	language:C	signature:(dmaChannel_t channel)
+dmaGroupANotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	97;"	kind:function	line:97	language:C	signature:(dmaInterrupt_t inttype, uint32 channel)
+dmaIsBusy	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	504;"	kind:function	line:504	language:C	signature:(void)
+dmaIsChannelActive	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	476;"	kind:function	line:476	language:C	signature:(dmaChannel_t channel)
+dmaReqAssign	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	163;"	kind:function	line:163	language:C	signature:(dmaChannel_t channel, dmaRequest_t reqline)
+dmaSetChEnable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	138;"	kind:function	line:138	language:C	signature:(dmaChannel_t channel, dmaTriggerType_t type)
+dmaSetCtrlPacket	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	95;"	kind:function	line:95	language:C	signature:(dmaChannel_t channel, g_dmaCTRL g_dmaCTRLPKT)
+dmaSetPriority	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_dma.c	192;"	kind:function	line:192	language:C	signature:(dmaChannel_t channel, dmaPriorityQueue_t priority)
+edgeDisableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1802;"	kind:function	line:1802	language:C	signature:(hetBASE_t * hetREG, uint32 edge)
+edgeEnableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1777;"	kind:function	line:1777	language:C	signature:(hetBASE_t * hetREG, uint32 edge)
+edgeGetCounter	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1753;"	kind:function	line:1753	language:C	signature:(hetRAMBASE_t * hetRAM, uint32 edge)
+edgeNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	155;"	kind:function	line:155	language:C	signature:(hetBASE_t * hetREG,uint32 edge)
+edgeResetCounter	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1727;"	kind:function	line:1727	language:C	signature:(hetRAMBASE_t * hetRAM, uint32 edge)
+epcAddCAMEEntry	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	268;"	kind:function	line:268	language:C	signature:(uint32 address)
+epcCAMFullNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	192;"	kind:function	line:192	language:C	signature:(void)
+epcCAMInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	195;"	kind:function	line:195	language:C	signature:(void)
+epcCheckCAMEntry	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	305;"	kind:function	line:305	language:C	signature:(uint32 index)
+epcDiagnosticTest	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	215;"	kind:function	line:215	language:C	signature:(void)
+epcDisableIP1ErrorGen	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	77;"	kind:function	line:77	language:C	signature:(void)
+epcDisableIP2ErrorGen	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	111;"	kind:function	line:111	language:C	signature:(void)
+epcDisableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	179;"	kind:function	line:179	language:C	signature:(void)
+epcDisableSERREvent	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	146;"	kind:function	line:146	language:C	signature:(void)
+epcEnableIP1ErrorGen	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	60;"	kind:function	line:60	language:C	signature:(void)
+epcEnableIP2ErrorGen	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	94;"	kind:function	line:94	language:C	signature:(void)
+epcEnableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	163;"	kind:function	line:163	language:C	signature:(void)
+epcEnableSERREvent	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_epc.c	129;"	kind:function	line:129	language:C	signature:(void)
+epcFIFOFullNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	199;"	kind:function	line:199	language:C	signature:(uint32 epcFIFOStatus)
+errataFailNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_errata.c	58;"	kind:function	line:58	language:C	signature:(uint32 flag)
+errata_PBIST_4	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_errata.c	74;"	kind:function	line:74	language:C	signature:(void)
+esmActivateNormalOperation	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	533;"	kind:function	line:533	language:C	signature:(void)
+esmClearStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	670;"	kind:function	line:670	language:C	signature:(uint32 group, uint64 channels)
+esmClearStatusBuffer	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	710;"	kind:function	line:710	language:C	signature:(uint32 channels)
+esmClearStatusUpper	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	693;"	kind:function	line:693	language:C	signature:(uint32 group, uint64 channels)
+esmDisableError	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	482;"	kind:function	line:482	language:C	signature:(uint64 channels)
+esmDisableErrorUpper	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	501;"	kind:function	line:501	language:C	signature:(uint64 channels)
+esmDisableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	588;"	kind:function	line:588	language:C	signature:(uint64 channels)
+esmDisableInterruptUpper	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	607;"	kind:function	line:607	language:C	signature:(uint64 channels)
+esmEnableError	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	446;"	kind:function	line:446	language:C	signature:(uint64 channels)
+esmEnableErrorUpper	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	465;"	kind:function	line:465	language:C	signature:(uint64 channels)
+esmEnableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	552;"	kind:function	line:552	language:C	signature:(uint64 channels)
+esmEnableInterruptUpper	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	571;"	kind:function	line:571	language:C	signature:(uint64 channels)
+esmEnterSelfTest	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	834;"	kind:function	line:834	language:C	signature:(void)
+esmError	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	423;"	kind:function	line:423	language:C	signature:(void)
+esmGetConfigValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	914;"	kind:function	line:914	language:C	signature:(esm_config_reg_t *config_reg, config_value_type_t type)
+esmGetStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	751;"	kind:function	line:751	language:C	signature:(uint32 group, uint64 channels)
+esmGetStatusBuffer	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	813;"	kind:function	line:813	language:C	signature:(uint32 channels)
+esmGetStatusUpper	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	787;"	kind:function	line:787	language:C	signature:(uint32 group, uint64 channels)
+esmGroup1Notification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	61;"	kind:function	line:61	language:C	signature:(esmBASE_t *esm, uint32 channel)
+esmGroup2Notification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	71;"	kind:function	line:71	language:C	signature:(esmBASE_t *esm, uint32 channel)
+esmGroup3Notification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	81;"	kind:function	line:81	language:C	signature:(esmBASE_t *esm, uint32 channel)
+esmHighInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	956;"	kind:function	line:956	language:C	signature:(void)
+esmInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	69;"	kind:function	line:69	language:C	signature:(void)
+esmSelfTestStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	869;"	kind:function	line:869	language:C	signature:(void)
+esmSetCounterPreloadValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	729;"	kind:function	line:729	language:C	signature:(uint32 value)
+esmSetInterruptLevel	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	626;"	kind:function	line:626	language:C	signature:(uint64 channels, uint64 flags)
+esmSetInterruptLevelUpper	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	649;"	kind:function	line:649	language:C	signature:(uint64 channels, uint64 flags)
+esmTriggerErrorPinReset	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_esm.c	516;"	kind:function	line:516	language:C	signature:(void)
+fiqSp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	158;"	kind:label	line:158	language:Asm
+g_spiDataFormat	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	55;"	kind:member	line:55	language:C	struct:g_spiPacket	file:	access:public
+g_spiPacket	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	53;"	kind:struct	line:53	language:C	file:
+g_spiPacket_t	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	62;"	kind:variable	line:62	language:C	typeref:struct:g_spiPacket	file:
+getResetSource	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	420;"	kind:function	line:420	language:C	signature:(void)
+gioDisableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	412;"	kind:function	line:412	language:C	signature:(gioPORT_t *port, uint32 bit)
+gioEnableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	381;"	kind:function	line:381	language:C	signature:(gioPORT_t *port, uint32 bit)
+gioGetBit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	319;"	kind:function	line:319	language:C	signature:(gioPORT_t *port, uint32 bit)
+gioGetConfigValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	447;"	kind:function	line:447	language:C	signature:(gio_config_reg_t *config_reg, config_value_type_t type)
+gioGetPort	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	336;"	kind:function	line:336	language:C	signature:(gioPORT_t *port)
+gioInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	58;"	kind:function	line:58	language:C	signature:(void)
+gioNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	113;"	kind:function	line:113	language:C	signature:(gioPORT_t *port, uint32 bit)
+gioSetBit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	270;"	kind:function	line:270	language:C	signature:(gioPORT_t *port, uint32 bit, uint32 value)
+gioSetDirection	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	252;"	kind:function	line:252	language:C	signature:(gioPORT_t *port, uint32 dir)
+gioSetPort	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	295;"	kind:function	line:295	language:C	signature:(gioPORT_t *port, uint32 value)
+gioToggleBit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_gio.c	355;"	kind:function	line:355	language:C	signature:(gioPORT_t *port, uint32 bit)
+het1GetConfigValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1901;"	kind:function	line:1901	language:C	signature:(het_config_reg_t *config_reg, config_value_type_t type)
+het1PROGRAM	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	73;"	kind:variable	line:73	language:C	file:
+hetGetTimestamp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1874;"	kind:function	line:1874	language:C	signature:(hetRAMBASE_t * hetRAM)
+hetInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1075;"	kind:function	line:1075	language:C	signature:(void)
+hetNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	165;"	kind:function	line:165	language:C	signature:(hetBASE_t *het, uint32 offset)
+hetResetTimestamp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1860;"	kind:function	line:1860	language:C	signature:(hetRAMBASE_t * hetRAM)
+irqSp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	159;"	kind:label	line:159	language:Asm
+main	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_main.c	66;"	kind:function	line:66	language:C	signature:(void)
+mapClocks	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	234;"	kind:function	line:234	language:C	signature:(void)
+mibspi1GetConfigValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	846;"	kind:function	line:846	language:C	signature:(mibspi_config_reg_t *config_reg, config_value_type_t type)
+mibspi1HighLevelInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	895;"	kind:function	line:895	language:C	signature:(void)
+mibspi1LowLevelInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	793;"	kind:function	line:793	language:C	signature:(void)
+mibspiDisableGroupNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	820;"	kind:function	line:820	language:C	signature:(mibspiBASE_t *mibspi, uint32 group)
+mibspiDisableLoopback	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	749;"	kind:function	line:749	language:C	signature:(mibspiBASE_t *mibspi)
+mibspiEnableGroupNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	794;"	kind:function	line:794	language:C	signature:(mibspiBASE_t *mibspi, uint32 group, uint32 level)
+mibspiEnableLoopback	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	727;"	kind:function	line:727	language:C	signature:(mibspiBASE_t *mibspi, loopBackType_t Loopbacktype)
+mibspiGetData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	635;"	kind:function	line:635	language:C	signature:(mibspiBASE_t *mibspi, uint32 group, uint16 * data)
+mibspiInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	56;"	kind:function	line:56	language:C	signature:(void)
+mibspiIsBuffInitialized	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	513;"	kind:function	line:513	language:C	signature:(mibspiBASE_t *mibspi)
+mibspiIsTransferComplete	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	696;"	kind:function	line:696	language:C	signature:(mibspiBASE_t *mibspi, uint32 group)
+mibspiOutofReset	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	539;"	kind:function	line:539	language:C	signature:(mibspiBASE_t *mibspi)
+mibspiPmodeSet	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	777;"	kind:function	line:777	language:C	signature:(mibspiBASE_t *mibspi, mibspiPmode_t Pmode, mibspiDFMT_t DFMT)
+mibspiReset	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	556;"	kind:function	line:556	language:C	signature:(mibspiBASE_t *mibspi)
+mibspiSetData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	596;"	kind:function	line:596	language:C	signature:(mibspiBASE_t *mibspi, uint32 group, uint16 * data)
+mibspiSetFunctional	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	576;"	kind:function	line:576	language:C	signature:(mibspiBASE_t *mibspi, uint32 port)
+mibspiTransfer	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_mibspi.c	674;"	kind:function	line:674	language:C	signature:(mibspiBASE_t *mibspi, uint32 group)
+mloop	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	554;"	kind:label	line:554	language:Asm
+mloop5	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	573;"	kind:label	line:573	language:Asm
+muxInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_pinmux.c	224;"	kind:function	line:224	language:C	signature:(void)
+next1	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	122;"	kind:label	line:122	language:Asm
+next2	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	124;"	kind:label	line:124	language:Asm
+next3	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	126;"	kind:label	line:126	language:Asm
+next4	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	128;"	kind:label	line:128	language:Asm
+nmpuClearErrorStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	351;"	kind:function	line:351	language:C	signature:(nmpuBASE_t * nmpu)
+nmpuDisable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	85;"	kind:function	line:85	language:C	signature:(nmpuBASE_t * nmpu)
+nmpuDisableErrorGen	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	131;"	kind:function	line:131	language:C	signature:(nmpuBASE_t * nmpu)
+nmpuDisableRegion	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	211;"	kind:function	line:211	language:C	signature:(nmpuBASE_t * nmpu, nmpuReg_t region)
+nmpuEnable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	62;"	kind:function	line:62	language:C	signature:(nmpuBASE_t * nmpu)
+nmpuEnableErrorGen	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	108;"	kind:function	line:108	language:C	signature:(nmpuBASE_t * nmpu)
+nmpuEnableRegion	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	160;"	kind:function	line:160	language:C	signature:(nmpuBASE_t * nmpu, nmpuReg_t region, nmpuRegionAttributes_t config)
+nmpuGetErrorAddress	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	330;"	kind:function	line:330	language:C	signature:(nmpuBASE_t * nmpu)
+nmpuGetErrorRegion	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	308;"	kind:function	line:308	language:C	signature:(nmpuBASE_t * nmpu)
+nmpuGetErrorStatus	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_nmpu.c	254;"	kind:function	line:254	language:C	signature:(nmpuBASE_t * nmpu)
+pcrDisableMasterIDCheck	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	909;"	kind:function	line:909	language:C	signature:(pcrBASE_t *pcr)
+pcrEnableMasterIDCheck	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	891;"	kind:function	line:891	language:C	signature:(pcrBASE_t *pcr)
+periphInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	200;"	kind:function	line:200	language:C	signature:(void)
+peripheral_Frame_MasterIDFilter_Disable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	415;"	kind:function	line:415	language:C	signature:(pcrBASE_t *pcr, peripheral_Frame_t PS, uint32 quadrant, master_ID_t master)
+peripheral_Frame_MasterIDFilter_Enable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	350;"	kind:function	line:350	language:C	signature:(pcrBASE_t *pcr, peripheral_Frame_t PS, uint32 quadrant, master_ID_t master)
+peripheral_Frame_PowerDown_Clr	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	298;"	kind:function	line:298	language:C	signature:(pcrBASE_t *pcr, peripheral_Frame_t PS, uint32 quadrant)
+peripheral_Frame_PowerDown_Set	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	256;"	kind:function	line:256	language:C	signature:(pcrBASE_t *pcr, peripheral_Frame_t PS, uint32 quadrant)
+peripheral_Frame_Protection_Clr	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	160;"	kind:function	line:160	language:C	signature:(pcrBASE_t *pcr, peripheral_Frame_t PS, uint32 quadrant)
+peripheral_Frame_Protection_Set	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	118;"	kind:function	line:118	language:C	signature:(pcrBASE_t *pcr, peripheral_Frame_t PS, uint32 quadrant)
+peripheral_Memory_MasterIDFilter_Disable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	777;"	kind:function	line:777	language:C	signature:(pcrBASE_t *pcr, peripheral_Memory_t PCS, master_ID_t master)
+peripheral_Memory_MasterIDFilter_Enable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	735;"	kind:function	line:735	language:C	signature:(pcrBASE_t *pcr, peripheral_Memory_t PCS, master_ID_t master)
+peripheral_Memory_PowerDown_Clr	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	224;"	kind:function	line:224	language:C	signature:(pcrBASE_t *pcr, peripheral_Memory_t PCS)
+peripheral_Memory_PowerDown_Set	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	197;"	kind:function	line:197	language:C	signature:(pcrBASE_t *pcr, peripheral_Memory_t PCS)
+peripheral_Memory_Protection_Clr	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	86;"	kind:function	line:86	language:C	signature:(pcrBASE_t *pcr, peripheral_Memory_t PCS)
+peripheral_Memory_Protection_Set	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	59;"	kind:function	line:59	language:C	signature:(pcrBASE_t *pcr, peripheral_Memory_t PCS)
+phantomInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_phantom.c	60;"	kind:function	line:60	language:C	signature:(void)
+pmmIsLogicPowerDomainActive	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmm.c	194;"	kind:function	line:194	language:C	signature:(pmm_LogicPD_t logicPD)
+pmmTurnOFFLogicPowerDomain	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmm.c	127;"	kind:function	line:127	language:C	signature:(pmm_LogicPD_t logicPD)
+pmmTurnONLogicPowerDomain	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pmm.c	60;"	kind:function	line:60	language:C	signature:(pmm_LogicPD_t logicPD)
+prefetchEntry	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_intvecs.asm	57;"	kind:label	line:57	language:Asm
+privileged_Peripheral_Extended_Frame_MasterIDFilter_Disable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	675;"	kind:function	line:675	language:C	signature:(pcrBASE_t *pcr, privileged_Peripheral_Extended_Frame_t PPSE, uint32 quadrant, master_ID_t master)
+privileged_Peripheral_Extended_Frame_MasterIDFilter_Enable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	610;"	kind:function	line:610	language:C	signature:(pcrBASE_t *pcr, privileged_Peripheral_Extended_Frame_t PPSE, uint32 quadrant, master_ID_t master)
+privileged_Peripheral_Frame_MasterIDFilter_Disable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	545;"	kind:function	line:545	language:C	signature:(pcrBASE_t *pcr, privileged_Peripheral_Frame_t PPS, uint32 quadrant, master_ID_t master)
+privileged_Peripheral_Frame_MasterIDFilter_Enable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	480;"	kind:function	line:480	language:C	signature:(pcrBASE_t *pcr, privileged_Peripheral_Frame_t PPS, uint32 quadrant, master_ID_t master)
+privileged_Peripheral_Memory_MasterIDFilter_Disable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	861;"	kind:function	line:861	language:C	signature:(pcrBASE_t *pcr, privileged_Peripheral_Memory_t PPCS, master_ID_t master)
+privileged_Peripheral_Memory_MasterIDFilter_Enable	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_pcr.c	819;"	kind:function	line:819	language:C	signature:(pcrBASE_t *pcr, privileged_Peripheral_Memory_t PPCS, master_ID_t master)
+pwmDisableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1701;"	kind:function	line:1701	language:C	signature:(hetBASE_t * hetREG, uint32 pwm, uint32 notification)
+pwmEnableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1672;"	kind:function	line:1672	language:C	signature:(hetBASE_t * hetREG, uint32 pwm, uint32 notification)
+pwmGetSignal	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1633;"	kind:function	line:1633	language:C	signature:(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t* signal)
+pwmNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	145;"	kind:function	line:145	language:C	signature:(hetBASE_t * hetREG,uint32 pwm, uint32 notification)
+pwmSetDuty	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1521;"	kind:function	line:1521	language:C	signature:(hetRAMBASE_t * hetRAM, uint32 pwm, uint32 pwmDuty)
+pwmSetSignal	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1576;"	kind:function	line:1576	language:C	signature:(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t signal)
+pwmStart	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1467;"	kind:function	line:1467	language:C	signature:( hetRAMBASE_t * hetRAM, uint32 pwm)
+pwmStop	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	1494;"	kind:function	line:1494	language:C	signature:( hetRAMBASE_t * hetRAM, uint32 pwm)
+r10Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	239;"	kind:label	line:239	language:Asm
+r11Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	240;"	kind:label	line:240	language:Asm
+r12Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	241;"	kind:label	line:241	language:Asm
+r13Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	242;"	kind:label	line:242	language:Asm
+r14Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	243;"	kind:label	line:243	language:Asm
+r15Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	244;"	kind:label	line:244	language:Asm
+r16Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	245;"	kind:label	line:245	language:Asm
+r1Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	230;"	kind:label	line:230	language:Asm
+r2Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	231;"	kind:label	line:231	language:Asm
+r3Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	232;"	kind:label	line:232	language:Asm
+r4Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	233;"	kind:label	line:233	language:Asm
+r5Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	234;"	kind:label	line:234	language:Asm
+r6Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	235;"	kind:label	line:235	language:Asm
+r7Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	236;"	kind:label	line:236	language:Asm
+r8Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	237;"	kind:label	line:237	language:Asm
+r9Base	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_mpu.asm	238;"	kind:label	line:238	language:Asm
+resetEntry	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_intvecs.asm	51;"	kind:label	line:51	language:Asm
+rx_data_status	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	61;"	kind:member	line:61	language:C	struct:g_spiPacket	file:	access:public
+rx_length	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	57;"	kind:member	line:57	language:C	struct:g_spiPacket	file:	access:public
+rxdata_ptr	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	59;"	kind:member	line:59	language:C	struct:g_spiPacket	file:	access:public
+s_het1pwmPolarity	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_het.c	51;"	kind:variable	line:51	language:C	file:
+s_vim_init	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	69;"	kind:variable	line:69	language:C	file:
+setupFlash	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	168;"	kind:function	line:168	language:C	signature:(void)
+setupPLL	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	70;"	kind:function	line:70	language:C	signature:(void)
+spi1GetConfigValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	740;"	kind:function	line:740	language:C	signature:(spi_config_reg_t *config_reg, config_value_type_t type)
+spiDisableLoopback	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	666;"	kind:function	line:666	language:C	signature:(spiBASE_t *spi)
+spiDisableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	711;"	kind:function	line:711	language:C	signature:(spiBASE_t *spi, uint32 flags)
+spiEnableLoopback	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	638;"	kind:function	line:638	language:C	signature:(spiBASE_t *spi, loopBackType_t Loopbacktype)
+spiEnableNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	689;"	kind:function	line:689	language:C	signature:(spiBASE_t *spi, uint32 flags)
+spiEndNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	134;"	kind:function	line:134	language:C	signature:(spiBASE_t *spi)
+spiGetData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	364;"	kind:function	line:364	language:C	signature:(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * destbuff)
+spiInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	72;"	kind:function	line:72	language:C	signature:(void)
+spiNotification	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_notification.c	124;"	kind:function	line:124	language:C	signature:(spiBASE_t *spi, uint32 flags)
+spiReceiveData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	306;"	kind:function	line:306	language:C	signature:(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * destbuff)
+spiSendAndGetData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	558;"	kind:function	line:558	language:C	signature:(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff, uint16 * destbuff)
+spiSendData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	459;"	kind:function	line:459	language:C	signature:(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff)
+spiSetFunctional	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	280;"	kind:function	line:280	language:C	signature:(spiBASE_t *spi, uint32 port)
+spiTransmitAndReceiveData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	493;"	kind:function	line:493	language:C	signature:(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff, uint16 * destbuff)
+spiTransmitData	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	397;"	kind:function	line:397	language:C	signature:(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff)
+svcEntry	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_intvecs.asm	55;"	kind:label	line:55	language:Asm
+svcSp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	157;"	kind:label	line:157	language:Asm
+systemGetConfigValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	511;"	kind:function	line:511	language:C	signature:(system_config_reg_t *config_reg, config_value_type_t type)
+systemInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	320;"	kind:function	line:320	language:C	signature:(void)
+systemPowerDown	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	396;"	kind:function	line:396	language:C	signature:(uint32 mode)
+trimLPO	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_system.c	140;"	kind:function	line:140	language:C	signature:(void)
+tx_data_status	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	60;"	kind:member	line:60	language:C	struct:g_spiPacket	file:	access:public
+tx_length	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	56;"	kind:member	line:56	language:C	struct:g_spiPacket	file:	access:public
+txdata_ptr	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_spi.c	58;"	kind:member	line:58	language:C	struct:g_spiPacket	file:	access:public
+undefEntry	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_intvecs.asm	53;"	kind:label	line:53	language:Asm
+undefSp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	161;"	kind:label	line:161	language:Asm
+userSp	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_core.asm	156;"	kind:label	line:156	language:Asm
+vimChannelMap	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	514;"	kind:function	line:514	language:C	signature:(uint32 request, uint32 channel, t_isrFuncPTR handler)
+vimDisableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	617;"	kind:function	line:617	language:C	signature:(uint32 channel)
+vimECCErrorHandler	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	757;"	kind:function	line:757	language:C	signature:(void)
+vimEnableInterrupt	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	548;"	kind:function	line:548	language:C	signature:(uint32 channel, systemInterrupt_t inttype)
+vimGetConfigValue	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	662;"	kind:function	line:662	language:C	signature:(vim_config_reg_t *config_reg, config_value_type_t type)
+vimInit	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	208;"	kind:function	line:208	language:C	signature:(void)
+vimRAM	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	67;"	kind:macro	line:67	language:C	file:
+vimRAM_t	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	65;"	kind:typedef	line:65	language:C	typeref:struct:vimRam	file:
+vimRam	C:\Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\HALCoGen\source\HL_sys_vim.c	62;"	kind:struct	line:62	language:C	file:

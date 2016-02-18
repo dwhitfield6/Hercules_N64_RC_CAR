@@ -34,7 +34,7 @@
 volatile unsigned char TMR_Flag2 = FALSE;
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* N2HET1 instruction (used for N64 timing)                                   */
 /******************************************************************************/
 hetINSTRUCTION_t Timer1Program[] =
 {
@@ -60,6 +60,9 @@ hetINSTRUCTION_t Timer1Program[] =
     }
 };
 
+/******************************************************************************/
+/* N2HET1 instruction (used for main loop timer, DAC timer, and MISC timer)   */
+/******************************************************************************/
 hetINSTRUCTION_t Timer2Program[] =
 {
     /* Page 1029 TRM
@@ -74,7 +77,28 @@ hetINSTRUCTION_t Timer2Program[] =
     {
         /* Program */
     	/* reserved     | Requese number 	| break			| Next program address  |	instruction	| Angle count	| Register	| compare select	| reserved		| interrupt enable	*/
-        (0x00L << 26) 	| (0x00L << 23)  	|(0L << 22)		| (0x01L << 13) 		| (b0110 << 9)	| (0L << 8)		| (3L << 6)	| (1L << 5)			| (0x00L << 1)	| (0x01L << 0),
+        (0x00L << 26) 	| (0x00L << 23)  	|(0L << 22)		| (0x01L << 13) 		| (b0110 << 9)	| (0L << 8)		| (0L << 6)	| (1L << 5)			| (0x00L << 1)	| (0x01L << 0),
+        /* Control */
+        0x01FFFFFFU,
+        /* Data */
+        0x00000000U,
+        /* Reserved */
+        0x00000000U
+    },
+
+    /* Page 1029 TRM
+     * CNT: Timebase
+     *       - Instruction                  = 0
+     *       - Next instruction             = 1
+     *       - Conditional next instruction = na
+     *       - Interrupt                    = na
+     *       - Pin                          = na
+     *       - Reg                          = T
+     *											*/
+    {
+        /* Program */
+    	/* reserved     | Requese number 	| break			| Next program address  |	instruction	| Angle count	| Register	| compare select	| reserved		| interrupt enable	*/
+        (0x00L << 26) 	| (0x00L << 23)  	|(0L << 22)		| (0x02L << 13) 		| (b0110 << 9)	| (0L << 8)		| (1L << 6)	| (1L << 5)			| (0x00L << 1)	| (0x01L << 0),
         /* Control */
         0x01FFFFFFU,
         /* Data */
@@ -105,6 +129,10 @@ hetINSTRUCTION_t Timer2Program[] =
     }
 };
 
+/******************************************************************************/
+/* User Global Variable Declaration                                           */
+/******************************************************************************/
+volatile unsigned char MAIN_TimerFlag = FALSE;
 
 /******************************************************************************/
 /* Functions                                                                  */
@@ -117,8 +145,12 @@ hetINSTRUCTION_t Timer2Program[] =
 /******************************************************************************/
 void InitTimers(void)
 {
+	unsigned long period = 0;
 	InitN2HET1();
 	InitN2HET2();
+	period = TMR_CalculatePeriod2(MAIN_LOOP_US);
+	TMR_SetTimerPeriod2(period, MAIN_TIMER);
+	TMR_N2HET2_InterruptEnable(MAIN_TIMER);
 	TMR_N2HET1_ON(TRUE);
 	TMR_N2HET2_ON(TRUE);
 }
@@ -135,7 +167,7 @@ void InitN2HET1(void)
 	hetREG1->PFR = 0;		// LRPFC / 1
 	hetREG1->PFR |= 14; 	// HRPFC / 15
 	(void)memcpy((void *)hetRAM1, (const void *)Timer1Program, sizeof(Timer1Program));
-	hetREG1->PRY |= 0x00000001; // make the interrupt high priority
+	hetREG1->PRY = N64_TIMER; // make the interrupt high priority
 }
 
 /******************************************************************************/
@@ -150,7 +182,28 @@ void InitN2HET2(void)
 	hetREG2->PFR = 0;		// LRPFC / 1
 	hetREG2->PFR |= 14; 	// HRPFC / 15
 	(void)memcpy((void *)hetRAM2, (const void *)Timer2Program, sizeof(Timer2Program));
-	hetREG2->PRY |= 0x00000003; // make the interrupt high priority
+	hetREG2->PRY = MISC_TIMER | DAC_TIMER | MAIN_TIMER; // make the interrupt high priority
+}
+
+/******************************************************************************/
+/* TMR_CalculatePeriod2
+ *
+ * The function takes in microseconds and retruns the period count for timer
+ *  2.																		  */
+/******************************************************************************/
+unsigned long TMR_CalculatePeriod2(double US)
+{
+    double prescalerD;
+    long prescalerL;
+
+    if(US == 0)
+    {
+    	return 0;
+    }
+
+    prescalerD = MSC_Round(((double)VCLK2 * (double) US) / (15.0 * 1000000.0));
+    prescalerL = (long) prescalerD;
+    return prescalerL;
 }
 
 /******************************************************************************/
@@ -174,10 +227,10 @@ void TMR_TestTimer2(void)
  *
  * The function sets the timer 2 period										  */
 /******************************************************************************/
-void TMR_SetTimerPeriod2(unsigned long period, unsigned char timer)
+void TMR_SetTimerPeriod2(unsigned long period, unsigned long timer)
 {
 	signed char index = -1;
-	static unsigned long last[2] = {0,0};
+	static unsigned long last[3] = {0,0,0};
 	if(period > 0x1FFFFFF)
 	{
 		period = 0x1FFFFFF;

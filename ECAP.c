@@ -45,24 +45,16 @@
 /******************************************************************************/
 void InitECAP(void)
 {
-	ecapREG4->ECCTL2 |= (3L << 1); 	// Wrap after Capture Event 4 in continuous mode.
+	ecapREG4->ECCTL2 |= (1L << 1); 	// Wrap after Capture Event 2 in continuous mode.
 	ecapREG4->ECCTL1 |= CAPLDEN;	// Enable CAP1-4 register loads at capture event time
 
 	/* capture 1 */
-	ecapREG4->ECCTL1 |= CTRRST1;	// Reset counter after Capture Event 1 time-stamp has been captured	(used in difference mode operation)
-	ecapREG4->ECCTL1 |= CAP1POL;	// Capture Event 1 triggered on a falling edge (FE)
+	ecapREG4->ECCTL1 &= ~CTRRST1;	// Do not reset counter on Capture Event 1 (absolute time stamp operation)
+	ecapREG4->ECCTL1 &= ~CAP1POL;	// Capture Event 1 triggered on a rising edge (FE)
 
 	/* capture 2 */
-	ecapREG4->ECCTL1 |= CTRRST2;	// Reset counter after Capture Event 2 time-stamp has been captured	(used in difference mode operation)
-	ecapREG4->ECCTL1 &= ~CAP2POL;	// Capture Event 2 triggered on a rising edge (FE)
-
-	/* capture 3 */
-	ecapREG4->ECCTL1 |= CTRRST3;	// Reset counter after Capture Event 3 time-stamp has been captured	(used in difference mode operation)
-	ecapREG4->ECCTL1 |= CAP3POL;	// Capture Event 3 triggered on a falling edge (FE)
-
-	/* capture 4 */
-	ecapREG4->ECCTL1 |= CTRRST4;	// Reset counter after Capture Event 4 time-stamp has been captured	(used in difference mode operation)
-	ecapREG4->ECCTL1 &= ~CAP4POL;	// Capture Event 4 triggered on a rising edge (FE)
+	ecapREG4->ECCTL1 &= ~CTRRST2;	// Do not reset counter on Capture Event 2 (absolute time stamp operation)
+	ecapREG4->ECCTL1 |= CAP2POL;	// Capture Event 2 triggered on a falling edge (FE)
 
 	ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// stop
 }
@@ -76,7 +68,7 @@ void ECAP_Interrupt(unsigned char state)
 {
 	if(state)
 	{
-		ecapREG4->ECEINT = CTROVF | CEVT4;	// enable overflow and compare 4
+		ecapREG4->ECEINT = CTROVF | CEVT2;	// enable overflow and compare 4
 	}
 	else
 	{

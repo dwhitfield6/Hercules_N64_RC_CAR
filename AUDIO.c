@@ -84,6 +84,20 @@ unsigned char Audio_GetPowerStatus(void)
 	return Audio_Power_State;
 }
 
+/******************************************************************************/
+/* Audio_IsDiagnosticFail
+ *
+ * The function returns true if the audio amplifier diagnostic test fails.	  */
+/******************************************************************************/
+unsigned char Audio_IsDiagnosticFail(void)
+{
+	if(gioPORTA->DIN & (1L << AUDIO_DIAGNOSTIC_GPIO))
+	{
+		return FALSE;
+	}
+	return TRUE;
+}
+
 /*-----------------------------------------------------------------------------/
  End of File
 /-----------------------------------------------------------------------------*/

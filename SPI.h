@@ -463,7 +463,7 @@ typedef struct t_spi_buffer
  *
  * This is the number of SPI strutures that fit in the SPI transmit buffer.	  */
 /******************************************************************************/
-#define SPI_TX_BUFFER_SIZE 100000L
+#define SPI_TX_BUFFER_SIZE 1000L
 
 /******************************************************************************/
 /* Chip selects for decives

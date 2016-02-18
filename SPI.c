@@ -64,7 +64,7 @@ void InitSPI1(void)
 	spiREG1->GCR0 &= ~nRESET; 			// SPI is in the reset state.
 	spiREG1->GCR0 |= nRESET; 			// SPI is out of the reset state
 
-	SPI_Parameters1(master, 0, 5000L);	// set up SPI parameters
+	SPI_Parameters1(master, 0, 10000L);	// set up SPI parameters
 	SPI_SetPins(TRUE);
 	spiREG1->DELAY = 0;
 	spiREG1->DELAY |= (0xFFUL << 24) + (0xFFUL << 16); 	// set chip select delays

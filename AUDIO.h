@@ -51,5 +51,6 @@ extern unsigned long Audio_Powercount;
 void InitAudio(void);
 void Audio_Power(unsigned char state);
 unsigned char Audio_GetPowerStatus(void);
+unsigned char Audio_IsDiagnosticFail(void);
 
 #endif	/* AUDIO_H */

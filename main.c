@@ -49,6 +49,8 @@
 /******************************************************************************/
 int main (void)
 {
+	unsigned char value = 0;
+
 	/* initialize the gpio pins */
 	Init_Pins();
 
@@ -60,6 +62,21 @@ int main (void)
 
     while(1)
     {
+		if(value)
+		{
+			gioPORTA->DSET = (1L << TEST_POINT_2);
+			value = 0;
+		}
+		else
+		{
+			gioPORTA->DCLR = (1L << TEST_POINT_2);
+			value = 1;
+		}
+
+    	/* wait for the next main loop flag */
+    	while(!MAIN_TimerFlag);
+    	MAIN_TimerFlag = FALSE;
+
     	/* Check for wav file activity */
     	if(WAV_IsPlaying())
     	{
@@ -104,7 +121,6 @@ int main (void)
     				WAV_Playing(FALSE);
     			}
     		}
-    		N64_ControllerCount+=10; // increase the rate when were playing audio
     	}
 
     	/* Check for digital pot activity */
@@ -190,6 +206,14 @@ int main (void)
     		N64_SetUpdateFlag(FALSE);
     	}
 
+    	/* Check for audio amplifer diagnostic fail */
+    	if(Audio_IsDiagnosticFail())
+    	{
+    		/* audio amplifier detected a problem */
+    		Audio_Power(OFF);
+    	}
+
+    	/* Increment N64 counter */
     	N64_ControllerCount++;
     	if(N64_ControllerCount >= N64_SAMPLERATE)
     	{

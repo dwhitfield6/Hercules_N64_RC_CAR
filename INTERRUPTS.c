@@ -92,25 +92,33 @@ void ISR_ECAP_N64(void)
 {
 	volatile unsigned long flags;
 	flags = ecapREG4->ECFLG;
+	ecapREG4->ECCLR = flags;
 
-	if((flags & CEVT4) || (flags & CTROVF))
+	if((flags & CEVT2) && (ecapREG4->ECEINT & CEVT2))
 	{
 		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
-		ecapREG4->TSCTR = ECAP_PRELOAD; 		// reset the timer
+		ecapREG4->ECCTL2 |= REARM;			// rearm
+		ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 		ecapREG4->ECCTL2 |= TSCTRSTOP;		// start the compare module
 		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP1;
 		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP2;
-		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP3;
-		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP4;
-		if((N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE) || (flags & CTROVF))
+		if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
 		{
+			ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
 			N64_ReceivedFinished(TRUE);
 			ECAP_Interrupt(FALSE);
-			ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
-			ecapREG4->TSCTR = ECAP_PRELOAD; 		// reset the timer
+			ecapREG4->ECCTL2 |= REARM;			// rearm
+			ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 		}
 	}
-	ecapREG4->ECCLR |= flags;
+	if((flags & CTROVF) && (ecapREG4->ECEINT & CTROVF))
+	{
+		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
+		N64_ReceivedFinished(TRUE);
+		ECAP_Interrupt(FALSE);
+		ecapREG4->ECCTL2 |= REARM;			// rearm
+		ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
+	}
 }
 
 /******************************************************************************/
@@ -126,17 +134,17 @@ void ISR_Timer1(void)
 	flags = hetREG1->FLG;
 	hetREG1->FLG = 0xFFFFFFFF;
 
-	if(flags & 0x01L)
+	if(flags & N64_TIMER)
 	{
 		if(N64_Buffer_Code[N64_CodeSectionBit])
 		{
 			/* code section is 1 */
-			gioPORTA->DSET = (1L << TEST_POINT_2);
+			gioPORTB->DSET = (1L << N64_0);
 		}
 		else
 		{
 			/* code section is 0 */
-			gioPORTA->DCLR = (1L << TEST_POINT_2);
+			gioPORTB->DCLR = (1L << N64_0);
 		}
 		N64_CodeSectionBit++;
 		if(N64_CodeSectionBit >= N64_CODE_SECTIONS)
@@ -162,13 +170,13 @@ void ISR_Timer2(void)
 	hetREG2->FLG = 0xFFFFFFFF;
 	static unsigned short last_temp = 0;
 
-	if(flags & 0x01L)
+	if((flags & MISC_TIMER) && (hetREG2->INTENAS & MISC_TIMER))
 	{
 		/* interrupt for MSC timer */
-		TMR_N2HET1_InterruptDisable(MISC_TIMER);
+		TMR_N2HET2_InterruptDisable(MISC_TIMER);
 		TMR_SetTimerFlag2();
 	}
-	if(flags & 0x02L)
+	if((flags & DAC_TIMER) && (hetREG2->INTENAS & DAC_TIMER))
 	{
 		if(value)
 		{
@@ -215,12 +223,17 @@ void ISR_Timer2(void)
         if(CurrentWAVFile.CurrentSample > CurrentWAVFile.NumSamples)
         {
         	/* file is done playing */
+        	NOP();
         	TMR_N2HET2_InterruptDisable(DAC_TIMER);
         	DAC_SendData(DAC_A, DAC_MIDPOINT);
         	DAC_SendData(DAC_B, DAC_MIDPOINT);
         	WAV_Finished(TRUE);
         	last_temp = 0;
         }
+	}
+	if((flags & MAIN_TIMER) && (hetREG2->INTENAS & MAIN_TIMER))
+	{
+		MAIN_TimerFlag = TRUE;
 	}
 }
 

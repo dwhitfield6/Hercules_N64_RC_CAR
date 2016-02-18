@@ -31,7 +31,7 @@ typedef struct t_n64_buttons
 	unsigned char B;			// green
 	unsigned char L;			// left top
 	unsigned char R;			// right top
-	unsigned char C[4];			// 4 yellow buttons
+	unsigned char C_Pad[4];			// 4 yellow buttons
 	unsigned char Start;		// red center
 	unsigned char L_Pad[4];		// plus sign on right of controler
 	unsigned char Z;			// back of controler
@@ -40,9 +40,13 @@ typedef struct t_n64_buttons
 
 typedef enum e_n64
 {
-    RESET 	= 0xFF,
-	READ	= 0x02,
-	WRITE	= 0x03,
+    RESET 			= 0xFF,
+	GET_STATUS 		= 0x00,
+	GET_BUTTONS		= 0x01,
+	READ_MEMPACK	= 0x02,
+	WRITE_MEMPACK	= 0x03,
+	READ_EEPROM		= 0x04,
+	WRITE_EEPROM	= 0x05,
 }ENUM_N64_REG;
 
 
@@ -91,6 +95,11 @@ typedef enum e_n64
 #define X 0
 #define Y 1
 
+#define UP 		0
+#define DOWN 	1
+#define LEFT 	2
+#define RIGHT 	3
+
 /******************************************************************************/
 /* Macro Functions                                                            */
 /******************************************************************************/
@@ -112,6 +121,7 @@ extern volatile unsigned long N64_TimingInputBit;
 void InitN64(void);
 void N64_BuildCode(ENUM_N64_REG action);
 unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons);
+void N64_SendReset(void);
 unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons);
 unsigned char N64_GetUpdateFlag(void);
 void N64_SetUpdateFlag(unsigned char state);

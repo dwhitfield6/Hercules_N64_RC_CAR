@@ -12,6 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./AUDIO.obj" \
 "./DAC.obj" \
+"./ECAP.obj" \
 "./INTERRUPTS.obj" \
 "./LED.obj" \
 "./MISC.obj" \
@@ -27,6 +28,7 @@ ORDERED_OBJS += \
 "./source/HL_errata.obj" \
 "./source/HL_esm.obj" \
 "./source/HL_gio.obj" \
+"./source/HL_het.obj" \
 "./source/HL_nmpu.obj" \
 "./source/HL_notification.obj" \
 "./source/HL_pinmux.obj" \
@@ -208,9 +210,10 @@ Hercules_N64_RC_CAR.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "AUDIO.pp" "DAC.pp" "INTERRUPTS.pp" "LED.pp" "MISC.pp" "N64.pp" "POT.pp" "SPI.pp" "SYSTEM.pp" "TIMERS.pp" "USER.pp" "WAV.pp" "main.pp" "source\HL_epc.pp" "source\HL_errata.pp" "source\HL_esm.pp" "source\HL_gio.pp" "source\HL_nmpu.pp" "source\HL_notification.pp" "source\HL_pinmux.pp" "source\HL_sys_dma.pp" "source\HL_sys_pcr.pp" "source\HL_sys_phantom.pp" "source\HL_sys_pmm.pp" "source\HL_sys_startup.pp" "source\HL_sys_vim.pp" "source\HL_system.pp" "HALCoGen\source\HL_epc.pp" "HALCoGen\source\HL_errata.pp" "HALCoGen\source\HL_esm.pp" "HALCoGen\source\HL_gio.pp" "HALCoGen\source\HL_het.pp" "HALCoGen\source\HL_mibspi.pp" "HALCoGen\source\HL_nmpu.pp" "HALCoGen\source\HL_notification.pp" "HALCoGen\source\HL_pinmux.pp" "HALCoGen\source\HL_spi.pp" "HALCoGen\source\HL_sys_dma.pp" "HALCoGen\source\HL_sys_main.pp" "HALCoGen\source\HL_sys_pcr.pp" "HALCoGen\source\HL_sys_phantom.pp" "HALCoGen\source\HL_sys_pmm.pp" "HALCoGen\source\HL_sys_startup.pp" "HALCoGen\source\HL_sys_vim.pp" "HALCoGen\source\HL_system.pp" 
-	-$(RM) "AUDIO.obj" "DAC.obj" "INTERRUPTS.obj" "LED.obj" "MISC.obj" "N64.obj" "POT.obj" "SPI.obj" "SYSTEM.obj" "TIMERS.obj" "USER.obj" "WAV.obj" "main.obj" "source\HL_epc.obj" "source\HL_errata.obj" "source\HL_esm.obj" "source\HL_gio.obj" "source\HL_nmpu.obj" "source\HL_notification.obj" "source\HL_pinmux.obj" "source\HL_sys_core.obj" "source\HL_sys_dma.obj" "source\HL_sys_intvecs.obj" "source\HL_sys_mpu.obj" "source\HL_sys_pcr.obj" "source\HL_sys_phantom.obj" "source\HL_sys_pmm.obj" "source\HL_sys_pmu.obj" "source\HL_sys_startup.obj" "source\HL_sys_vim.obj" "source\HL_system.obj" "HALCoGen\source\HL_epc.obj" "HALCoGen\source\HL_errata.obj" "HALCoGen\source\HL_esm.obj" "HALCoGen\source\HL_gio.obj" "HALCoGen\source\HL_het.obj" "HALCoGen\source\HL_mibspi.obj" "HALCoGen\source\HL_nmpu.obj" "HALCoGen\source\HL_notification.obj" "HALCoGen\source\HL_pinmux.obj" "HALCoGen\source\HL_spi.obj" "HALCoGen\source\HL_sys_core.obj" "HALCoGen\source\HL_sys_dma.obj" "HALCoGen\source\HL_sys_intvecs.obj" "HALCoGen\source\HL_sys_main.obj" 
-	-$(RM) "HALCoGen\source\HL_sys_mpu.obj" "HALCoGen\source\HL_sys_pcr.obj" "HALCoGen\source\HL_sys_phantom.obj" "HALCoGen\source\HL_sys_pmm.obj" "HALCoGen\source\HL_sys_pmu.obj" "HALCoGen\source\HL_sys_startup.obj" "HALCoGen\source\HL_sys_vim.obj" "HALCoGen\source\HL_system.obj" 
+	-$(RM) "AUDIO.pp" "DAC.pp" "ECAP.pp" "INTERRUPTS.pp" "LED.pp" "MISC.pp" "N64.pp" "POT.pp" "SPI.pp" "SYSTEM.pp" "TIMERS.pp" "USER.pp" "WAV.pp" "main.pp" "source\HL_epc.pp" "source\HL_errata.pp" "source\HL_esm.pp" "source\HL_gio.pp" "source\HL_het.pp" "source\HL_nmpu.pp" "source\HL_notification.pp" "source\HL_pinmux.pp" "source\HL_sys_dma.pp" "source\HL_sys_pcr.pp" "source\HL_sys_phantom.pp" "source\HL_sys_pmm.pp" "source\HL_sys_startup.pp" "source\HL_sys_vim.pp" "source\HL_system.pp" "HALCoGen\source\HL_epc.pp" "HALCoGen\source\HL_errata.pp" "HALCoGen\source\HL_esm.pp" "HALCoGen\source\HL_gio.pp" "HALCoGen\source\HL_het.pp" "HALCoGen\source\HL_mibspi.pp" "HALCoGen\source\HL_nmpu.pp" "HALCoGen\source\HL_notification.pp" "HALCoGen\source\HL_pinmux.pp" "HALCoGen\source\HL_spi.pp" "HALCoGen\source\HL_sys_dma.pp" "HALCoGen\source\HL_sys_main.pp" "HALCoGen\source\HL_sys_pcr.pp" "HALCoGen\source\HL_sys_phantom.pp" "HALCoGen\source\HL_sys_pmm.pp" "HALCoGen\source\HL_sys_startup.pp" "HALCoGen\source\HL_sys_vim.pp" 
+	-$(RM) "HALCoGen\source\HL_system.pp" 
+	-$(RM) "AUDIO.obj" "DAC.obj" "ECAP.obj" "INTERRUPTS.obj" "LED.obj" "MISC.obj" "N64.obj" "POT.obj" "SPI.obj" "SYSTEM.obj" "TIMERS.obj" "USER.obj" "WAV.obj" "main.obj" "source\HL_epc.obj" "source\HL_errata.obj" "source\HL_esm.obj" "source\HL_gio.obj" "source\HL_het.obj" "source\HL_nmpu.obj" "source\HL_notification.obj" "source\HL_pinmux.obj" "source\HL_sys_core.obj" "source\HL_sys_dma.obj" "source\HL_sys_intvecs.obj" "source\HL_sys_mpu.obj" "source\HL_sys_pcr.obj" "source\HL_sys_phantom.obj" "source\HL_sys_pmm.obj" "source\HL_sys_pmu.obj" "source\HL_sys_startup.obj" "source\HL_sys_vim.obj" "source\HL_system.obj" "HALCoGen\source\HL_epc.obj" "HALCoGen\source\HL_errata.obj" "HALCoGen\source\HL_esm.obj" "HALCoGen\source\HL_gio.obj" "HALCoGen\source\HL_het.obj" "HALCoGen\source\HL_mibspi.obj" "HALCoGen\source\HL_nmpu.obj" "HALCoGen\source\HL_notification.obj" "HALCoGen\source\HL_pinmux.obj" "HALCoGen\source\HL_spi.obj" "HALCoGen\source\HL_sys_core.obj" "HALCoGen\source\HL_sys_dma.obj" "HALCoGen\source\HL_sys_intvecs.obj" 
+	-$(RM) "HALCoGen\source\HL_sys_main.obj" "HALCoGen\source\HL_sys_mpu.obj" "HALCoGen\source\HL_sys_pcr.obj" "HALCoGen\source\HL_sys_phantom.obj" "HALCoGen\source\HL_sys_pmm.obj" "HALCoGen\source\HL_sys_pmu.obj" "HALCoGen\source\HL_sys_startup.obj" "HALCoGen\source\HL_sys_vim.obj" "HALCoGen\source\HL_system.obj" 
 	-$(RM) "source\HL_sys_core.pp" "source\HL_sys_intvecs.pp" "source\HL_sys_mpu.pp" "source\HL_sys_pmu.pp" "HALCoGen\source\HL_sys_core.pp" "HALCoGen\source\HL_sys_intvecs.pp" "HALCoGen\source\HL_sys_mpu.pp" "HALCoGen\source\HL_sys_pmu.pp" 
 	-@echo 'Finished clean'
 	-@echo ' '

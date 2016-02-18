@@ -47,16 +47,13 @@
 /******************************************************************************/
 void MSC_DelayUS(unsigned long US)
 {
-    double prescalerD;
     long prescalerL;
 
     if(US == 0)
     {
     	return;
     }
-
-    prescalerD = MSC_Round(((double)VCLK2 * (double) US) / (15.0 * 1000000.0));
-    prescalerL = (long) prescalerD;
+    prescalerL = TMR_CalculatePeriod2(US);
 
     while(prescalerL > 0x1FFFFFF)
     {

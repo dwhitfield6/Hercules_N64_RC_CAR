@@ -294,7 +294,7 @@
       </HDRADC>
       <SRCADC/>
       <HET1ASMHDR>
-        <NAME/>
+        <NAME>include\HL_het.h</NAME>
       </HET1ASMHDR>
       <HET1ASMSRC>
         <NAME/>
@@ -616,6 +616,9 @@
       <HDRHTU>
         <PATH>include\HL_htu.h</PATH>
       </HDRHTU>
+      <HET1ASMHDR>
+        <PATH>include\HL_het.h</PATH>
+      </HET1ASMHDR>
     </FILENAMES>
   </HET>
   <I2C>
