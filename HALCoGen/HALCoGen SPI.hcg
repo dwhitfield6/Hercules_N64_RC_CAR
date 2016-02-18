@@ -12,7 +12,7 @@
   <HET1>
     <FILENAME>
       <HET1ASMHDR>
-        <NAME/>
+        <NAME>include\HL_het.h</NAME>
       </HET1ASMHDR>
       <HET1ASMSRC>
         <NAME/>

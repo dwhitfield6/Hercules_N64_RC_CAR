@@ -33,8 +33,8 @@
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
 TYPE_SPI_BUFFER SPI_TX_Buffer[SPI_TX_BUFFER_SIZE];
-volatile short SPI_TX_Buffer_Add_place = 0;
-volatile short SPI_TX_Buffer_Remove_place = 0;
+volatile long SPI_TX_Buffer_Add_place = 0;
+volatile long SPI_TX_Buffer_Remove_place = 0;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -64,7 +64,7 @@ void InitSPI1(void)
 	spiREG1->GCR0 &= ~nRESET; 			// SPI is in the reset state.
 	spiREG1->GCR0 |= nRESET; 			// SPI is out of the reset state
 
-	SPI_Parameters1(master, 0, 500L);	// set up SPI parameters
+	SPI_Parameters1(master, 0, 5000L);	// set up SPI parameters
 	SPI_SetPins(TRUE);
 	spiREG1->DELAY = 0;
 	spiREG1->DELAY |= (0xFFUL << 24) + (0xFFUL << 16); 	// set chip select delays

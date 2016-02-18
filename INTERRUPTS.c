@@ -27,11 +27,15 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "DAC.h"
+#include "ECAP.h"
 #include "INTERRUPTS.h"
+#include "MISC.h"
 #include "N64.h"
 #include "SPI.h"
 #include "TIMERS.h"
 #include "USER.h"
+#include "WAV.h"
 
 /******************************************************************************/
 /* Global Variables                                                           */
@@ -61,32 +65,52 @@ void ISR_SPI1_INT0(void)
 		/* The pending interrupt is a "Transmit Buffer Empty" interrupt */
 		if(SPI_TX_Buffer_Remove_place != SPI_TX_Buffer_Add_place)
 		{
-			while(!SPI_IsTransmitBufferFull())
+			SPI_SendByte(SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].Data,
+					SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].Channel,
+					SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].HoldCS);
+			SPI_TX_Buffer_Remove_place++;
+			if(SPI_TX_Buffer_Remove_place >= SPI_TX_BUFFER_SIZE)
 			{
-				/* Fill the FIFO if we can */
-				if(SPI_TX_Buffer_Remove_place != SPI_TX_Buffer_Add_place)
-				{
-					SPI_SendByte(SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].Data,
-							SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].Channel,
-							SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].HoldCS);
-					SPI_TX_Buffer_Remove_place++;
-					if(SPI_TX_Buffer_Remove_place >= SPI_TX_BUFFER_SIZE)
-					{
-						SPI_TX_Buffer_Remove_place = 0;
-					}
-				}
-				else
-				{
-					break;
-				}
+				SPI_TX_Buffer_Remove_place = 0;
 			}
 		}
 		else
 		{
 			SPI_TransmitInterrupt1(OFF);
 		}
-
 	}
+}
+
+/******************************************************************************/
+/* ISR_ECAP_N64
+ *
+ * Interrupt service routine for SPI1 INT0 interrupt.                         */
+/******************************************************************************/
+#pragma CODE_STATE(ISR_ECAP_N64, 32)
+#pragma INTERRUPT(ISR_ECAP_N64, IRQ)
+void ISR_ECAP_N64(void)
+{
+	volatile unsigned long flags;
+	flags = ecapREG4->ECFLG;
+
+	if((flags & CEVT4) || (flags & CTROVF))
+	{
+		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
+		ecapREG4->TSCTR = ECAP_PRELOAD; 		// reset the timer
+		ecapREG4->ECCTL2 |= TSCTRSTOP;		// start the compare module
+		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP1;
+		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP2;
+		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP3;
+		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP4;
+		if((N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE) || (flags & CTROVF))
+		{
+			N64_ReceivedFinished(TRUE);
+			ECAP_Interrupt(FALSE);
+			ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
+			ecapREG4->TSCTR = ECAP_PRELOAD; 		// reset the timer
+		}
+	}
+	ecapREG4->ECCLR |= flags;
 }
 
 /******************************************************************************/
@@ -98,8 +122,9 @@ void ISR_SPI1_INT0(void)
 #pragma INTERRUPT(ISR_Timer1, IRQ)
 void ISR_Timer1(void)
 {
-	unsigned long flags;
+	volatile unsigned long flags;
 	flags = hetREG1->FLG;
+	hetREG1->FLG = 0xFFFFFFFF;
 
 	if(flags & 0x01L)
 	{
@@ -116,32 +141,87 @@ void ISR_Timer1(void)
 		N64_CodeSectionBit++;
 		if(N64_CodeSectionBit >= N64_CODE_SECTIONS)
 		{
-			TMR_N2HET1_ON(FALSE);
-			TMR_N2HET1_Interrupt(FALSE);
+			TMR_N2HET1_InterruptDisable(N64_TIMER);
 		}
 	}
-	hetREG1->FLG |= flags;
 }
 
 /******************************************************************************/
 /* ISR_Timer2
  *
- * Interrupt service routine for the MISC timer.	        	              */
+ * Interrupt service routine for the MISC and DAC timer.       	              */
 /******************************************************************************/
 #pragma CODE_STATE(ISR_Timer2, 32)
 #pragma INTERRUPT(ISR_Timer2, IRQ)
 void ISR_Timer2(void)
 {
-	unsigned long flags = 0;
+	volatile unsigned long flags = 0;
+	unsigned short temp;
+	static unsigned char value = 0;
 	flags = hetREG2->FLG;
+	hetREG2->FLG = 0xFFFFFFFF;
+	static unsigned short last_temp = 0;
 
 	if(flags & 0x01L)
 	{
-		TMR_N2HET2_ON(FALSE);
+		/* interrupt for MSC timer */
+		TMR_N2HET1_InterruptDisable(MISC_TIMER);
 		TMR_SetTimerFlag2();
 	}
+	if(flags & 0x02L)
+	{
+		if(value)
+		{
+			gioPORTA->DSET = (1L << TEST_POINT_1);
+			value = 0;
+		}
+		else
+		{
+			gioPORTA->DCLR = (1L << TEST_POINT_1);
+			value = 1;
+		}
 
-	hetREG2->FLG |= flags;
+        if(CurrentWAVFile.BitsPerSample == 8)
+        {
+    		/* 8 bit samples */
+            temp = *CurrentWAVFile.BufferPointer;
+            temp <<= 4;
+            if(temp != last_temp)
+            {
+				DAC_SendData(DAC_A, temp);
+				temp = DAC_FULL_SCALE_POSITIVE - temp;
+				DAC_SendData(DAC_B, temp);
+            }
+            last_temp = temp;
+            CurrentWAVFile.BufferPointer += CurrentWAVFile.SampleRepeat;
+            CurrentWAVFile.CurrentSample += CurrentWAVFile.SampleRepeat;
+        }
+        else
+        {
+        	/* 16 bit samples */
+            temp = MSC_EndianShortArray(CurrentWAVFile.BufferPointer);
+            temp >>= 4;
+            if(temp != last_temp)
+            {
+				DAC_SendData(DAC_A, temp);
+				temp = DAC_FULL_SCALE_POSITIVE - temp;
+				DAC_SendData(DAC_B, temp);
+            }
+            last_temp = temp;
+            CurrentWAVFile.BufferPointer += CurrentWAVFile.SampleRepeat;
+            CurrentWAVFile.CurrentSample += CurrentWAVFile.SampleRepeat;
+        }
+
+        if(CurrentWAVFile.CurrentSample > CurrentWAVFile.NumSamples)
+        {
+        	/* file is done playing */
+        	TMR_N2HET2_InterruptDisable(DAC_TIMER);
+        	DAC_SendData(DAC_A, DAC_MIDPOINT);
+        	DAC_SendData(DAC_B, DAC_MIDPOINT);
+        	WAV_Finished(TRUE);
+        	last_temp = 0;
+        }
+	}
 }
 
 /*-----------------------------------------------------------------------------/

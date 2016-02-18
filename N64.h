@@ -71,12 +71,19 @@ typedef enum e_n64
 #define N64_CODE_SECTIONS 36
 
 /******************************************************************************/
+/* N64_INPUT_BUFFER_SIZE
+ *
+ * This is the nuber of timing edgeds that we can save for a detect.		  */
+/******************************************************************************/
+#define N64_INPUT_BUFFER_SIZE 300
+
+/******************************************************************************/
 /* N64_SAMPLERATE
  *
  * This is the nuber of loops around the main line that we wait to sample the
  *  N64 controller.															  */
 /******************************************************************************/
-#define N64_SAMPLERATE 1000
+#define N64_SAMPLERATE 1
 
 /******************************************************************************/
 /* Defines                                                                    */
@@ -94,15 +101,21 @@ typedef enum e_n64
 extern TYPE_N64_BUT N64_New;
 extern TYPE_N64_BUT N64_Old;
 extern unsigned char N64_Buffer_Code[N64_CODE_SECTIONS];
-extern unsigned char N64_CodeSectionBit;
-extern unsigned long N64_ControllerCount;
+extern volatile unsigned char N64_CodeSectionBit;
+extern volatile unsigned long N64_ControllerCount;
+extern volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE];
+extern volatile unsigned long N64_TimingInputBit;
 
 /******************************************************************************/
 /* Function prototypes                                                        */
 /******************************************************************************/
 void InitN64(void);
+void N64_BuildCode(ENUM_N64_REG action);
+unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons);
 unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons);
 unsigned char N64_GetUpdateFlag(void);
 void N64_SetUpdateFlag(unsigned char state);
+unsigned char N64_IsReceivedFinished(void);
+void N64_ReceivedFinished(unsigned char state);
 
 #endif	/* N64_H */

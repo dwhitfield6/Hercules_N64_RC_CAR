@@ -35,6 +35,24 @@ typedef enum e_wav_files
 	BANANA	= 3,
 }ENUM_WAV_FILES;
 
+// wav file info
+typedef struct __attribute__((packed)) WAV_Struct
+{
+    unsigned char valid;
+    unsigned long ChunkSize;
+    unsigned long Subchunk1Size;
+    unsigned int  AudioFormat;
+    unsigned int  NumChannels;
+    unsigned long SampleRate;
+    unsigned long ByteRate;
+    unsigned char BitsPerSample;
+    unsigned long Subchunk2Size;
+    unsigned long NumSamples;
+    unsigned char SampleRepeat;
+    unsigned char* BufferPointer;
+    unsigned long CurrentSample;
+}WAV;
+
 /******************************************************************************/
 /* WAV_PLAYING_QUEUE_SIZE
  *
@@ -54,6 +72,7 @@ typedef enum e_wav_files
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
 extern ENUM_WAV_FILES WAV_PlayingQueue[WAV_PLAYING_QUEUE_SIZE];
+extern WAV CurrentWAVFile;
 
 /******************************************************************************/
 /* Function prototypes                                                        */
@@ -68,5 +87,6 @@ void WAV_Finished(unsigned char state);
 void WAV_EraseFromQueue(void);
 unsigned char WAV_AddToQueue(ENUM_WAV_FILES file);
 unsigned char WAV_SetupPlayback(ENUM_WAV_FILES file);
+unsigned char WAV_ParseHeader(unsigned char* buffer);
 
 #endif	/* WAV_H */

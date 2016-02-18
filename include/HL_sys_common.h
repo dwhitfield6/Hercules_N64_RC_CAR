@@ -51,6 +51,7 @@
 #include "HL_reg_spi.h"
 #include "HL_sys_core.h"
 #include "HL_het.h"
+#include "HL_ecap.h"
 
 #ifdef __cplusplus
 extern "C" {

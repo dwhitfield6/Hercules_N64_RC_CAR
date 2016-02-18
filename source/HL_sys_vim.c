@@ -178,7 +178,7 @@ static const t_isrFuncPTR s_vim_init[128U] =
     &phantomInterrupt,          /* Channel 104 */
     &phantomInterrupt,          /* Channel 105 */
     &phantomInterrupt,          /* Channel 106 */
-    &phantomInterrupt,          /* Channel 107 */
+    &ISR_ECAP_N64,	            /* Channel 107 */
     &phantomInterrupt,          /* Channel 108 */
     &phantomInterrupt,          /* Channel 109 */
     &phantomInterrupt,          /* Channel 110 */
@@ -240,7 +240,7 @@ void vimInit(void)
                     | (uint32)((uint32)SYS_IRQ << 9U)
                     | (uint32)((uint32)SYS_IRQ << 10U)
                     | (uint32)((uint32)SYS_IRQ << 11U)
-                    | (uint32)((uint32)SYS_IRQ << 12U)
+                    | (uint32)((uint32)SYS_FIQ << 12U)
                     | (uint32)((uint32)SYS_IRQ << 13U)
                     | (uint32)((uint32)SYS_IRQ << 14U)
                     | (uint32)((uint32)SYS_IRQ << 15U)
@@ -473,7 +473,7 @@ void vimInit(void)
                         | (uint32)((uint32)0U << 8U)
                         | (uint32)((uint32)0U << 9U)
                         | (uint32)((uint32)0U << 10U)
-                        | (uint32)((uint32)0U << 11U)
+                        | (uint32)((uint32)1U << 11U)
                         | (uint32)((uint32)0U << 12U)
                         | (uint32)((uint32)0U << 13U)
                         | (uint32)((uint32)0U << 14U)

@@ -11,7 +11,7 @@
 /******************************************************************************/
 
 /******************************************************************************/
-/* Contains functions for the TDA7396 audio amp.
+/* Contains functions for the eCAP module for timing captures.
  *																			  */
 /******************************************************************************/
 
@@ -24,18 +24,11 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "AUDIO.h"
-#include "USER.h"
-
-/******************************************************************************/
-/* Private Variable Declaration      	                                      */
-/******************************************************************************/
-static volatile unsigned char Audio_Power_State = OFF;
+#include "ECAP.h"
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
-unsigned long Audio_Powercount = 0;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -46,42 +39,49 @@ unsigned long Audio_Powercount = 0;
 /******************************************************************************/
 
 /******************************************************************************/
-/* InitAudio
+/* InitECAP
  *
- * The function initializes the Audio amplifier.							  */
+ * The function initializes the ECAP module.								  */
 /******************************************************************************/
-void InitAudio(void)
+void InitECAP(void)
 {
-	Audio_Power(OFF);
+	ecapREG4->ECCTL2 |= (3L << 1); 	// Wrap after Capture Event 4 in continuous mode.
+	ecapREG4->ECCTL1 |= CAPLDEN;	// Enable CAP1-4 register loads at capture event time
+
+	/* capture 1 */
+	ecapREG4->ECCTL1 |= CTRRST1;	// Reset counter after Capture Event 1 time-stamp has been captured	(used in difference mode operation)
+	ecapREG4->ECCTL1 |= CAP1POL;	// Capture Event 1 triggered on a falling edge (FE)
+
+	/* capture 2 */
+	ecapREG4->ECCTL1 |= CTRRST2;	// Reset counter after Capture Event 2 time-stamp has been captured	(used in difference mode operation)
+	ecapREG4->ECCTL1 &= ~CAP2POL;	// Capture Event 2 triggered on a rising edge (FE)
+
+	/* capture 3 */
+	ecapREG4->ECCTL1 |= CTRRST3;	// Reset counter after Capture Event 3 time-stamp has been captured	(used in difference mode operation)
+	ecapREG4->ECCTL1 |= CAP3POL;	// Capture Event 3 triggered on a falling edge (FE)
+
+	/* capture 4 */
+	ecapREG4->ECCTL1 |= CTRRST4;	// Reset counter after Capture Event 4 time-stamp has been captured	(used in difference mode operation)
+	ecapREG4->ECCTL1 &= ~CAP4POL;	// Capture Event 4 triggered on a rising edge (FE)
+
+	ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// stop
 }
 
 /******************************************************************************/
-/* Audio_Power
+/* ECAP_Interrupt
  *
- * The function controls the Audio Amplifier.								  */
+ * The function controls the ECAP interrupts.								  */
 /******************************************************************************/
-void Audio_Power(unsigned char state)
+void ECAP_Interrupt(unsigned char state)
 {
 	if(state)
 	{
-		gioPORTA->DSET = (1L << AUDIO_STANDBY_GPIO);
-		Audio_Power_State = ON;
+		ecapREG4->ECEINT = CTROVF | CEVT4;	// enable overflow and compare 4
 	}
 	else
 	{
-		gioPORTA->DCLR = (1L << AUDIO_STANDBY_GPIO);
-		Audio_Power_State = OFF;
+		ecapREG4->ECEINT = 0;
 	}
-}
-
-/******************************************************************************/
-/* Audio_GetPowerStatus
- *
- * The function returns the state of the audio amplifer.					  */
-/******************************************************************************/
-unsigned char Audio_GetPowerStatus(void)
-{
-	return Audio_Power_State;
 }
 
 /*-----------------------------------------------------------------------------/

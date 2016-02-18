@@ -74,7 +74,28 @@ hetINSTRUCTION_t Timer2Program[] =
     {
         /* Program */
     	/* reserved     | Requese number 	| break			| Next program address  |	instruction	| Angle count	| Register	| compare select	| reserved		| interrupt enable	*/
-        (0x00L << 26) 	| (0x00L << 23)  	|(0L << 22)		| (0x00L << 13) 		| (b0110 << 9)	| (0L << 8)		| (3L << 6)	| (1L << 5)			| (0x00L << 1)	| (0x01L << 0),
+        (0x00L << 26) 	| (0x00L << 23)  	|(0L << 22)		| (0x01L << 13) 		| (b0110 << 9)	| (0L << 8)		| (3L << 6)	| (1L << 5)			| (0x00L << 1)	| (0x01L << 0),
+        /* Control */
+        0x01FFFFFFU,
+        /* Data */
+        0x00000000U,
+        /* Reserved */
+        0x00000000U
+    },
+
+    /* Page 1029 TRM
+     * CNT: Timebase
+     *       - Instruction                  = 0
+     *       - Next instruction             = 1
+     *       - Conditional next instruction = na
+     *       - Interrupt                    = na
+     *       - Pin                          = na
+     *       - Reg                          = T
+     *											*/
+    {
+        /* Program */
+    	/* reserved     | Requese number 	| break			| Next program address  |	instruction	| Angle count	| Register	| compare select	| reserved		| interrupt enable	*/
+        (0x00L << 26) 	| (0x00L << 23)  	|(0L << 22)		| (0x00L << 13) 		| (b0110 << 9)	| (0L << 8)		| (2L << 6)	| (1L << 5)			| (0x00L << 1)	| (0x01L << 0),
         /* Control */
         0x01FFFFFFU,
         /* Data */
@@ -98,6 +119,8 @@ void InitTimers(void)
 {
 	InitN2HET1();
 	InitN2HET2();
+	TMR_N2HET1_ON(TRUE);
+	TMR_N2HET2_ON(TRUE);
 }
 
 /******************************************************************************/
@@ -127,7 +150,7 @@ void InitN2HET2(void)
 	hetREG2->PFR = 0;		// LRPFC / 1
 	hetREG2->PFR |= 14; 	// HRPFC / 15
 	(void)memcpy((void *)hetRAM2, (const void *)Timer2Program, sizeof(Timer2Program));
-	hetREG2->PRY |= 0x00000001; // make the interrupt high priority
+	hetREG2->PRY |= 0x00000003; // make the interrupt high priority
 }
 
 /******************************************************************************/
@@ -151,20 +174,28 @@ void TMR_TestTimer2(void)
  *
  * The function sets the timer 2 period										  */
 /******************************************************************************/
-void TMR_SetTimerPeriod2(unsigned long period)
+void TMR_SetTimerPeriod2(unsigned long period, unsigned char timer)
 {
-	static unsigned long last = 0;
+	signed char index = -1;
+	static unsigned long last[2] = {0,0};
 	if(period > 0x1FFFFFF)
 	{
 		period = 0x1FFFFFF;
 	}
-	TMR_N2HET2_ON(FALSE);
-	if(last != period)
+	while(timer)
 	{
-		Timer2Program[0].Control = period - 1;
-		(void)memcpy((void *)hetRAM2, (const void *)Timer2Program, sizeof(Timer2Program));
+		timer >>= 1;
+		index++;
 	}
-	last = period;
+	if(last[index] != period)
+	{
+		TMR_N2HET2_ON(FALSE);
+		(void)memcpy((void *)Timer2Program, (const void *)hetRAM2, sizeof(Timer2Program));
+		Timer2Program[index].Control = period - 1;
+		(void)memcpy((void *)hetRAM2, (const void *)Timer2Program, sizeof(Timer2Program));
+		TMR_N2HET2_ON(TRUE);
+	}
+	last[index] = period;
 }
 
 /******************************************************************************/
@@ -185,11 +216,12 @@ void TMR_SetTimerMicroSeconds1(double US)
 	{
 		prescalerL = 0x1FFFFFF;
 	}
-	TMR_N2HET1_ON(FALSE);
 	if(last != prescalerL)
 	{
+		TMR_N2HET1_ON(FALSE);
 		Timer1Program[0].Control = prescalerL - 1;
 		(void)memcpy((void *)hetRAM1, (const void *)Timer1Program, sizeof(Timer1Program));
+		TMR_N2HET1_ON(TRUE);
 	}
 	last = prescalerL;
 }

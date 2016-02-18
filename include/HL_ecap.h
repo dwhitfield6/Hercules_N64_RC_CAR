@@ -234,12 +234,6 @@ uint32 ecapGetCAP1(ecapBASE_t *ecap);
 uint32 ecapGetCAP2(ecapBASE_t *ecap);
 uint32 ecapGetCAP3(ecapBASE_t *ecap);
 uint32 ecapGetCAP4(ecapBASE_t *ecap);
-void ecap1GetConfigValue(ecap_config_reg_t *config_reg, config_value_type_t type);
-void ecap2GetConfigValue(ecap_config_reg_t *config_reg, config_value_type_t type);
-void ecap3GetConfigValue(ecap_config_reg_t *config_reg, config_value_type_t type);
-void ecap4GetConfigValue(ecap_config_reg_t *config_reg, config_value_type_t type);
-void ecap5GetConfigValue(ecap_config_reg_t *config_reg, config_value_type_t type);
-void ecap6GetConfigValue(ecap_config_reg_t *config_reg, config_value_type_t type);
 
 /** @brief Interrupt callback
 *   @param[in] ecap	 Handle to CAP object

@@ -463,7 +463,7 @@ typedef struct t_spi_buffer
  *
  * This is the number of SPI strutures that fit in the SPI transmit buffer.	  */
 /******************************************************************************/
-#define SPI_TX_BUFFER_SIZE 100
+#define SPI_TX_BUFFER_SIZE 100000L
 
 /******************************************************************************/
 /* Chip selects for decives
@@ -486,8 +486,8 @@ typedef struct t_spi_buffer
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
 extern TYPE_SPI_BUFFER SPI_TX_Buffer[SPI_TX_BUFFER_SIZE];
-extern volatile short SPI_TX_Buffer_Add_place;
-extern volatile short SPI_TX_Buffer_Remove_place;
+extern volatile long SPI_TX_Buffer_Add_place;
+extern volatile long SPI_TX_Buffer_Remove_place;
 
 /******************************************************************************/
 /* Function prototypes                                                        */

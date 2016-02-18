@@ -75,6 +75,15 @@
 #define HETFLG	(0xFFFFFFFFL<<0)
 
 /******************************************************************************/
+/* Timer instruction number
+ *
+ * TImer number definitons for each timer.									  */
+/******************************************************************************/
+#define N64_TIMER 	1
+#define MISC_TIMER 	1
+#define DAC_TIMER 	2
+
+/******************************************************************************/
 /* Defines                                                                    */
 /******************************************************************************/
 
@@ -92,8 +101,10 @@ extern volatile unsigned char TMR_Flag2;
 /******************************************************************************/
 inline void TMR_N2HET1_ON(unsigned char state);
 inline void TMR_N2HET2_ON(unsigned char state);
-inline void TMR_N2HET1_Interrupt(unsigned char state);
-inline void TMR_N2HET2_Interrupt(unsigned char state);
+inline void TMR_N2HET1_InterruptEnable(unsigned long state);
+inline void TMR_N2HET1_InterruptDisable(unsigned long state);
+inline void TMR_N2HET2_InterruptEnable(unsigned long state);
+inline void TMR_N2HET2_InterruptDisable(unsigned long state);
 inline void TMR_ClearTimerFlag2(void);
 inline void TMR_SetTimerFlag2(void);
 inline unsigned char TMR_GetTimerFlag2(void);
@@ -101,7 +112,7 @@ void InitTimers(void);
 void InitN2HET1(void);
 void InitN2HET2(void);
 void TMR_TestTimer2(void);
-void TMR_SetTimerPeriod2(unsigned long period);
+void TMR_SetTimerPeriod2(unsigned long period, unsigned char timer);
 void TMR_SetTimerMicroSeconds1(double US);
 
 /******************************************************************************/
@@ -143,37 +154,43 @@ inline void TMR_N2HET2_ON(unsigned char state)
 }
 
 /******************************************************************************/
-/* TMR_N2HET1_Interrupt
+/* TMR_N2HET1_InterruptEnable
  *
  * The function controls the timer interrupt.								  */
 /******************************************************************************/
-inline void TMR_N2HET1_Interrupt(unsigned char state)
+inline void TMR_N2HET1_InterruptEnable(unsigned long state)
 {
-	if(state)
-	{
-		hetREG1->INTENAS |= 0x00000001;	// set the interrupt
-	}
-	else
-	{
-		hetREG1->INTENAC |= 0x00000001;	// clear the interrupt
-	}
+	hetREG1->INTENAS |= state;		// set the interrupts
 }
 
 /******************************************************************************/
-/* TMR_N2HET2_Interrupt
+/* TMR_N2HET1_InterruptDisable
  *
  * The function controls the timer interrupt.								  */
 /******************************************************************************/
-inline void TMR_N2HET2_Interrupt(unsigned char state)
+inline void TMR_N2HET1_InterruptDisable(unsigned long state)
 {
-	if(state)
-	{
-		hetREG2->INTENAS |= 0x00000001;	// set the interrupt
-	}
-	else
-	{
-		hetREG2->INTENAC |= 0x00000001;	// clear the interrupt
-	}
+	hetREG1->INTENAC |= state;		// set the interrupts
+}
+
+/******************************************************************************/
+/* TMR_N2HET2_InterruptEnable
+ *
+ * The function controls the timer interrupt.								  */
+/******************************************************************************/
+inline void TMR_N2HET2_InterruptEnable(unsigned long state)
+{
+	hetREG2->INTENAS |= state;		// set the interrupts
+}
+
+/******************************************************************************/
+/* TMR_N2HET2_InterruptDisable
+ *
+ * The function controls the timer interrupt.								  */
+/******************************************************************************/
+inline void TMR_N2HET2_InterruptDisable(unsigned long state)
+{
+	hetREG2->INTENAC |= state;		// set the interrupts
 }
 
 /******************************************************************************/

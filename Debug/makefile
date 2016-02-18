@@ -12,6 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./AUDIO.obj" \
 "./DAC.obj" \
+"./ECAP.obj" \
 "./INTERRUPTS.obj" \
 "./LED.obj" \
 "./MISC.obj" \
@@ -170,7 +171,7 @@ all: Hercules_N64_RC_CAR.out
 Hercules_N64_RC_CAR.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" -mv7R5 --code_state=32 --float_support=VFPv3D16 --abi=eabi -O2 --fp_mode=relaxed --opt_for_speed=3 -g --diag_warning=225 --display_error_number --diag_wrap=off --enum_type=packed --opt_for_cache -z -m"Hercules_N64_RC_CAR.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include" -i"C:/Users/dwhitfield/Documents/GitHub/Hercules_N64_RC_CAR/Linker" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="Hercules_N64_RC_CAR_linkInfo.xml" --rom_model --be32 -o "Hercules_N64_RC_CAR.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" -mv7R5 --code_state=32 --float_support=VFPv3D16 --abi=eabi -O0 --fp_mode=relaxed --opt_for_speed=1 -g --diag_warning=225 --display_error_number --diag_wrap=off --unaligned_access=on --enum_type=packed --gen_opt_info=0 -z -m"Hercules_N64_RC_CAR.map" --heap_size=0x800 --stack_size=0x800 -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include" -i"C:/Users/dwhitfield/Documents/GitHub/Hercules_N64_RC_CAR/Linker" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="Hercules_N64_RC_CAR_linkInfo.xml" --rom_model --be32 -o "Hercules_N64_RC_CAR.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -183,8 +184,8 @@ Hercules_N64_RC_CAR.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "AUDIO.pp" "DAC.pp" "INTERRUPTS.pp" "LED.pp" "MISC.pp" "N64.pp" "POT.pp" "SPI.pp" "SYSTEM.pp" "TIMERS.pp" "USER.pp" "WAV.pp" "main.pp" "source\HL_epc.pp" "source\HL_errata.pp" "source\HL_esm.pp" "source\HL_gio.pp" "source\HL_nmpu.pp" "source\HL_notification.pp" "source\HL_pinmux.pp" "source\HL_sys_dma.pp" "source\HL_sys_pcr.pp" "source\HL_sys_phantom.pp" "source\HL_sys_pmm.pp" "source\HL_sys_startup.pp" "source\HL_sys_vim.pp" "source\HL_system.pp" 
-	-$(RM) "AUDIO.obj" "DAC.obj" "INTERRUPTS.obj" "LED.obj" "MISC.obj" "N64.obj" "POT.obj" "SPI.obj" "SYSTEM.obj" "TIMERS.obj" "USER.obj" "WAV.obj" "main.obj" "source\HL_epc.obj" "source\HL_errata.obj" "source\HL_esm.obj" "source\HL_gio.obj" "source\HL_nmpu.obj" "source\HL_notification.obj" "source\HL_pinmux.obj" "source\HL_sys_core.obj" "source\HL_sys_dma.obj" "source\HL_sys_intvecs.obj" "source\HL_sys_mpu.obj" "source\HL_sys_pcr.obj" "source\HL_sys_phantom.obj" "source\HL_sys_pmm.obj" "source\HL_sys_pmu.obj" "source\HL_sys_startup.obj" "source\HL_sys_vim.obj" "source\HL_system.obj" 
+	-$(RM) "AUDIO.pp" "DAC.pp" "ECAP.pp" "INTERRUPTS.pp" "LED.pp" "MISC.pp" "N64.pp" "POT.pp" "SPI.pp" "SYSTEM.pp" "TIMERS.pp" "USER.pp" "WAV.pp" "main.pp" "source\HL_epc.pp" "source\HL_errata.pp" "source\HL_esm.pp" "source\HL_gio.pp" "source\HL_nmpu.pp" "source\HL_notification.pp" "source\HL_pinmux.pp" "source\HL_sys_dma.pp" "source\HL_sys_pcr.pp" "source\HL_sys_phantom.pp" "source\HL_sys_pmm.pp" "source\HL_sys_startup.pp" "source\HL_sys_vim.pp" "source\HL_system.pp" 
+	-$(RM) "AUDIO.obj" "DAC.obj" "ECAP.obj" "INTERRUPTS.obj" "LED.obj" "MISC.obj" "N64.obj" "POT.obj" "SPI.obj" "SYSTEM.obj" "TIMERS.obj" "USER.obj" "WAV.obj" "main.obj" "source\HL_epc.obj" "source\HL_errata.obj" "source\HL_esm.obj" "source\HL_gio.obj" "source\HL_nmpu.obj" "source\HL_notification.obj" "source\HL_pinmux.obj" "source\HL_sys_core.obj" "source\HL_sys_dma.obj" "source\HL_sys_intvecs.obj" "source\HL_sys_mpu.obj" "source\HL_sys_pcr.obj" "source\HL_sys_phantom.obj" "source\HL_sys_pmm.obj" "source\HL_sys_pmu.obj" "source\HL_sys_startup.obj" "source\HL_sys_vim.obj" "source\HL_system.obj" 
 	-$(RM) "source\HL_sys_core.pp" "source\HL_sys_intvecs.pp" "source\HL_sys_mpu.pp" "source\HL_sys_pmu.pp" 
 	-@echo 'Finished clean'
 	-@echo ' '

@@ -6,6 +6,7 @@
 C_SRCS += \
 ../AUDIO.c \
 ../DAC.c \
+../ECAP.c \
 ../INTERRUPTS.c \
 ../LED.c \
 ../MISC.c \
@@ -21,6 +22,7 @@ C_SRCS += \
 OBJS += \
 ./AUDIO.obj \
 ./DAC.obj \
+./ECAP.obj \
 ./INTERRUPTS.obj \
 ./LED.obj \
 ./MISC.obj \
@@ -36,6 +38,7 @@ OBJS += \
 C_DEPS += \
 ./AUDIO.pp \
 ./DAC.pp \
+./ECAP.pp \
 ./INTERRUPTS.pp \
 ./LED.pp \
 ./MISC.pp \
@@ -51,6 +54,7 @@ C_DEPS += \
 C_DEPS__QUOTED += \
 "AUDIO.pp" \
 "DAC.pp" \
+"ECAP.pp" \
 "INTERRUPTS.pp" \
 "LED.pp" \
 "MISC.pp" \
@@ -66,6 +70,7 @@ C_DEPS__QUOTED += \
 OBJS__QUOTED += \
 "AUDIO.obj" \
 "DAC.obj" \
+"ECAP.obj" \
 "INTERRUPTS.obj" \
 "LED.obj" \
 "MISC.obj" \
@@ -81,6 +86,7 @@ OBJS__QUOTED += \
 C_SRCS__QUOTED += \
 "../AUDIO.c" \
 "../DAC.c" \
+"../ECAP.c" \
 "../INTERRUPTS.c" \
 "../LED.c" \
 "../MISC.c" \

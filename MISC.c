@@ -61,21 +61,16 @@ void MSC_DelayUS(unsigned long US)
     while(prescalerL > 0x1FFFFFF)
     {
     	TMR_ClearTimerFlag2();	// reset timer flag
-    	TMR_N2HET2_ON(FALSE);
-        TMR_SetTimerPeriod2(0x1FFFFFF);
-    	TMR_N2HET2_Interrupt(TRUE);
-        TMR_N2HET2_ON(TRUE);
+        TMR_SetTimerPeriod2(0x1FFFFFF, MISC_TIMER);
+    	TMR_N2HET2_InterruptEnable(MISC_TIMER);
         while(!TMR_GetTimerFlag2());
         prescalerL -= 0x1FFFFFF;
     }
 
 	TMR_ClearTimerFlag2();	// reset timer flag
-	TMR_N2HET2_ON(FALSE);
-    TMR_SetTimerPeriod2(prescalerL);
-	TMR_N2HET2_Interrupt(TRUE);
-    TMR_N2HET2_ON(TRUE);
+    TMR_SetTimerPeriod2(prescalerL, MISC_TIMER);
+    TMR_N2HET2_InterruptEnable(MISC_TIMER);
     while(!TMR_GetTimerFlag2());
-
 }
 
 /******************************************************************************/

@@ -24,6 +24,11 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "BANANA_SOUND_WAV.h"
+#include "MISC.h"
+#include "START_SOUND_WAV.h"
+#include "TIMERS.h"
+#include "TURTLE_SOUND_WAV.h"
 #include "USER.h"
 #include "WAV.h"
 
@@ -38,6 +43,7 @@ static volatile unsigned char WAV_FinishedFlag = FALSE;
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
 ENUM_WAV_FILES WAV_PlayingQueue[WAV_PLAYING_QUEUE_SIZE];
+WAV CurrentWAVFile;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -181,10 +187,144 @@ unsigned char WAV_AddToQueue(ENUM_WAV_FILES file)
 /******************************************************************************/
 unsigned char WAV_SetupPlayback(ENUM_WAV_FILES file)
 {
-	// TODO
-	return PASS;
+	unsigned char* WAV_Address = 0;
+	double prescalerD;
+	long prescalerL;
+
+	switch (file)
+	{
+		case START:
+			WAV_Address = (unsigned char*) Start_WAV;
+			break;
+		case TURTLE:
+			WAV_Address = (unsigned char*) Turtle_WAV;
+			break;
+		default:
+			WAV_Address = (unsigned char*) Banana_WAV;
+			break;
+	}
+	if(WAV_ParseHeader(WAV_Address))
+	{
+	    prescalerD = MSC_Round(((double)VCLK2) / (15.0 * (double) CurrentWAVFile.SampleRate));
+	    prescalerL = (long) prescalerD;
+        TMR_SetTimerPeriod2(prescalerL, DAC_TIMER);
+    	TMR_N2HET2_InterruptEnable(DAC_TIMER);
+		return PASS;
+	}
+	return FAIL;
 }
 
+/******************************************************************************/
+/* WAV_ParseHeader
+ *
+ * This function parses the header of the wav file and sets up the timer to
+ *  play the audio.															  */
+/******************************************************************************/
+unsigned char WAV_ParseHeader(unsigned char* buffer)
+{
+    unsigned long tempL;
+    unsigned int  tempI;
+    /* ChinkID */
+    if(buffer[0] != 'R' || buffer[1] != 'I' || buffer[2] != 'F' || buffer[3] != 'F')
+    {
+    	CurrentWAVFile.valid = FAIL;
+        return FAIL;
+    }
+
+    /* ChunkSize */
+    tempL = MSC_EndianLongArray(&buffer[4]);
+    CurrentWAVFile.ChunkSize = tempL;
+
+    /* Format */
+    if(buffer[8] != 'W' || buffer[9] != 'A' || buffer[10] != 'V' || buffer[11] != 'E')
+    {
+    	CurrentWAVFile.valid = FAIL;
+        return FAIL;
+    }
+
+    /* Subchunk1ID */
+    if(buffer[12] != 'f' || buffer[13] != 'm' || buffer[14] != 't' || buffer[15] != ' ')
+    {
+    	CurrentWAVFile.valid = FAIL;
+        return FAIL;
+    }
+
+    /* Subchunk1Size */
+    tempL = MSC_EndianLongArray(&buffer[16]);
+    CurrentWAVFile.Subchunk1Size = tempL;
+
+    /* AudioFormat */
+    tempI = MSC_EndianShortArray(&buffer[20]);
+    CurrentWAVFile.AudioFormat = tempI;
+    if(tempI != 0x01)
+    {
+        /* compressed */
+    	CurrentWAVFile.valid = FAIL;
+        return FAIL;
+    }
+
+    /* NumChannels */
+    tempI = MSC_EndianShortArray(&buffer[22]);
+    CurrentWAVFile.NumChannels = tempI;
+
+    /* SampleRate */
+    tempL = MSC_EndianLongArray(&buffer[24]);
+    CurrentWAVFile.SampleRate = tempL;
+
+    /* ByteRate */
+    tempL = MSC_EndianLongArray(&buffer[28]);
+    CurrentWAVFile.ByteRate = tempL;
+
+    /* Blockalign */
+
+    /* BitsPerSample */
+    tempI = MSC_EndianShortArray(&buffer[34]);
+    CurrentWAVFile.BitsPerSample = tempI;
+
+    /* Subchunk2ID */
+    if(buffer[36] != 'd' || buffer[37] != 'a' || buffer[38] != 't' || buffer[39] != 'a')
+    {
+    	CurrentWAVFile.valid = FAIL;
+        return FAIL;
+    }
+
+    /* Subchunk2Size */
+    tempL = MSC_EndianLongArray(&buffer[40]);
+    CurrentWAVFile.Subchunk2Size = tempL;
+    CurrentWAVFile.valid = PASS;
+    CurrentWAVFile.NumSamples = (CurrentWAVFile.Subchunk2Size/CurrentWAVFile.NumChannels * (CurrentWAVFile.BitsPerSample >> 3));
+    if(CurrentWAVFile.NumChannels == 2)
+    {
+        /* Stereo */
+        if(CurrentWAVFile.BitsPerSample == 8)
+        {
+            /* 8 bit */
+        	CurrentWAVFile.SampleRepeat = 2;
+        }
+        else
+        {
+            /* 16 bit */
+        	CurrentWAVFile.SampleRepeat = 4;
+        }
+    }
+    else
+    {
+        /* Mono */
+        if(CurrentWAVFile.BitsPerSample == 8)
+        {
+            /* 8 bit */
+        	CurrentWAVFile.SampleRepeat = 1;
+        }
+        else
+        {
+            /* 16 bit */
+        	CurrentWAVFile.SampleRepeat = 2;
+        }
+    }
+    CurrentWAVFile.CurrentSample = 0;
+    CurrentWAVFile.BufferPointer = &buffer[44];
+    return PASS;
+}
 /*-----------------------------------------------------------------------------/
  End of File
 /-----------------------------------------------------------------------------*/

@@ -24,6 +24,7 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "ECAP.h"
 #include "N64.h"
 #include "TIMERS.h"
 #include "USER.h"
@@ -32,6 +33,7 @@
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
 static volatile unsigned char N64_ActivityFlag = FALSE;
+static volatile unsigned char N64_ReceiveFlag = FALSE;
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
@@ -39,8 +41,10 @@ static volatile unsigned char N64_ActivityFlag = FALSE;
 TYPE_N64_BUT N64_New;
 TYPE_N64_BUT N64_Old;
 unsigned char N64_Buffer_Code[N64_CODE_SECTIONS];
-unsigned char N64_CodeSectionBit = 0;
-unsigned long N64_ControllerCount = 0;
+volatile unsigned char N64_CodeSectionBit = 0;
+volatile unsigned long N64_ControllerCount = 0;
+volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE];
+volatile unsigned long N64_TimingInputBit = 0;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -60,6 +64,7 @@ void InitN64(void)
 	TMR_SetTimerMicroSeconds1(1.0);
 	N64_GetButtonState(&N64_New);
 	memset(&N64_Old, 0, sizeof(TYPE_N64_BUT));
+
 }
 
 /******************************************************************************/
@@ -103,17 +108,43 @@ void N64_BuildCode(ENUM_N64_REG action)
 }
 
 /******************************************************************************/
+/* N64_DecodeTiming
+ *
+ * The function decodes the raw N64 timing data.							  */
+/******************************************************************************/
+unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
+{
+	return PASS;
+}
+
+/******************************************************************************/
 /* N64_GetButtonState
  *
  * The function gets the last button press from the controler.				  */
 /******************************************************************************/
 unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons)
 {
+	unsigned char status = FAIL;
 	N64_BuildCode(READ);
 	N64_CodeSectionBit = 0;
-	TMR_N2HET1_Interrupt(TRUE);
-	TMR_N2HET1_ON(TRUE);
-	return PASS;
+	N64_TimingInputBit = 0;
+	N64_ReceivedFinished(FALSE);
+	ecapREG4->TSCTR = ECAP_PRELOAD; 		// reset the timer
+	ecapREG4->ECCLR = 0xFFFF;			// clear all of the flags
+	ECAP_Interrupt(TRUE);
+	ecapREG4->ECCTL2 |= TSCTRSTOP;		// start the compare module
+	TMR_N2HET1_InterruptEnable(N64_TIMER);
+	while(!N64_IsReceivedFinished());
+	if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
+	{
+		/* reception was successful */
+		if(N64_DecodeTiming(buttons))
+		{
+			status = PASS;
+		}
+	}
+
+	return status;
 }
 
 /******************************************************************************/
@@ -134,6 +165,26 @@ unsigned char N64_GetUpdateFlag(void)
 void N64_SetUpdateFlag(unsigned char state)
 {
 	 N64_ActivityFlag = state;
+}
+
+/******************************************************************************/
+/* N64_IsReceivedFinished
+ *
+ * The function returns True if we are done sampling the N64 controller.	  */
+/******************************************************************************/
+unsigned char N64_IsReceivedFinished(void)
+{
+	return N64_ReceiveFlag;
+}
+
+/******************************************************************************/
+/* N64_ReceivedFinished
+ *
+ * The function sets the done sampling flag.								  */
+/******************************************************************************/
+void N64_ReceivedFinished(unsigned char state)
+{
+	N64_ReceiveFlag = state;
 }
 
 /*-----------------------------------------------------------------------------/

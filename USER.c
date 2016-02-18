@@ -28,6 +28,7 @@
 
 #include "AUDIO.h"
 #include "DAC.h"
+#include "ECAP.h"
 #include "LED.h"
 #include "N64.h"
 #include "POT.h"
@@ -111,14 +112,15 @@ void Init_Modules(void)
 	/* enable global interrupts */
 	_enable_interrupt_();
 
+	InitSPI();
 	InitTimers();
 	InitLEDs();
-	InitSPI();
 	InitDAC();
 	InitPOT();
 	InitN64();
 	InitAudio();
 	InitWAV();
+	InitECAP();
 }
 
 /*-----------------------------------------------------------------------------/
