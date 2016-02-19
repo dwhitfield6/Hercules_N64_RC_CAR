@@ -33,6 +33,7 @@
 #include "N64.h"
 #include "POT.h"
 #include "SPI.h"
+#include "TEST.h"
 #include "TIMERS.h"
 #include "WAV.h"
 
@@ -137,6 +138,7 @@ void Init_Modules(void)
 	InitN64();
 	InitAudio();
 	InitWAV();
+	InitTest();
 }
 
 /*-----------------------------------------------------------------------------/

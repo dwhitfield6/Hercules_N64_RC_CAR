@@ -67,7 +67,7 @@ void InitSPI1(void)
 	SPI_Parameters1(master, 0, 10000L);	// set up SPI parameters
 	SPI_SetPins(TRUE);
 	spiREG1->DELAY = 0;
-	spiREG1->DELAY |= (0xFFUL << 24) + (0xFFUL << 16); 	// set chip select delays
+	spiREG1->DELAY |= (0x3FUL << 24) + (0x3FUL << 16); 	// set chip select delays
 	spiREG1->GCR1 |= SPIEN;				// Activates SPI
 }
 
@@ -91,7 +91,7 @@ void SPI_Parameters1(ENUM_MASTER_SLAVE master_slave, unsigned char mode, unsigne
     	spiREG1->GCR1 &= ~MASTER;	// SPISIMO[7:0] pins are inputs, SPISOMI[7:0] pins are outputs
     }
 
-    spiREG1->DEF = 0; 	// SPISCSx is set to 0 when no transfer is active
+    spiREG1->DEF = 0xFFL; 	// SPISCSx is set to 1 when no transfer is active
 
     /* set word length to 8 bits */
     spiREG1->FMT0 &= ~CHARLEN;

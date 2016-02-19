@@ -26,6 +26,8 @@
 
 #include "POT.h"
 #include "SPI.h"
+#include "TIMERS.h"
+#include "USER.h"
 
 /******************************************************************************/
 /* Private Variable Declaration      	                                      */
@@ -88,11 +90,22 @@ void InitPOTGas(void)
 void POT_SendDataSteering(ENUM_POT_REG reg, unsigned short data)
 {
 	unsigned char temp = reg << 4;
-	temp |= ((data & 0x0100) >> 8);
+	unsigned char DAC_Interrupt = OFF;
 
+	temp |= ((data & 0x0300) >> 8);
+
+	if(TMR_N2HET2_GetInterrupt() & DAC_TIMER)
+	{
+		DAC_Interrupt = ON;
+		TMR_N2HET2_InterruptDisable(DAC_TIMER);
+	}
 	SPI_AddToTXBuffer(temp, CS_POT_STEERING, 1);
 	temp = (data & 0x00FF);
 	SPI_AddToTXBuffer(temp, CS_POT_STEERING, 0);
+	if(DAC_Interrupt)
+	{
+		TMR_N2HET2_InterruptEnable(DAC_TIMER);
+	}
 }
 
 /******************************************************************************/
@@ -103,11 +116,22 @@ void POT_SendDataSteering(ENUM_POT_REG reg, unsigned short data)
 void POT_SendDataGas(ENUM_POT_REG reg, unsigned short data)
 {
 	unsigned char temp = reg << 4;
-	temp |= ((data & 0x0100) >> 8);
+	unsigned char DAC_Interrupt = OFF;
 
+	temp |= ((data & 0x0300) >> 8);
+
+	if(TMR_N2HET2_GetInterrupt() & DAC_TIMER)
+	{
+		DAC_Interrupt = ON;
+		TMR_N2HET2_InterruptDisable(DAC_TIMER);
+	}
 	SPI_AddToTXBuffer(temp, CS_POT_GAS, 1);
 	temp = (data & 0x00FF);
 	SPI_AddToTXBuffer(temp, CS_POT_GAS, 0);
+	if(DAC_Interrupt)
+	{
+		TMR_N2HET2_InterruptEnable(DAC_TIMER);
+	}
 }
 
 /******************************************************************************/

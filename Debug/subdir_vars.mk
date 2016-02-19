@@ -14,6 +14,7 @@ C_SRCS += \
 ../POT.c \
 ../SPI.c \
 ../SYSTEM.c \
+../TEST.c \
 ../TIMERS.c \
 ../USER.c \
 ../WAV.c \
@@ -30,6 +31,7 @@ OBJS += \
 ./POT.obj \
 ./SPI.obj \
 ./SYSTEM.obj \
+./TEST.obj \
 ./TIMERS.obj \
 ./USER.obj \
 ./WAV.obj \
@@ -46,6 +48,7 @@ C_DEPS += \
 ./POT.pp \
 ./SPI.pp \
 ./SYSTEM.pp \
+./TEST.pp \
 ./TIMERS.pp \
 ./USER.pp \
 ./WAV.pp \
@@ -62,6 +65,7 @@ C_DEPS__QUOTED += \
 "POT.pp" \
 "SPI.pp" \
 "SYSTEM.pp" \
+"TEST.pp" \
 "TIMERS.pp" \
 "USER.pp" \
 "WAV.pp" \
@@ -78,6 +82,7 @@ OBJS__QUOTED += \
 "POT.obj" \
 "SPI.obj" \
 "SYSTEM.obj" \
+"TEST.obj" \
 "TIMERS.obj" \
 "USER.obj" \
 "WAV.obj" \
@@ -94,6 +99,7 @@ C_SRCS__QUOTED += \
 "../POT.c" \
 "../SPI.c" \
 "../SYSTEM.c" \
+"../TEST.c" \
 "../TIMERS.c" \
 "../USER.c" \
 "../WAV.c" \

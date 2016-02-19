@@ -111,8 +111,10 @@ extern volatile unsigned char MAIN_TimerFlag;
 inline void TMR_N2HET1_ON(unsigned char state);
 inline void TMR_N2HET2_ON(unsigned char state);
 inline void TMR_N2HET1_InterruptEnable(unsigned long state);
+inline unsigned long TMR_N2HET1_GetInterrupt(void);
 inline void TMR_N2HET1_InterruptDisable(unsigned long state);
 inline void TMR_N2HET2_InterruptEnable(unsigned long state);
+inline unsigned long TMR_N2HET2_GetInterrupt(void);
 inline void TMR_N2HET2_InterruptDisable(unsigned long state);
 inline void TMR_ClearTimerFlag2(void);
 inline void TMR_SetTimerFlag2(void);
@@ -174,6 +176,16 @@ inline void TMR_N2HET1_InterruptEnable(unsigned long state)
 }
 
 /******************************************************************************/
+/* TMR_N2HET1_GetInterrupt
+ *
+ * The function gets the current enabled interrupt.							  */
+/******************************************************************************/
+inline unsigned long TMR_N2HET1_GetInterrupt(void)
+{
+	return hetREG1->INTENAS;
+}
+
+/******************************************************************************/
 /* TMR_N2HET1_InterruptDisable
  *
  * The function controls the timer interrupt.								  */
@@ -191,6 +203,16 @@ inline void TMR_N2HET1_InterruptDisable(unsigned long state)
 inline void TMR_N2HET2_InterruptEnable(unsigned long state)
 {
 	hetREG2->INTENAS = state;		// set the interrupts
+}
+
+/******************************************************************************/
+/* TMR_N2HET2_GetInterrupt
+ *
+ * The function gets the current enabled interrupt.							  */
+/******************************************************************************/
+inline unsigned long TMR_N2HET2_GetInterrupt(void)
+{
+	return hetREG2->INTENAS;
 }
 
 /******************************************************************************/

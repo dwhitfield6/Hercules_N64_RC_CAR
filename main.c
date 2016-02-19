@@ -33,6 +33,7 @@
 #include "POT.h"
 #include "SPI.h"
 #include "SYSTEM.h"
+#include "TEST.h"
 #include "TIMERS.h"
 #include "WAV.h"
 
@@ -49,8 +50,6 @@
 /******************************************************************************/
 int main (void)
 {
-	unsigned char value = 0;
-
 	/* initialize the gpio pins */
 	Init_Pins();
 
@@ -62,16 +61,7 @@ int main (void)
 
     while(1)
     {
-		if(value)
-		{
-			gioPORTA->DSET = (1L << TEST_POINT_2);
-			value = 0;
-		}
-		else
-		{
-			gioPORTA->DCLR = (1L << TEST_POINT_2);
-			value = 1;
-		}
+		TEST_Toggle1(); // toggle test point
 
     	/* wait for the next main loop flag */
     	while(!MAIN_TimerFlag);

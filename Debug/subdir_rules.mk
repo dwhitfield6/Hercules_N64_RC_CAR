@@ -73,6 +73,13 @@ SYSTEM.obj: ../SYSTEM.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Finished building: $<'
 	@echo ' '
 
+TEST.obj: ../TEST.c $(GEN_OPTS) $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM Compiler'
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" -mv7R5 --code_state=32 --float_support=VFPv3D16 --abi=eabi -O0 --fp_mode=relaxed --opt_for_speed=1 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include" --include_path="C:/Users/dwhitfield/Documents/GitHub/Hercules_N64_RC_CAR/include" -g --diag_warning=225 --display_error_number --diag_wrap=off --unaligned_access=on --enum_type=packed --gen_opt_info=0 --preproc_with_compile --preproc_dependency="TEST.pp" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
 TIMERS.obj: ../TIMERS.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM Compiler'

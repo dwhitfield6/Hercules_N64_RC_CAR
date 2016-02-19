@@ -33,6 +33,7 @@
 #include "MISC.h"
 #include "N64.h"
 #include "SPI.h"
+#include "TEST.h"
 #include "TIMERS.h"
 #include "USER.h"
 #include "WAV.h"
@@ -92,7 +93,6 @@ void ISR_ECAP_N64(void)
 {
 	volatile unsigned long flags;
 	flags = ecapREG4->ECFLG;
-	ecapREG4->ECCLR = flags;
 
 	if((flags & CEVT2) && (ecapREG4->ECEINT & CEVT2))
 	{
@@ -110,6 +110,7 @@ void ISR_ECAP_N64(void)
 			ecapREG4->ECCTL2 |= REARM;			// rearm
 			ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 		}
+		ecapREG4->ECCLR = CEVT2;
 	}
 	if((flags & CTROVF) && (ecapREG4->ECEINT & CTROVF))
 	{
@@ -118,6 +119,7 @@ void ISR_ECAP_N64(void)
 		ECAP_Interrupt(FALSE);
 		ecapREG4->ECCTL2 |= REARM;			// rearm
 		ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
+		ecapREG4->ECCLR = CTROVF;
 	}
 }
 
@@ -132,7 +134,6 @@ void ISR_Timer1(void)
 {
 	volatile unsigned long flags;
 	flags = hetREG1->FLG;
-	hetREG1->FLG = 0xFFFFFFFF;
 
 	if(flags & N64_TIMER)
 	{
@@ -151,6 +152,7 @@ void ISR_Timer1(void)
 		{
 			TMR_N2HET1_InterruptDisable(N64_TIMER);
 		}
+		hetREG1->FLG = N64_TIMER;
 	}
 }
 
@@ -165,29 +167,19 @@ void ISR_Timer2(void)
 {
 	volatile unsigned long flags = 0;
 	unsigned short temp;
-	static unsigned char value = 0;
-	flags = hetREG2->FLG;
-	hetREG2->FLG = 0xFFFFFFFF;
 	static unsigned short last_temp = 0;
+	flags = hetREG2->FLG;
 
 	if((flags & MISC_TIMER) && (hetREG2->INTENAS & MISC_TIMER))
 	{
 		/* interrupt for MSC timer */
 		TMR_N2HET2_InterruptDisable(MISC_TIMER);
 		TMR_SetTimerFlag2();
+		hetREG2->FLG = MISC_TIMER;
 	}
 	if((flags & DAC_TIMER) && (hetREG2->INTENAS & DAC_TIMER))
 	{
-		if(value)
-		{
-			gioPORTA->DSET = (1L << TEST_POINT_1);
-			value = 0;
-		}
-		else
-		{
-			gioPORTA->DCLR = (1L << TEST_POINT_1);
-			value = 1;
-		}
+		TEST_Toggle2(); // toggle test point
 
         if(CurrentWAVFile.BitsPerSample == 8)
         {
@@ -230,10 +222,12 @@ void ISR_Timer2(void)
         	WAV_Finished(TRUE);
         	last_temp = 0;
         }
+        hetREG2->FLG = DAC_TIMER;
 	}
 	if((flags & MAIN_TIMER) && (hetREG2->INTENAS & MAIN_TIMER))
 	{
 		MAIN_TimerFlag = TRUE;
+		hetREG2->FLG = MAIN_TIMER;
 	}
 }
 
