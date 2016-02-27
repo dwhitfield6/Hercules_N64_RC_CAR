@@ -56,9 +56,6 @@ int main (void)
 	/* initialize the hardware modules */
 	Init_Modules();
 
-	/* turn on audio amp */
-	Audio_Power(ON);
-
 	/* play the N64 starting sound */
 	WAV_AddToQueue(START);
 
@@ -108,37 +105,23 @@ int main (void)
     		if(POT_GetSteeringUpdateFlag())
     		{
     			/* update steering */
-    			POT_SetSteering(N64_New.Joystick[X]);
+    			POT_SetSteering(255-(N64_New.Joystick[X] + 128));
     			POT_ClearSteeringUpdateFlag();
     		}
     		if(POT_GetGasUpdateFlag())
     		{
     			/* update throttle */
-    			if(N64_New.A && !N64_New.B)
+    			if(N64_New.A || N64_New.B)
     			{
     				/* A is pressed and B is not */
-    				if(N64_New.Joystick[Y] > Y_MIDPOINT_HIGH)
+    				if(((N64_New.Joystick[Y] > Y_MIDPOINT_HIGH) && N64_New.A) || ((N64_New.Joystick[Y] < Y_MIDPOINT_LOW) && N64_New.B))
     				{
-    					/* user is pushing forward */
-    					POT_SetGas(N64_New.Joystick[Y]);
+    					/* user is pushing forward or backward and its in range */
+    					POT_SetGas(255-(N64_New.Joystick[Y] + 128));
     				}
     				else
     				{
-    					/* user is not pushing forward */
-    					POT_SetGas(GAS_START);
-    				}
-    			}
-    			else if(N64_New.B && !N64_New.A)
-    			{
-    				/* B is pressed and A is not */
-    				if(N64_New.Joystick[Y] < Y_MIDPOINT_LOW)
-    				{
-    					/* user is pushing backward */
-    					POT_SetGas(N64_New.Joystick[Y]);
-    				}
-    				else
-    				{
-    					/* user is not pushing backward */
+    					/* user is pushing forward or backward and its not in range */
     					POT_SetGas(GAS_START);
     				}
     			}

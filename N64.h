@@ -35,7 +35,7 @@ typedef struct t_n64_buttons
 	unsigned char Start;		// red center
 	unsigned char L_Pad[4];		// plus sign on right of controler
 	unsigned char Z;			// back of controler
-	unsigned short Joystick[2];	// controler joystick x,y
+	signed char Joystick[2];			// controler joystick x,y
 }TYPE_N64_BUT;
 
 typedef enum e_n64
@@ -56,7 +56,7 @@ typedef enum e_n64
  * This is the threshold to move the throttle forward until we register it
  *  as go forward.															  */
 /******************************************************************************/
-#define Y_MIDPOINT_HIGH 1000
+#define Y_MIDPOINT_HIGH 0
 
 /******************************************************************************/
 /* Y_MIDPOINT_LOW
@@ -64,7 +64,7 @@ typedef enum e_n64
  * This is the threshold to move the throttle backward until we register it
  *  as go backward.															  */
 /******************************************************************************/
-#define Y_MIDPOINT_LOW 900
+#define Y_MIDPOINT_LOW -1
 
 /******************************************************************************/
 /* N64_CODE_SECTIONS
@@ -79,7 +79,7 @@ typedef enum e_n64
  *
  * This is the nuber of timing edgeds that we can save for a detect.		  */
 /******************************************************************************/
-#define N64_INPUT_BUFFER_SIZE 80
+#define N64_INPUT_BUFFER_SIZE 82
 
 /******************************************************************************/
 /* N64_SAMPLERATE

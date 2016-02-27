@@ -78,7 +78,7 @@ void ECAP_Interrupt(unsigned char state)
 {
 	if(state)
 	{
-		ecapREG4->ECEINT = CTROVF | CEVT4;	// enable overflow and compare 4
+		ecapREG4->ECEINT = CTROVF | CEVT2;	// enable overflow and compare 4
 	}
 	else
 	{

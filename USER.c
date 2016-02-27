@@ -129,14 +129,14 @@ void Init_Modules(void)
 	/* enable global interrupts */
 	_enable_interrupt_();
 
-	InitSPI();
 	InitTimers();
+	InitSPI();
+	InitAudio();
 	InitLEDs();
 	InitDAC();
 	InitPOT();
 	InitECAP();
 	InitN64();
-	InitAudio();
 	InitWAV();
 	InitTest();
 }

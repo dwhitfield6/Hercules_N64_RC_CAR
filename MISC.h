@@ -159,5 +159,6 @@ unsigned short MSC_EndianShort(unsigned short number);
 unsigned short MSC_EndianShortArray(unsigned char* buffer);
 unsigned long MSC_EndianLong(unsigned long number);
 unsigned long MSC_EndianLongArray(unsigned char* buffer);
+unsigned char MSC_ReverseByte(unsigned char This);
 
 #endif	/* MISC_H */

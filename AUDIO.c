@@ -51,7 +51,7 @@ static volatile unsigned char Audio_Power_State = OFF;
 /******************************************************************************/
 void InitAudio(void)
 {
-	Audio_Power(OFF);
+	Audio_Power(ON);
 }
 
 /******************************************************************************/

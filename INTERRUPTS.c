@@ -95,21 +95,17 @@ void ISR_ECAP_N64(void)
 	flags = ecapREG4->ECFLG;
 	ecapREG4->ECCLR = INT;
 
-	if((flags & CEVT4) && (ecapREG4->ECEINT & CEVT4))
+	if((flags & CEVT2) && (ecapREG4->ECEINT & CEVT2))
 	{
-		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
 		ecapREG4->ECCLR = CEVT4 | CEVT3 | CEVT2 | CEVT1;
 		ecapREG4->ECCTL2 |= REARM; 			// rearm
-		ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
-		ecapREG4->ECCTL2 |= TSCTRSTOP;		// start the compare module
 		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP1;
 		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP2;
-		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP3;
-		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP4;
+		//N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP3;
+		//N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP4;
 		if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
 		{
-			ecapREG4->ECEINT &= ~CEVT2;			// disable compare 2
-			ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
+			ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// stop the compare module
 			ecapREG4->ECCTL2 |= REARM; 			// rearm
 			N64_ReceivedFinished(TRUE);
 			ECAP_Interrupt(FALSE);
@@ -118,8 +114,7 @@ void ISR_ECAP_N64(void)
 	}
 	if((flags & CTROVF) && (ecapREG4->ECEINT & CTROVF))
 	{
-		ecapREG4->ECEINT &= ~CEVT2;			// disable compare 2
-		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
+		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// stop the compare module
 		ecapREG4->ECCTL2 |= REARM; 			// rearm
 		N64_ReceivedFinished(TRUE);
 		ECAP_Interrupt(FALSE);
@@ -190,8 +185,6 @@ void ISR_Timer2(void)
 	}
 	if((flags & DAC_TIMER) && (hetREG2->INTENAS & DAC_TIMER))
 	{
-		TEST_Toggle2(); // toggle test point
-
         if(CurrentWAVFile.BitsPerSample == 8)
         {
     		/* 8 bit samples */

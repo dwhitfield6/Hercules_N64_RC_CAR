@@ -471,8 +471,8 @@ typedef struct t_spi_buffer
  * This defines the chip selects for each module.							  */
 /******************************************************************************/
 #define CS_DAC 				0
-#define CS_POT_STEERING 	1
-#define CS_POT_GAS	 		2
+#define CS_POT_GAS	 		1
+#define CS_POT_STEERING 	2
 
 /******************************************************************************/
 /* Defines                                                                    */

@@ -168,6 +168,27 @@ unsigned long MSC_EndianLongArray(unsigned char* buffer)
     return ((unsigned long)temp1 | ((unsigned long) temp2 << 8) | ((unsigned long) temp3 << 16) | ((unsigned long) temp4 << 24));
 }
 
+/******************************************************************************/
+/* MSC_ReverseByte
+ *
+ * The function reads the value of 'This' and returns the reverse of the data.*/
+/******************************************************************************/
+unsigned char MSC_ReverseByte(unsigned char This)
+{
+    unsigned char temp=0;
+
+    temp += (This & 0x01) << 7;
+    temp += (This & 0x02) << 5;
+    temp += (This & 0x04) << 3;
+    temp += (This & 0x08) << 1;
+    temp += (This & 0x10) >> 1;
+    temp += (This & 0x20) >> 3;
+    temp += (This & 0x40) >> 5;
+    temp += (This & 0x80) >> 7;
+
+    return temp;
+}
+
 /*-----------------------------------------------------------------------------/
  End of File
 /-----------------------------------------------------------------------------*/

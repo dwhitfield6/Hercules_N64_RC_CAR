@@ -48,6 +48,7 @@
 #define __SYS_COMMON_H__
 
 #include "HL_hal_stdtypes.h"
+#include "HL_reg_vim.h"
 #include "HL_reg_spi.h"
 #include "HL_sys_core.h"
 #include "HL_het.h"

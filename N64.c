@@ -119,29 +119,16 @@ void N64_BuildCode(ENUM_N64_REG action)
 unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 {
 	unsigned long i;
-	long j;
 	unsigned char index = 0;
 	unsigned long reg = 0;
 	unsigned long temp_buttons = 0;
 
-	/* subtract out the starting place */
-	for(i=0;i<N64_INPUT_BUFFER_SIZE;i++)
-	{
-		N64_TimingRaw[i] = N64_TimingInputBuffer[i] - ECAP_PRELOAD;
-	}
+	N64_TimingRaw[0] = N64_TimingInputBuffer[0] - ECAP_PRELOAD;
 
 	/* take the difference in time for the odd places */
-	for(i=0;i<N64_INPUT_BUFFER_SIZE;i+=4)
+	for(i=1;i<N64_INPUT_BUFFER_SIZE;i++)
 	{
-		/* take the difference in time for the odd places */
-		for(j=3;j>=0;j--)
-		{
-			if(j)
-			{
-				/* odd buffer places */
-				N64_TimingRaw[i+j] -= N64_TimingRaw[(i+j)-1];
-			}
-		}
+		N64_TimingRaw[i] = N64_TimingInputBuffer[i] - N64_TimingInputBuffer[i-1];
 	}
 
 	/* calculate from counts to micro seconds */
@@ -170,7 +157,10 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 		}
 		else
 		{
-			return FAIL;
+			if(i!=16)
+			{
+				return FAIL;
+			}
 		}
 	}
 
@@ -187,18 +177,13 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 		/* we didnt ask to read the controler */
 		return FAIL;
 	}
-	if(N64_Code[8] != 1)
-	{
-		/* there wasnt a valid stop bit */
-		return FAIL;
-	}
 
 	/* calculate the buttons */
-	for(i=9;i<41L;i++)
+	for(i=8;i<40L;i++)
 	{
 		if(N64_Code[i])
 		{
-			temp_buttons |= (1L << (i - 9L));
+			temp_buttons |= (1L << (i - 8L));
 		}
 	}
 
@@ -345,10 +330,10 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 	}
 
 	/* X-axis on joystick */
-	buttons->Joystick[X] = (temp_buttons & 0x00FF0000) >> 16;
+	buttons->Joystick[X] = MSC_ReverseByte((unsigned char)((temp_buttons & 0x00FF0000) >> 16));
 
 	/* Y-axis on joystick */
-	buttons->Joystick[Y] = (temp_buttons & 0xFF000000) >> 24;
+	buttons->Joystick[Y] = MSC_ReverseByte((unsigned char)((temp_buttons & 0xFF000000) >> 24));
 
 	return PASS;
 }

@@ -66,7 +66,7 @@ void InitPOT(void)
 /******************************************************************************/
 void InitPOTSteering(void)
 {
-	POT_SendDataSteering(TCON, 0x04);		// connect the wipers
+	POT_SendDataSteering(TCON, 0x0F);		// connect the wipers
 	POT_SetSteering(STEERING_START);
 }
 
@@ -78,7 +78,7 @@ void InitPOTSteering(void)
 /******************************************************************************/
 void InitPOTGas(void)
 {
-	POT_SendDataGas(TCON, 0x04);	// connect the wipers
+	POT_SendDataGas(TCON, 0x0F);	// connect the wipers
 	POT_SetGas(GAS_START);
 }
 
@@ -202,10 +202,6 @@ void POT_ClearGasUpdateFlag(void)
 /******************************************************************************/
 void POT_SetSteering(unsigned short value)
 {
-	if(value > 0x0FFFU)
-	{
-		value = 0x0FFFU;
-	}
 	POT_SendDataSteering(WIPER0, value);
 }
 
@@ -216,10 +212,6 @@ void POT_SetSteering(unsigned short value)
 /******************************************************************************/
 void POT_SetGas(unsigned short value)
 {
-	if(value > 0x0FFFU)
-	{
-		value = 0x0FFFU;
-	}
 	POT_SendDataGas(WIPER0, value);
 }
 
