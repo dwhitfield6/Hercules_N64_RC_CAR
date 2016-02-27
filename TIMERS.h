@@ -83,6 +83,7 @@
 #define MISC_TIMER 	1L
 #define DAC_TIMER 	2L
 #define MAIN_TIMER 	4L
+#define ALL 		0xFFFFFFFFL
 
 /******************************************************************************/
 /* MAIN_LOOP_US

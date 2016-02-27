@@ -64,10 +64,10 @@ void InitSPI1(void)
 	spiREG1->GCR0 &= ~nRESET; 			// SPI is in the reset state.
 	spiREG1->GCR0 |= nRESET; 			// SPI is out of the reset state
 
-	SPI_Parameters1(master, 0, 10000L);	// set up SPI parameters
+	SPI_Parameters1(master, 0, 3000L);	// set up SPI parameters
 	SPI_SetPins(TRUE);
 	spiREG1->DELAY = 0;
-	spiREG1->DELAY |= (0x3FUL << 24) + (0x3FUL << 16); 	// set chip select delays
+	spiREG1->DELAY |= (0x0FUL << 24) + (0x0FUL << 16); 	// set chip select delays
 	spiREG1->GCR1 |= SPIEN;				// Activates SPI
 }
 
@@ -198,7 +198,9 @@ void SPI_SetPins(unsigned char state)
 /******************************************************************************/
 void SPI_SendByte(unsigned char data, unsigned char chip_select, unsigned char chip_select_hold)
 {
-	spiREG1->DAT1 = data + ((unsigned long)chip_select << 16) + (((unsigned long)chip_select_hold & 0x1) << 28);
+	unsigned long temp = 0xFF;
+	temp &= ~(1L << chip_select);
+	spiREG1->DAT1 = data | temp << 16L | (((unsigned long)chip_select_hold & 0x1) << 28L);
 }
 
 /******************************************************************************/

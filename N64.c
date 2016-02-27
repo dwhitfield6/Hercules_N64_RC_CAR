@@ -46,7 +46,7 @@ TYPE_N64_BUT N64_Old;
 unsigned char N64_Buffer_Code[N64_CODE_SECTIONS];
 volatile unsigned char N64_CodeSectionBit = 0;
 volatile unsigned long N64_ControllerCount = 0;
-volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE];
+volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE + 10];
 volatile unsigned long N64_TimingInputBit = 0;
 
 /******************************************************************************/
@@ -119,6 +119,7 @@ void N64_BuildCode(ENUM_N64_REG action)
 unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 {
 	unsigned long i;
+	long j;
 	unsigned char index = 0;
 	unsigned long reg = 0;
 	unsigned long temp_buttons = 0;
@@ -126,16 +127,20 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 	/* subtract out the starting place */
 	for(i=0;i<N64_INPUT_BUFFER_SIZE;i++)
 	{
-		N64_TimingRaw[i] = N64_TimingInputBuffer[i] - 0xFFFF8FFFL;
+		N64_TimingRaw[i] = N64_TimingInputBuffer[i] - ECAP_PRELOAD;
 	}
 
 	/* take the difference in time for the odd places */
-	for(i=0;i<N64_INPUT_BUFFER_SIZE;i++)
+	for(i=0;i<N64_INPUT_BUFFER_SIZE;i+=4)
 	{
-		if(i%2)
+		/* take the difference in time for the odd places */
+		for(j=3;j>=0;j--)
 		{
-			/* odd buffer places */
-			N64_TimingRaw[i] -= N64_TimingRaw[i-1];
+			if(j)
+			{
+				/* odd buffer places */
+				N64_TimingRaw[i+j] -= N64_TimingRaw[(i+j)-1];
+			}
 		}
 	}
 
@@ -145,41 +150,28 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 		N64_TimingRaw[i] = (unsigned long) MSC_Round((double) N64_TimingRaw[i] * 1000000.0 / ((double)VCLK2));
 	}
 
-
 	/* calculate the codes */
-	for(i=0;i<N64_INPUT_BUFFER_SIZE;i++)
+	for(i=0;i<N64_INPUT_BUFFER_SIZE;i+=2)
 	{
-		if(N64_TimingRaw[i] == 3)
+		if(N64_TimingRaw[i] > 10 || N64_TimingRaw[i+1] > 10)
 		{
-			i++;
-			if(N64_TimingRaw[i] == 1)
-			{
-				N64_Code[index] = 0;
-				index++;
-			}
-			else
-			{
-				return FAIL;
-			}
+			/* timing is out of scope */
+			return FAIL;
 		}
-		else if(N64_TimingRaw[i] == 1)
+		if(N64_TimingRaw[i] > N64_TimingRaw[i+1])
 		{
-			i++;
-			if(N64_TimingRaw[i] == 3)
-			{
-				N64_Code[index] = 1;
-				index++;
-			}
-			else
-			{
-				return FAIL;
-			}
+			N64_Code[index] = 0;
+			index++;
+		}
+		else if(N64_TimingRaw[i] < N64_TimingRaw[i+1])
+		{
+			N64_Code[index] = 1;
+			index++;
 		}
 		else
 		{
 			return FAIL;
 		}
-
 	}
 
 	/* calculate the register call  */
@@ -201,25 +193,13 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 		return FAIL;
 	}
 
-	if(N64_Code[32] != 1)
-	{
-		/* there wasnt a valid stop bit */
-		return FAIL;
-	}
-
 	/* calculate the buttons */
 	for(i=9;i<41L;i++)
 	{
 		if(N64_Code[i])
 		{
-			temp_buttons |= (1L << (41L-i));
+			temp_buttons |= (1L << (i - 9L));
 		}
-	}
-
-	if(N64_Code[32] != 1)
-	{
-		/* there wasnt a valid stop bit */
-		return FAIL;
 	}
 
 	/* button A */
@@ -395,7 +375,7 @@ unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons)
 	N64_BuildCode(GET_BUTTONS);
 	N64_CodeSectionBit = 0;
 	N64_TimingInputBit = 0;
-	ecapREG4->ECCTL2 |= REARM;			// rearm
+	ecapREG4->ECCTL2 |= REARM; 			// rearm
 	ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 	ecapREG4->ECCLR = 0xFFFF;			// clear all of the flags
 	N64_ReceivedFinished(FALSE);
@@ -403,13 +383,23 @@ unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons)
 	ecapREG4->ECCTL2 |= TSCTRSTOP;		// start the compare module
 	TMR_N2HET1_InterruptEnable(N64_TIMER);
 	while(!N64_IsReceivedFinished());
-	//if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE) // TODO add this back
+	if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
 	{
 		/* reception was successful */
 		if(N64_DecodeTiming(buttons))
 		{
 			status = PASS;
 		}
+		else
+		{
+			/* reset the controller */
+			N64_SendReset();
+		}
+	}
+	else
+	{
+		/* reset the controller */
+		N64_SendReset();
 	}
 
 	return status;

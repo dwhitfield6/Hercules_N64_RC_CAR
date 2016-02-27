@@ -58,7 +58,7 @@ typedef struct __attribute__((packed)) WAV_Struct
  *
  * This is the number of wav files that we can put on the queue.			  */
 /******************************************************************************/
-#define WAV_PLAYING_QUEUE_SIZE 20
+#define WAV_PLAYING_QUEUE_SIZE 4
 
 /******************************************************************************/
 /* Defines                                                                    */

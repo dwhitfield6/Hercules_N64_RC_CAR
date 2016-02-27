@@ -102,7 +102,7 @@
  *
  * This is the preload number to decrease the timeout waiting period.		  */
 /******************************************************************************/
-#define ECAP_PRELOAD 0xFFFF8FFFL
+#define ECAP_PRELOAD 0xFFF0FFFFL
 
 /******************************************************************************/
 /* Defines                                                                    */

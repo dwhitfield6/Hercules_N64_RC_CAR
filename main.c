@@ -56,6 +56,9 @@ int main (void)
 	/* initialize the hardware modules */
 	Init_Modules();
 
+	/* turn on audio amp */
+	Audio_Power(ON);
+
 	/* play the N64 starting sound */
 	WAV_AddToQueue(START);
 
@@ -75,29 +78,16 @@ int main (void)
     		{
     			/* wav file has not started playing so setup */
     			WAV_Finished(FALSE);
-    			if(Audio_GetPowerStatus() == OFF)
-    			{
-    				Audio_Powercount = 0;
-    				Audio_Power(ON);
-    			}
-    			if(Audio_Powercount > AUDIO_POWER_COUNT)
-    			{
-					if(WAV_SetupPlayback(WAV_PlayingQueue[0]))
-					{
-						/* set up the system for WAV file playback */
-						Audio_Power(ON);
-						WAV_Started(TRUE);
-					}
-					else
-					{
-						/* wav file could not be set up to play */
-						WAV_Finished(TRUE);
-					}
-    			}
-    			else
-    			{
-    				Audio_Powercount++;
-    			}
+				if(WAV_SetupPlayback(WAV_PlayingQueue[0]))
+				{
+					/* set up the system for WAV file playback */
+					WAV_Started(TRUE);
+				}
+				else
+				{
+					/* wav file could not be set up to play */
+					WAV_Finished(TRUE);
+				}
     		}
     		if(WAV_IsFinished())
     		{
@@ -107,7 +97,6 @@ int main (void)
     			if(!WAV_PlayingQueue[0])
     			{
     				/* there are no more files to play */
-    				Audio_Power(OFF);
     				WAV_Playing(FALSE);
     			}
     		}
@@ -178,18 +167,40 @@ int main (void)
 				if(N64_New.A != N64_Old.A)
 				{
 					POT_SetGasUpdateFlag();
+					if(N64_New.A)
+					{
+						LED_Green(ON);
+					}
+					else
+					{
+						LED_Green(OFF);
+					}
 				}
 				if(N64_New.B != N64_Old.B)
 				{
 					POT_SetGasUpdateFlag();
+					if(N64_New.B)
+					{
+						LED_Red(ON);
+					}
+					else
+					{
+						LED_Red(OFF);
+					}
 				}
 				if(N64_New.Z != N64_Old.Z)
 				{
-					WAV_AddToQueue(TURTLE);
+					if(N64_New.Z)
+					{
+						WAV_AddToQueue(TURTLE);
+					}
 				}
 				if(N64_New.R != N64_Old.R)
 				{
-					WAV_AddToQueue(BANANA);
+					if(N64_New.R)
+					{
+						WAV_AddToQueue(BANANA);
+					}
 				}
 				memcpy(&N64_Old, &N64_New, sizeof(TYPE_N64_BUT));
     		}

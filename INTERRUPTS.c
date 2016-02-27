@@ -93,31 +93,36 @@ void ISR_ECAP_N64(void)
 {
 	volatile unsigned long flags;
 	flags = ecapREG4->ECFLG;
+	ecapREG4->ECCLR = INT;
 
-	if((flags & CEVT2) && (ecapREG4->ECEINT & CEVT2))
+	if((flags & CEVT4) && (ecapREG4->ECEINT & CEVT4))
 	{
 		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
-		ecapREG4->ECCTL2 |= REARM;			// rearm
+		ecapREG4->ECCLR = CEVT4 | CEVT3 | CEVT2 | CEVT1;
+		ecapREG4->ECCTL2 |= REARM; 			// rearm
 		ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 		ecapREG4->ECCTL2 |= TSCTRSTOP;		// start the compare module
 		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP1;
 		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP2;
+		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP3;
+		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP4;
 		if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
 		{
+			ecapREG4->ECEINT &= ~CEVT2;			// disable compare 2
 			ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
+			ecapREG4->ECCTL2 |= REARM; 			// rearm
 			N64_ReceivedFinished(TRUE);
 			ECAP_Interrupt(FALSE);
-			ecapREG4->ECCTL2 |= REARM;			// rearm
 			ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 		}
-		ecapREG4->ECCLR = CEVT2;
 	}
 	if((flags & CTROVF) && (ecapREG4->ECEINT & CTROVF))
 	{
+		ecapREG4->ECEINT &= ~CEVT2;			// disable compare 2
 		ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// start the compare module
+		ecapREG4->ECCTL2 |= REARM; 			// rearm
 		N64_ReceivedFinished(TRUE);
 		ECAP_Interrupt(FALSE);
-		ecapREG4->ECCTL2 |= REARM;			// rearm
 		ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 		ecapREG4->ECCLR = CTROVF;
 	}
@@ -135,25 +140,29 @@ void ISR_Timer1(void)
 	volatile unsigned long flags;
 	flags = hetREG1->FLG;
 
-	if(flags & N64_TIMER)
+	if((flags & N64_TIMER) && (hetREG1->INTENAS & N64_TIMER))
 	{
-		if(N64_Buffer_Code[N64_CodeSectionBit])
+		if(N64_CodeSectionBit < N64_CODE_SECTIONS)
 		{
-			/* code section is 1 */
-			gioPORTB->DSET = (1L << N64_0);
+			if(N64_Buffer_Code[N64_CodeSectionBit])
+			{
+				/* code section is 1 */
+				gioPORTB->DSET = (1L << N64_0);
+			}
+			else
+			{
+				/* code section is 0 */
+				gioPORTB->DCLR = (1L << N64_0);
+			}
+			N64_CodeSectionBit++;
 		}
-		else
-		{
-			/* code section is 0 */
-			gioPORTB->DCLR = (1L << N64_0);
-		}
-		N64_CodeSectionBit++;
-		if(N64_CodeSectionBit >= N64_CODE_SECTIONS)
-		{
-			TMR_N2HET1_InterruptDisable(N64_TIMER);
-		}
-		hetREG1->FLG = N64_TIMER;
 	}
+
+	if(N64_CodeSectionBit >= N64_CODE_SECTIONS)
+	{
+		TMR_N2HET1_InterruptDisable(N64_TIMER);
+	}
+	hetREG1->FLG = 0xFFFFFFFF;
 }
 
 /******************************************************************************/
@@ -166,8 +175,10 @@ void ISR_Timer1(void)
 void ISR_Timer2(void)
 {
 	volatile unsigned long flags = 0;
-	unsigned short temp;
-	static unsigned short last_temp = 0;
+	unsigned short temp_ushort = 0;
+	short temp_short;
+	long temp_long;
+	static unsigned short last_temp_ushort = 0;
 	flags = hetREG2->FLG;
 
 	if((flags & MISC_TIMER) && (hetREG2->INTENAS & MISC_TIMER))
@@ -184,43 +195,44 @@ void ISR_Timer2(void)
         if(CurrentWAVFile.BitsPerSample == 8)
         {
     		/* 8 bit samples */
-            temp = *CurrentWAVFile.BufferPointer;
-            temp <<= 4;
-            if(temp != last_temp)
+        	temp_ushort = *CurrentWAVFile.BufferPointer; // unsigned char
+        	temp_ushort <<= 4;
+            if(temp_ushort != last_temp_ushort)
             {
-				DAC_SendData(DAC_A, temp);
-				temp = DAC_FULL_SCALE_POSITIVE - temp;
-				DAC_SendData(DAC_B, temp);
+				DAC_SendData(DAC_A, temp_ushort);
+				temp_ushort = DAC_FULL_SCALE_POSITIVE - temp_ushort;
+				DAC_SendData(DAC_B, temp_ushort);
             }
-            last_temp = temp;
+            last_temp_ushort = temp_ushort;
             CurrentWAVFile.BufferPointer += CurrentWAVFile.SampleRepeat;
-            CurrentWAVFile.CurrentSample += CurrentWAVFile.SampleRepeat;
+            CurrentWAVFile.CurrentSample++;
         }
         else
         {
         	/* 16 bit samples */
-            temp = MSC_EndianShortArray(CurrentWAVFile.BufferPointer);
-            temp >>= 4;
-            if(temp != last_temp)
+            temp_short = (short)MSC_EndianShortArray(CurrentWAVFile.BufferPointer) / 2; // signed short
+            temp_long = temp_short + 32768;
+            temp_ushort = temp_long;
+            temp_ushort >>= 4;
+            if(temp_ushort != last_temp_ushort)
             {
-				DAC_SendData(DAC_A, temp);
-				temp = DAC_FULL_SCALE_POSITIVE - temp;
-				DAC_SendData(DAC_B, temp);
+				DAC_SendData(DAC_A, temp_ushort);
+				temp_ushort = (DAC_FULL_SCALE_POSITIVE + 1) - temp_ushort;
+				DAC_SendData(DAC_B, temp_ushort);
             }
-            last_temp = temp;
+            last_temp_ushort = temp_ushort;
             CurrentWAVFile.BufferPointer += CurrentWAVFile.SampleRepeat;
-            CurrentWAVFile.CurrentSample += CurrentWAVFile.SampleRepeat;
+            CurrentWAVFile.CurrentSample++;
         }
 
         if(CurrentWAVFile.CurrentSample > CurrentWAVFile.NumSamples)
         {
         	/* file is done playing */
-        	NOP();
         	TMR_N2HET2_InterruptDisable(DAC_TIMER);
         	DAC_SendData(DAC_A, DAC_MIDPOINT);
         	DAC_SendData(DAC_B, DAC_MIDPOINT);
         	WAV_Finished(TRUE);
-        	last_temp = 0;
+        	last_temp_ushort = 0;
         }
         hetREG2->FLG = DAC_TIMER;
 	}

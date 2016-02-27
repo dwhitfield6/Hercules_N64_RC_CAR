@@ -5,7 +5,7 @@
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROGRAM.Texas Instruments XDS110 USB Debug Probe/CortexR5" value="${build_artifact:Hercules_N64_RC_CAR}"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.Texas Instruments XDS110 USB Debug Probe/CortexR5" value="Hercules_N64_RC_CAR"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="${target_config_active_default:Hercules_N64_RC_CAR}"/>
-<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Texas Instruments XDS110 USB Debug Probe/CortexR5" value="C:/Users\dwhitfield\Documents\GitHub\Hercules_N64_RC_CAR\Debug\Hercules_N64_RC_CAR.out"/>
+<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Texas Instruments XDS110 USB Debug Probe/CortexR5" value="C:/Users\pskkd\Documents\GitHub\Hercules_N64_RC_CAR\Debug\Hercules_N64_RC_CAR.out"/>
 <mapAttribute key="com.ti.ccstudio.debug.ui.displayFormats">
 <mapEntry key="Texas Instruments XDS110 USB Debug Probe/CortexR5@##separator##@0" value="32-Bit Hex - C Style"/>
 </mapAttribute>

@@ -79,7 +79,7 @@ typedef enum e_n64
  *
  * This is the nuber of timing edgeds that we can save for a detect.		  */
 /******************************************************************************/
-#define N64_INPUT_BUFFER_SIZE 300
+#define N64_INPUT_BUFFER_SIZE 80
 
 /******************************************************************************/
 /* N64_SAMPLERATE
@@ -87,7 +87,7 @@ typedef enum e_n64
  * This is the nuber of loops around the main line that we wait to sample the
  *  N64 controller.															  */
 /******************************************************************************/
-#define N64_SAMPLERATE 1
+#define N64_SAMPLERATE 3
 
 /******************************************************************************/
 /* Defines                                                                    */
@@ -112,7 +112,7 @@ extern TYPE_N64_BUT N64_Old;
 extern unsigned char N64_Buffer_Code[N64_CODE_SECTIONS];
 extern volatile unsigned char N64_CodeSectionBit;
 extern volatile unsigned long N64_ControllerCount;
-extern volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE];
+extern volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE + 10];
 extern volatile unsigned long N64_TimingInputBit;
 
 /******************************************************************************/

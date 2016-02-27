@@ -106,7 +106,7 @@ void Init_Pins(void)
 	    /************* N64 controller *************/
 	    /* Connected to the data line on the N64 controller */
 	    gioPORTB->DIR |= (1L << N64_0); 	// output
-	    //gioPORTB->PDR |= (1L << N64_0); 	// open drain // TODO add this when we have a stronger pull up
+	    gioPORTB->PDR |= (1L << N64_0); 	// open drain
 	    gioPORTB->PSL |= (1L << N64_0); 	// pull-up
 	    gioPORTB->DIR &= ~(1L << N64_1); 	// input
 	    gioPORTB->PSL |= (1L << N64_1); 	// pull-up

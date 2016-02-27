@@ -292,7 +292,7 @@ unsigned char WAV_ParseHeader(unsigned char* buffer)
     tempL = MSC_EndianLongArray(&buffer[40]);
     CurrentWAVFile.Subchunk2Size = tempL;
     CurrentWAVFile.valid = PASS;
-    CurrentWAVFile.NumSamples = (CurrentWAVFile.Subchunk2Size/CurrentWAVFile.NumChannels * (CurrentWAVFile.BitsPerSample >> 3));
+    CurrentWAVFile.NumSamples = (CurrentWAVFile.Subchunk2Size/(CurrentWAVFile.NumChannels * (CurrentWAVFile.BitsPerSample >> 3)));
     if(CurrentWAVFile.NumChannels == 2)
     {
         /* Stereo */

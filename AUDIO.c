@@ -35,7 +35,6 @@ static volatile unsigned char Audio_Power_State = OFF;
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
-unsigned long Audio_Powercount = 0;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -64,12 +63,12 @@ void Audio_Power(unsigned char state)
 {
 	if(state)
 	{
-		gioPORTA->DSET = (1L << AUDIO_STANDBY_GPIO);
+		gioPORTA->DCLR = (1L << AUDIO_STANDBY_GPIO);
 		Audio_Power_State = ON;
 	}
 	else
 	{
-		gioPORTA->DCLR = (1L << AUDIO_STANDBY_GPIO);
+		gioPORTA->DSET = (1L << AUDIO_STANDBY_GPIO);
 		Audio_Power_State = OFF;
 	}
 }

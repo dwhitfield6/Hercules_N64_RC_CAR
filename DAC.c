@@ -57,7 +57,7 @@ void InitDAC(void)
 /******************************************************************************/
 void DAC_SendData(ENUM_DAC_CHANNEL channel, unsigned short data)
 {
-	unsigned char temp = 0;
+	unsigned short temp = 0;
 	if(channel == DAC_B)
 	{
 		temp |= 0x80;
