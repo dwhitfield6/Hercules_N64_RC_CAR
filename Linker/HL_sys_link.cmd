@@ -86,6 +86,11 @@ SECTIONS
     .data    : {} > RAM
     .sysmem  : {} > RAM
 	
+    TI.ramfuncs : LOAD = FLASH0,
+              RUN = RAM,
+              LOAD_START(__RamfuncsLoadStart),
+              LOAD_END(__RamfuncsLoadEnd),
+              RUN_START(__RamfuncsRunStart)
 
 /* USER CODE BEGIN (6) */
 /* USER CODE END */

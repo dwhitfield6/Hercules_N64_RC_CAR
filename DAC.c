@@ -18,7 +18,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -28,7 +28,7 @@
 #include "SPI.h"
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 
 /******************************************************************************/
@@ -50,6 +50,7 @@ void InitDAC(void)
 	DAC_SendData(DAC_B, DAC_MIDPOINT);
 }
 
+#pragma CODE_SECTION(DAC_SendData, "TI.ramfuncs")
 /******************************************************************************/
 /* DAC_SendData
  *

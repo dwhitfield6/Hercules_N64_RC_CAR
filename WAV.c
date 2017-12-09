@@ -18,7 +18,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -35,15 +35,15 @@
 /******************************************************************************/
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
-static volatile unsigned char WAV_PlayingFlag = FALSE;
-static volatile unsigned char WAV_StartedFlag = FALSE;
-static volatile unsigned char WAV_FinishedFlag = FALSE;
+static volatile unsigned char s_WAV_PlayingFlag = FALSE;
+static volatile unsigned char s_WAV_StartedFlag = FALSE;
+static volatile unsigned char s_WAV_FinishedFlag = FALSE;
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 ENUM_WAV_FILES WAV_PlayingQueue[WAV_PLAYING_QUEUE_SIZE];
-WAV CurrentWAVFile;
+volatile WAV CurrentWAVFile;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -70,7 +70,7 @@ void InitWAV(void)
 /******************************************************************************/
 unsigned char WAV_IsStarted(void)
 {
-	return WAV_StartedFlag;
+	return s_WAV_StartedFlag;
 }
 
 /******************************************************************************/
@@ -80,7 +80,7 @@ unsigned char WAV_IsStarted(void)
 /******************************************************************************/
 void WAV_Started(unsigned char state)
 {
-	WAV_StartedFlag = state;
+	s_WAV_StartedFlag = state;
 }
 
 /******************************************************************************/
@@ -90,7 +90,7 @@ void WAV_Started(unsigned char state)
 /******************************************************************************/
 unsigned char WAV_IsPlaying(void)
 {
-	return WAV_PlayingFlag;
+	return s_WAV_PlayingFlag;
 }
 
 /******************************************************************************/
@@ -100,7 +100,7 @@ unsigned char WAV_IsPlaying(void)
 /******************************************************************************/
 void WAV_Playing(unsigned char state)
 {
-	WAV_PlayingFlag = state;
+	s_WAV_PlayingFlag = state;
 }
 
 /******************************************************************************/
@@ -110,7 +110,7 @@ void WAV_Playing(unsigned char state)
 /******************************************************************************/
 unsigned char WAV_IsFinished(void)
 {
-	return WAV_FinishedFlag;
+	return s_WAV_FinishedFlag;
 }
 
 /******************************************************************************/
@@ -120,7 +120,7 @@ unsigned char WAV_IsFinished(void)
 /******************************************************************************/
 void WAV_Finished(unsigned char state)
 {
-	WAV_FinishedFlag = state;
+	s_WAV_FinishedFlag = state;
 }
 
 /******************************************************************************/

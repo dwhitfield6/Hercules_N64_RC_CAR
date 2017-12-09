@@ -18,7 +18,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -32,11 +32,11 @@
 /******************************************************************************/
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
-static volatile unsigned char POT_SteeringFlag = FALSE;
-static volatile unsigned char POT_GasFlag = FALSE;
+static volatile unsigned char s_POT_SteeringFlag = FALSE;
+static volatile unsigned char s_POT_GasFlag = FALSE;
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 
 /******************************************************************************/
@@ -82,6 +82,7 @@ void InitPOTGas(void)
 	POT_SetGas(GAS_START);
 }
 
+#pragma CODE_SECTION(POT_SendDataSteering, "TI.ramfuncs")
 /******************************************************************************/
 /* POT_SendDataSteering
  *
@@ -108,6 +109,7 @@ void POT_SendDataSteering(ENUM_POT_REG reg, unsigned short data)
 	}
 }
 
+#pragma CODE_SECTION(POT_SendDataGas, "TI.ramfuncs")
 /******************************************************************************/
 /* POT_SendDataGas
  *
@@ -142,7 +144,7 @@ void POT_SendDataGas(ENUM_POT_REG reg, unsigned short data)
 /******************************************************************************/
 unsigned char POT_GetSteeringUpdateFlag(void)
 {
-	return POT_SteeringFlag;
+	return s_POT_SteeringFlag;
 }
 
 /******************************************************************************/
@@ -152,7 +154,7 @@ unsigned char POT_GetSteeringUpdateFlag(void)
 /******************************************************************************/
 void POT_SetSteeringUpdateFlag(void)
 {
-	POT_SteeringFlag = TRUE;
+	s_POT_SteeringFlag = TRUE;
 }
 
 /******************************************************************************/
@@ -162,7 +164,7 @@ void POT_SetSteeringUpdateFlag(void)
 /******************************************************************************/
 void POT_ClearSteeringUpdateFlag(void)
 {
-	POT_SteeringFlag = FALSE;
+	s_POT_SteeringFlag = FALSE;
 }
 
 /******************************************************************************/
@@ -172,7 +174,7 @@ void POT_ClearSteeringUpdateFlag(void)
 /******************************************************************************/
 unsigned char POT_GetGasUpdateFlag(void)
 {
-	return POT_GasFlag;
+	return s_POT_GasFlag;
 }
 
 /******************************************************************************/
@@ -182,7 +184,7 @@ unsigned char POT_GetGasUpdateFlag(void)
 /******************************************************************************/
 void POT_SetGasUpdateFlag(void)
 {
-	POT_GasFlag = TRUE;
+	s_POT_GasFlag = TRUE;
 }
 
 /******************************************************************************/
@@ -192,7 +194,7 @@ void POT_SetGasUpdateFlag(void)
 /******************************************************************************/
 void POT_ClearGasUpdateFlag(void)
 {
-	POT_GasFlag = FALSE;
+	s_POT_GasFlag = FALSE;
 }
 
 /******************************************************************************/

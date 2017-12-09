@@ -16,7 +16,7 @@
 #ifndef ECAP_H
 #define	ECAP_H
 
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -61,42 +61,6 @@
 #define CEVT1		(1L<<1)
 #define INT			(1L<<0)
 
-/*~~~~~~~~~~~~ ECEINT register ~~~~~~~~~~~~*/
-/* same as above
-#define CTR_CMP		(1L<<7)
-#define CTR_PRD		(1L<<6)
-#define CTROVF		(1L<<5)
-#define CEVT4		(1L<<4)
-#define CEVT3		(1L<<3)
-#define CEVT2		(1L<<2)
-#define CEVT1		(1L<<1)
-#define INT			(1L<<0)
-*/
-
-/*~~~~~~~~~~~~ ECFRC register ~~~~~~~~~~~~*/
-/* same as above
-#define CTR_CMP		(1L<<7)
-#define CTR_PRD		(1L<<6)
-#define CTROVF		(1L<<5)
-#define CEVT4		(1L<<4)
-#define CEVT3		(1L<<3)
-#define CEVT2		(1L<<2)
-#define CEVT1		(1L<<1)
-#define INT			(1L<<0)
-*/
-
-/*~~~~~~~~~~~~ ECCLR register ~~~~~~~~~~~~*/
-/* same as above
-#define CTR_CMP		(1L<<7)
-#define CTR_PRD		(1L<<6)
-#define CTROVF		(1L<<5)
-#define CEVT4		(1L<<4)
-#define CEVT3		(1L<<3)
-#define CEVT2		(1L<<2)
-#define CEVT1		(1L<<1)
-#define INT			(1L<<0)
-*/
-
 /******************************************************************************/
 /* ECAP_PRELOAD
  *
@@ -113,7 +77,7 @@
 /******************************************************************************/
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 
 /******************************************************************************/

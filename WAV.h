@@ -16,7 +16,7 @@
 #ifndef WAV_H
 #define	WAV_H
 
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -69,10 +69,10 @@ typedef struct __attribute__((packed)) WAV_Struct
 /******************************************************************************/
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 extern ENUM_WAV_FILES WAV_PlayingQueue[WAV_PLAYING_QUEUE_SIZE];
-extern WAV CurrentWAVFile;
+extern volatile WAV CurrentWAVFile;
 
 /******************************************************************************/
 /* Function prototypes                                                        */

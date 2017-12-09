@@ -7,6 +7,8 @@
  * MM/DD/YY
  * --------     ---------   ----------------------------------------------------
  * 02/02/16     14.0_DW0a   New project creation.
+ * 12/08/17     14.0_DW0b   Added RAMFUNC functionality.
+ * 							Fixed minor bugs with formatting.
  *                                                                            */
 /******************************************************************************/
 
@@ -18,7 +20,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -42,13 +44,54 @@
 /******************************************************************************/
 
 /******************************************************************************/
+/* Static functions                                                           */
+/******************************************************************************/
+void fastmain(void);
+
+/******************************************************************************/
 /* Global Variable                                                            */
 /******************************************************************************/
+extern unsigned long __RamfuncsLoadStart;
+extern unsigned long __RamfuncsLoadEnd;
+extern unsigned long __RamfuncsRunStart;
 
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
 int main (void)
+{
+	char *src;
+	char *end;
+	char *dest;
+
+	_disable_IRQ_interrupt_();
+
+	/* Copy the Ram functions */
+	src  = (char *)&__RamfuncsLoadStart;
+	end  = (char *)&__RamfuncsLoadEnd;
+	dest = (char *)&__RamfuncsRunStart;
+	while(src < end)
+	{
+		*dest++ = *src++;
+	}
+	NOP();
+	NOP();
+
+	_cacheEnable_();
+	_dCacheInvalidate_();
+	_iCacheInvalidate_();
+
+	fastmain();
+}
+
+#pragma CODE_SECTION(fastmain, "TI.ramfuncs")
+/******************************************************************************/
+/* fastmain
+ *
+ * The fastmain loop. Runs from RAM.
+ *																			  */
+/******************************************************************************/
+void fastmain(void)
 {
 	/* initialize the gpio pins */
 	Init_Pins();
@@ -64,8 +107,8 @@ int main (void)
 		TEST_Toggle1(); // toggle test point
 
     	/* wait for the next main loop flag */
-    	while(!MAIN_TimerFlag);
-    	MAIN_TimerFlag = FALSE;
+    	while(!g_MAIN_TimerFlag);
+    	g_MAIN_TimerFlag = FALSE;
 
     	/* Check for wav file activity */
     	if(WAV_IsPlaying())
@@ -105,19 +148,19 @@ int main (void)
     		if(POT_GetSteeringUpdateFlag())
     		{
     			/* update steering */
-    			POT_SetSteering(255-(N64_New.Joystick[X] + 128));
+    			POT_SetSteering(255-(g_N64_New.Joystick[X] + 128));
     			POT_ClearSteeringUpdateFlag();
     		}
     		if(POT_GetGasUpdateFlag())
     		{
     			/* update throttle */
-    			if(N64_New.A || N64_New.B)
+    			if(g_N64_New.A || g_N64_New.B)
     			{
     				/* A is pressed and B is not */
-    				if(((N64_New.Joystick[Y] > Y_MIDPOINT_HIGH) && N64_New.A) || ((N64_New.Joystick[Y] < Y_MIDPOINT_LOW) && N64_New.B))
+    				if(((g_N64_New.Joystick[Y] > Y_MIDPOINT_HIGH) && g_N64_New.A) || ((g_N64_New.Joystick[Y] < Y_MIDPOINT_LOW) && g_N64_New.B))
     				{
     					/* user is pushing forward or backward and its in range */
-    					POT_SetGas(255-(N64_New.Joystick[Y] + 128));
+    					POT_SetGas(255-(g_N64_New.Joystick[Y] + 128));
     				}
     				else
     				{
@@ -137,20 +180,21 @@ int main (void)
     	/* Check for N64 controller activity */
     	if(N64_GetUpdateFlag())
     	{
-    		if(N64_GetButtonState(&N64_New)) // get new buttons
+    		if(N64_GetButtonState(&g_N64_New))
     		{
-				if(N64_New.Joystick[Y] != N64_Old.Joystick[Y])
+    			/* get new buttons */
+				if(g_N64_New.Joystick[Y] != g_N64_Old.Joystick[Y])
 				{
 					POT_SetGasUpdateFlag();
 				}
-				if(N64_New.Joystick[X] != N64_Old.Joystick[X])
+				if(g_N64_New.Joystick[X] != g_N64_Old.Joystick[X])
 				{
 					POT_SetSteeringUpdateFlag();
 				}
-				if(N64_New.A != N64_Old.A)
+				if(g_N64_New.A != g_N64_Old.A)
 				{
 					POT_SetGasUpdateFlag();
-					if(N64_New.A)
+					if(g_N64_New.A)
 					{
 						LED_Green(ON);
 					}
@@ -159,10 +203,10 @@ int main (void)
 						LED_Green(OFF);
 					}
 				}
-				if(N64_New.B != N64_Old.B)
+				if(g_N64_New.B != g_N64_Old.B)
 				{
 					POT_SetGasUpdateFlag();
-					if(N64_New.B)
+					if(g_N64_New.B)
 					{
 						LED_Red(ON);
 					}
@@ -171,21 +215,21 @@ int main (void)
 						LED_Red(OFF);
 					}
 				}
-				if(N64_New.Z != N64_Old.Z)
+				if(g_N64_New.Z != g_N64_Old.Z)
 				{
-					if(N64_New.Z)
+					if(g_N64_New.Z)
 					{
 						WAV_AddToQueue(TURTLE);
 					}
 				}
-				if(N64_New.R != N64_Old.R)
+				if(g_N64_New.R != g_N64_Old.R)
 				{
-					if(N64_New.R)
+					if(g_N64_New.R)
 					{
 						WAV_AddToQueue(BANANA);
 					}
 				}
-				memcpy(&N64_Old, &N64_New, sizeof(TYPE_N64_BUT));
+				memcpy(&g_N64_Old, &g_N64_New, sizeof(TYPE_N64_BUT));
     		}
     		N64_SetUpdateFlag(FALSE);
     	}
@@ -198,10 +242,10 @@ int main (void)
     	}
 
     	/* Increment N64 counter */
-    	N64_ControllerCount++;
-    	if(N64_ControllerCount >= N64_SAMPLERATE)
+    	g_N64_ControllerCount++;
+    	if(g_N64_ControllerCount >= N64_SAMPLERATE)
     	{
-    		N64_ControllerCount = 0;
+    		g_N64_ControllerCount = 0;
     		N64_SetUpdateFlag(TRUE);
     	}
     }

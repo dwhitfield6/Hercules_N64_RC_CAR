@@ -18,7 +18,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -30,10 +30,10 @@
 /******************************************************************************/
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
-static volatile unsigned char Audio_Power_State = OFF;
+static unsigned char s_Audio_Power_State = OFF;
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 
 /******************************************************************************/
@@ -64,12 +64,12 @@ void Audio_Power(unsigned char state)
 	if(state)
 	{
 		gioPORTA->DCLR = (1L << AUDIO_STANDBY_GPIO);
-		Audio_Power_State = ON;
+		s_Audio_Power_State = ON;
 	}
 	else
 	{
 		gioPORTA->DSET = (1L << AUDIO_STANDBY_GPIO);
-		Audio_Power_State = OFF;
+		s_Audio_Power_State = OFF;
 	}
 }
 
@@ -80,7 +80,7 @@ void Audio_Power(unsigned char state)
 /******************************************************************************/
 unsigned char Audio_GetPowerStatus(void)
 {
-	return Audio_Power_State;
+	return s_Audio_Power_State;
 }
 
 /******************************************************************************/

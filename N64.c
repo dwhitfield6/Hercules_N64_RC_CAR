@@ -18,7 +18,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -33,21 +33,21 @@
 /******************************************************************************/
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
-static volatile unsigned char N64_ActivityFlag = FALSE;
-static volatile unsigned char N64_ReceiveFlag = FALSE;
-static unsigned long N64_TimingRaw[N64_INPUT_BUFFER_SIZE];
-static unsigned char N64_Code[8+1+32+1];
+static volatile unsigned char s_N64_ActivityFlag = FALSE;
+static volatile unsigned char s_N64_ReceiveFlag = FALSE;
+static unsigned long s_N64_TimingRaw[N64_INPUT_BUFFER_SIZE];
+static unsigned char s_N64_Code[8+1+32+1];
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
-TYPE_N64_BUT N64_New;
-TYPE_N64_BUT N64_Old;
-unsigned char N64_Buffer_Code[N64_CODE_SECTIONS];
-volatile unsigned char N64_CodeSectionBit = 0;
-volatile unsigned long N64_ControllerCount = 0;
-volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE + 10];
-volatile unsigned long N64_TimingInputBit = 0;
+TYPE_N64_BUT g_N64_New;
+TYPE_N64_BUT g_N64_Old;
+unsigned char g_N64_Buffer_Code[N64_CODE_SECTIONS];
+volatile unsigned char g_N64_CodeSectionBit = 0;
+volatile unsigned long g_N64_ControllerCount = 0;
+volatile unsigned long g_N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE + 10];
+volatile unsigned long g_N64_TimingInputBit = 0;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -67,10 +67,11 @@ void InitN64(void)
 	gioPORTB->DSET = (1L << N64_0); // start high
 	TMR_SetTimerMicroSeconds1(1.0);
 	N64_SendReset();
-	N64_GetButtonState(&N64_New);
-	memset(&N64_Old, 0, sizeof(TYPE_N64_BUT));
+	N64_GetButtonState(&g_N64_New);
+	memset(&g_N64_Old, 0, sizeof(TYPE_N64_BUT));
 }
 
+#pragma CODE_SECTION(N64_BuildCode, "TI.ramfuncs")
 /******************************************************************************/
 /* N64_GetButtonState
  *
@@ -89,28 +90,29 @@ void N64_BuildCode(ENUM_N64_REG action)
 		if(action & (1L << (7-i)))
 		{
 			/* logical 1 */
-			N64_Buffer_Code[place++] = 0;
-			N64_Buffer_Code[place++] = 1;
-			N64_Buffer_Code[place++] = 1;
-			N64_Buffer_Code[place++] = 1;
+			g_N64_Buffer_Code[place++] = 0;
+			g_N64_Buffer_Code[place++] = 1;
+			g_N64_Buffer_Code[place++] = 1;
+			g_N64_Buffer_Code[place++] = 1;
 		}
 		else
 		{
 			/* logical 0 */
-			N64_Buffer_Code[place++] = 0;
-			N64_Buffer_Code[place++] = 0;
-			N64_Buffer_Code[place++] = 0;
-			N64_Buffer_Code[place++] = 1;
+			g_N64_Buffer_Code[place++] = 0;
+			g_N64_Buffer_Code[place++] = 0;
+			g_N64_Buffer_Code[place++] = 0;
+			g_N64_Buffer_Code[place++] = 1;
 		}
 	}
 
 	/* build stop bit */
-	N64_Buffer_Code[place++] = 0;
-	N64_Buffer_Code[place++] = 1;
-	N64_Buffer_Code[place++] = 1;
-	N64_Buffer_Code[place++] = 1;
+	g_N64_Buffer_Code[place++] = 0;
+	g_N64_Buffer_Code[place++] = 1;
+	g_N64_Buffer_Code[place++] = 1;
+	g_N64_Buffer_Code[place++] = 1;
 }
 
+#pragma CODE_SECTION(N64_DecodeTiming, "TI.ramfuncs")
 /******************************************************************************/
 /* N64_DecodeTiming
  *
@@ -123,36 +125,36 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 	unsigned long reg = 0;
 	unsigned long temp_buttons = 0;
 
-	N64_TimingRaw[0] = N64_TimingInputBuffer[0] - ECAP_PRELOAD;
+	s_N64_TimingRaw[0] = g_N64_TimingInputBuffer[0] - ECAP_PRELOAD;
 
 	/* take the difference in time for the odd places */
 	for(i=1;i<N64_INPUT_BUFFER_SIZE;i++)
 	{
-		N64_TimingRaw[i] = N64_TimingInputBuffer[i] - N64_TimingInputBuffer[i-1];
+		s_N64_TimingRaw[i] = g_N64_TimingInputBuffer[i] - g_N64_TimingInputBuffer[i-1];
 	}
 
 	/* calculate from counts to micro seconds */
 	for(i=0;i<N64_INPUT_BUFFER_SIZE;i++)
 	{
-		N64_TimingRaw[i] = (unsigned long) MSC_Round((double) N64_TimingRaw[i] * 1000000.0 / ((double)VCLK2));
+		s_N64_TimingRaw[i] = (unsigned long) MSC_Round((double) s_N64_TimingRaw[i] * 1000000.0 / ((double)VCLK2));
 	}
 
 	/* calculate the codes */
 	for(i=0;i<N64_INPUT_BUFFER_SIZE;i+=2)
 	{
-		if(N64_TimingRaw[i] > 10 || N64_TimingRaw[i+1] > 10)
+		if(s_N64_TimingRaw[i] > 10 || s_N64_TimingRaw[i+1] > 10)
 		{
 			/* timing is out of scope */
 			return FAIL;
 		}
-		if(N64_TimingRaw[i] > N64_TimingRaw[i+1])
+		if(s_N64_TimingRaw[i] > s_N64_TimingRaw[i+1])
 		{
-			N64_Code[index] = 0;
+			s_N64_Code[index] = 0;
 			index++;
 		}
-		else if(N64_TimingRaw[i] < N64_TimingRaw[i+1])
+		else if(s_N64_TimingRaw[i] < s_N64_TimingRaw[i+1])
 		{
-			N64_Code[index] = 1;
+			s_N64_Code[index] = 1;
 			index++;
 		}
 		else
@@ -167,7 +169,7 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 	/* calculate the register call  */
 	for(i=0;i<8L;i++)
 	{
-		if(N64_Code[i])
+		if(s_N64_Code[i])
 		{
 			reg |= (1L << (7L-i));
 		}
@@ -181,7 +183,7 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 	/* calculate the buttons */
 	for(i=8;i<40L;i++)
 	{
-		if(N64_Code[i])
+		if(s_N64_Code[i])
 		{
 			temp_buttons |= (1L << (i - 8L));
 		}
@@ -338,6 +340,7 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 	return PASS;
 }
 
+#pragma CODE_SECTION(N64_SendReset, "TI.ramfuncs")
 /******************************************************************************/
 /* N64_SendReset
  *
@@ -349,6 +352,7 @@ void N64_SendReset(void)
 	TMR_N2HET1_InterruptEnable(N64_TIMER);
 }
 
+#pragma CODE_SECTION(N64_GetButtonState, "TI.ramfuncs")
 /******************************************************************************/
 /* N64_GetButtonState
  *
@@ -358,8 +362,8 @@ unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons)
 {
 	unsigned char status = FAIL;
 	N64_BuildCode(GET_BUTTONS);
-	N64_CodeSectionBit = 0;
-	N64_TimingInputBit = 0;
+	g_N64_CodeSectionBit = 0;
+	g_N64_TimingInputBit = 0;
 	ecapREG4->ECCTL2 |= REARM; 			// rearm
 	ecapREG4->TSCTR = ECAP_PRELOAD; 	// reset the timer
 	ecapREG4->ECCLR = 0xFFFF;			// clear all of the flags
@@ -368,7 +372,7 @@ unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons)
 	ecapREG4->ECCTL2 |= TSCTRSTOP;		// start the compare module
 	TMR_N2HET1_InterruptEnable(N64_TIMER);
 	while(!N64_IsReceivedFinished());
-	if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
+	if(g_N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
 	{
 		/* reception was successful */
 		if(N64_DecodeTiming(buttons))
@@ -397,7 +401,7 @@ unsigned char N64_GetButtonState(TYPE_N64_BUT* buttons)
 /******************************************************************************/
 unsigned char N64_GetUpdateFlag(void)
 {
-	return N64_ActivityFlag;
+	return s_N64_ActivityFlag;
 }
 
 /******************************************************************************/
@@ -407,7 +411,7 @@ unsigned char N64_GetUpdateFlag(void)
 /******************************************************************************/
 void N64_SetUpdateFlag(unsigned char state)
 {
-	 N64_ActivityFlag = state;
+	s_N64_ActivityFlag = state;
 }
 
 /******************************************************************************/
@@ -417,7 +421,7 @@ void N64_SetUpdateFlag(unsigned char state)
 /******************************************************************************/
 unsigned char N64_IsReceivedFinished(void)
 {
-	return N64_ReceiveFlag;
+	return s_N64_ReceiveFlag;
 }
 
 /******************************************************************************/
@@ -427,7 +431,7 @@ unsigned char N64_IsReceivedFinished(void)
 /******************************************************************************/
 void N64_ReceivedFinished(unsigned char state)
 {
-	N64_ReceiveFlag = state;
+	s_N64_ReceiveFlag = state;
 }
 
 /*-----------------------------------------------------------------------------/

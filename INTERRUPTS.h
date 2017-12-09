@@ -16,7 +16,7 @@
 #ifndef INTERRUPTS_H
 #define	INTERRUPTS_H
 
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>

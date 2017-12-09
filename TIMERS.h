@@ -16,7 +16,7 @@
 #ifndef TIMERS_H
 #define	TIMERS_H
 
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -101,10 +101,10 @@
 /******************************************************************************/
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
-extern volatile unsigned char TMR_Flag2;
-extern volatile unsigned char MAIN_TimerFlag;
+extern volatile unsigned char g_TMR_Flag2;
+extern volatile unsigned char g_MAIN_TimerFlag;
 
 /******************************************************************************/
 /* Function prototypes                                                        */
@@ -233,7 +233,7 @@ inline void TMR_N2HET2_InterruptDisable(unsigned long state)
 /******************************************************************************/
 inline void TMR_ClearTimerFlag2(void)
 {
-	TMR_Flag2 = 0;
+	g_TMR_Flag2 = 0;
 }
 
 /******************************************************************************/
@@ -243,7 +243,7 @@ inline void TMR_ClearTimerFlag2(void)
 /******************************************************************************/
 inline void TMR_SetTimerFlag2(void)
 {
-	TMR_Flag2 = 1;
+	g_TMR_Flag2 = 1;
 }
 
 /******************************************************************************/
@@ -253,7 +253,7 @@ inline void TMR_SetTimerFlag2(void)
 /******************************************************************************/
 inline unsigned char TMR_GetTimerFlag2(void)
 {
-	return TMR_Flag2;
+	return g_TMR_Flag2;
 }
 
 #endif	/* TIMERS_H */

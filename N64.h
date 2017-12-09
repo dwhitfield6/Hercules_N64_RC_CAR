@@ -105,15 +105,15 @@ typedef enum e_n64
 /******************************************************************************/
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
-extern TYPE_N64_BUT N64_New;
-extern TYPE_N64_BUT N64_Old;
-extern unsigned char N64_Buffer_Code[N64_CODE_SECTIONS];
-extern volatile unsigned char N64_CodeSectionBit;
-extern volatile unsigned long N64_ControllerCount;
-extern volatile unsigned long N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE + 10];
-extern volatile unsigned long N64_TimingInputBit;
+extern TYPE_N64_BUT g_N64_New;
+extern TYPE_N64_BUT g_N64_Old;
+extern unsigned char g_N64_Buffer_Code[N64_CODE_SECTIONS];
+extern volatile unsigned char g_N64_CodeSectionBit;
+extern volatile unsigned long g_N64_ControllerCount;
+extern volatile unsigned long g_N64_TimingInputBuffer[N64_INPUT_BUFFER_SIZE + 10];
+extern volatile unsigned long g_N64_TimingInputBit;
 
 /******************************************************************************/
 /* Function prototypes                                                        */

@@ -21,7 +21,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -39,7 +39,7 @@
 #include "WAV.h"
 
 /******************************************************************************/
-/* Global Variables                                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 
 /******************************************************************************/
@@ -55,6 +55,7 @@
  *
  * Interrupt service routine for SPI1 INT0 interrupt.                         */
 /******************************************************************************/
+#pragma CODE_SECTION(ISR_SPI1_INT0, "TI.ramfuncs")
 #pragma CODE_STATE(ISR_SPI1_INT0, 32)
 #pragma INTERRUPT(ISR_SPI1_INT0, IRQ)
 void ISR_SPI1_INT0(void)
@@ -64,15 +65,16 @@ void ISR_SPI1_INT0(void)
 	if(((vector & INTVECT) >> 1) == 0x14L)
 	{
 		/* The pending interrupt is a "Transmit Buffer Empty" interrupt */
-		if(SPI_TX_Buffer_Remove_place != SPI_TX_Buffer_Add_place)
+		if(g_SPI_TX_Buffer_Remove_place != g_SPI_TX_Buffer_Add_place)
 		{
-			SPI_SendByte(SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].Data,
-					SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].Channel,
-					SPI_TX_Buffer[SPI_TX_Buffer_Remove_place].HoldCS);
-			SPI_TX_Buffer_Remove_place++;
-			if(SPI_TX_Buffer_Remove_place >= SPI_TX_BUFFER_SIZE)
+			/* send data over SPI */
+			SPI_SendByte(g_SPI_TX_Buffer[g_SPI_TX_Buffer_Remove_place].Data,
+					g_SPI_TX_Buffer[g_SPI_TX_Buffer_Remove_place].Channel,
+					g_SPI_TX_Buffer[g_SPI_TX_Buffer_Remove_place].HoldCS);
+			g_SPI_TX_Buffer_Remove_place++;
+			if(g_SPI_TX_Buffer_Remove_place >= SPI_TX_BUFFER_SIZE)
 			{
-				SPI_TX_Buffer_Remove_place = 0;
+				g_SPI_TX_Buffer_Remove_place = 0;
 			}
 		}
 		else
@@ -87,6 +89,7 @@ void ISR_SPI1_INT0(void)
  *
  * Interrupt service routine for SPI1 INT0 interrupt.                         */
 /******************************************************************************/
+#pragma CODE_SECTION(ISR_ECAP_N64, "TI.ramfuncs")
 #pragma CODE_STATE(ISR_ECAP_N64, 32)
 #pragma INTERRUPT(ISR_ECAP_N64, IRQ)
 void ISR_ECAP_N64(void)
@@ -99,11 +102,9 @@ void ISR_ECAP_N64(void)
 	{
 		ecapREG4->ECCLR = CEVT4 | CEVT3 | CEVT2 | CEVT1;
 		ecapREG4->ECCTL2 |= REARM; 			// rearm
-		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP1;
-		N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP2;
-		//N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP3;
-		//N64_TimingInputBuffer[N64_TimingInputBit++] = ecapREG4->CAP4;
-		if(N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
+		g_N64_TimingInputBuffer[g_N64_TimingInputBit++] = ecapREG4->CAP1;
+		g_N64_TimingInputBuffer[g_N64_TimingInputBit++] = ecapREG4->CAP2;
+		if(g_N64_TimingInputBit >= N64_INPUT_BUFFER_SIZE)
 		{
 			ecapREG4->ECCTL2 &= ~TSCTRSTOP;		// stop the compare module
 			ecapREG4->ECCTL2 |= REARM; 			// rearm
@@ -128,6 +129,7 @@ void ISR_ECAP_N64(void)
  *
  * Interrupt service routine for the N64 timer.	      	                      */
 /******************************************************************************/
+#pragma CODE_SECTION(ISR_Timer1, "TI.ramfuncs")
 #pragma CODE_STATE(ISR_Timer1, 32)
 #pragma INTERRUPT(ISR_Timer1, IRQ)
 void ISR_Timer1(void)
@@ -137,9 +139,10 @@ void ISR_Timer1(void)
 
 	if((flags & N64_TIMER) && (hetREG1->INTENAS & N64_TIMER))
 	{
-		if(N64_CodeSectionBit < N64_CODE_SECTIONS)
+		if(g_N64_CodeSectionBit < N64_CODE_SECTIONS)
 		{
-			if(N64_Buffer_Code[N64_CodeSectionBit])
+			/* Add the N64 code bit to the section */
+			if(g_N64_Buffer_Code[g_N64_CodeSectionBit])
 			{
 				/* code section is 1 */
 				gioPORTB->DSET = (1L << N64_0);
@@ -149,11 +152,11 @@ void ISR_Timer1(void)
 				/* code section is 0 */
 				gioPORTB->DCLR = (1L << N64_0);
 			}
-			N64_CodeSectionBit++;
+			g_N64_CodeSectionBit++;
 		}
 	}
 
-	if(N64_CodeSectionBit >= N64_CODE_SECTIONS)
+	if(g_N64_CodeSectionBit >= N64_CODE_SECTIONS)
 	{
 		TMR_N2HET1_InterruptDisable(N64_TIMER);
 	}
@@ -165,6 +168,7 @@ void ISR_Timer1(void)
  *
  * Interrupt service routine for the MISC and DAC timer.       	              */
 /******************************************************************************/
+#pragma CODE_SECTION(ISR_Timer2, "TI.ramfuncs")
 #pragma CODE_STATE(ISR_Timer2, 32)
 #pragma INTERRUPT(ISR_Timer2, IRQ)
 void ISR_Timer2(void)
@@ -231,7 +235,7 @@ void ISR_Timer2(void)
 	}
 	if((flags & MAIN_TIMER) && (hetREG2->INTENAS & MAIN_TIMER))
 	{
-		MAIN_TimerFlag = TRUE;
+		g_MAIN_TimerFlag = TRUE;
 		hetREG2->FLG = MAIN_TIMER;
 	}
 }

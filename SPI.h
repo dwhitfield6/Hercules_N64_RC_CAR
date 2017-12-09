@@ -16,7 +16,7 @@
 #ifndef SPI_H
 #define	SPI_H
 
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -483,11 +483,11 @@ typedef struct t_spi_buffer
 /******************************************************************************/
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
-extern TYPE_SPI_BUFFER SPI_TX_Buffer[SPI_TX_BUFFER_SIZE];
-extern volatile long SPI_TX_Buffer_Add_place;
-extern volatile long SPI_TX_Buffer_Remove_place;
+extern volatile TYPE_SPI_BUFFER g_SPI_TX_Buffer[SPI_TX_BUFFER_SIZE];
+extern volatile long g_SPI_TX_Buffer_Add_place;
+extern volatile long g_SPI_TX_Buffer_Remove_place;
 
 /******************************************************************************/
 /* Function prototypes                                                        */

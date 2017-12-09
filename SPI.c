@@ -18,7 +18,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -30,11 +30,11 @@
 #include "USER.h"
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
-TYPE_SPI_BUFFER SPI_TX_Buffer[SPI_TX_BUFFER_SIZE];
-volatile long SPI_TX_Buffer_Add_place = 0;
-volatile long SPI_TX_Buffer_Remove_place = 0;
+volatile TYPE_SPI_BUFFER g_SPI_TX_Buffer[SPI_TX_BUFFER_SIZE];
+volatile long g_SPI_TX_Buffer_Add_place = 0;
+volatile long g_SPI_TX_Buffer_Remove_place = 0;
 
 /******************************************************************************/
 /* Inline Functions                                                           */
@@ -191,6 +191,7 @@ void SPI_SetPins(unsigned char state)
 	}
 }
 
+#pragma CODE_SECTION(SPI_SendByte, "TI.ramfuncs")
 /******************************************************************************/
 /* SPI_SendByte
  *
@@ -203,6 +204,7 @@ void SPI_SendByte(unsigned char data, unsigned char chip_select, unsigned char c
 	spiREG1->DAT1 = data | temp << 16L | (((unsigned long)chip_select_hold & 0x1) << 28L);
 }
 
+#pragma CODE_SECTION(SPI_AddToTXBuffer, "TI.ramfuncs")
 /******************************************************************************/
 /* SPI_AddToTXBuffer
  *
@@ -211,32 +213,32 @@ void SPI_SendByte(unsigned char data, unsigned char chip_select, unsigned char c
 void SPI_AddToTXBuffer(unsigned char data, unsigned char chip_select, unsigned char chip_select_hold)
 {
 
-	if(SPI_TX_Buffer_Remove_place > SPI_TX_Buffer_Add_place)
+	if(g_SPI_TX_Buffer_Remove_place > g_SPI_TX_Buffer_Add_place)
     {
-        if((SPI_TX_Buffer_Remove_place - SPI_TX_Buffer_Add_place) == 1)
+        if((g_SPI_TX_Buffer_Remove_place - g_SPI_TX_Buffer_Add_place) == 1)
         {
             /* transmit buffer is full */
-        	while((SPI_TX_Buffer_Remove_place - SPI_TX_Buffer_Add_place) == 1); // the transmit is happening so wait for the buffer to make space
+        	while((g_SPI_TX_Buffer_Remove_place - g_SPI_TX_Buffer_Add_place) == 1); // the transmit is happening so wait for the buffer to make space
         }
     }
 
-	if(SPI_TX_Buffer_Add_place > SPI_TX_Buffer_Remove_place)
+	if(g_SPI_TX_Buffer_Add_place > g_SPI_TX_Buffer_Remove_place)
     {
-        if((SPI_TX_Buffer_Add_place - SPI_TX_Buffer_Remove_place) == (SPI_TX_BUFFER_SIZE - 1))
+        if((g_SPI_TX_Buffer_Add_place - g_SPI_TX_Buffer_Remove_place) == (SPI_TX_BUFFER_SIZE - 1))
         {
             /* transmit buffer is full */
-        	while((SPI_TX_Buffer_Add_place - SPI_TX_Buffer_Remove_place) == (SPI_TX_BUFFER_SIZE - 1)); // the transmit is happening so wait for the buffer to make space
+        	while((g_SPI_TX_Buffer_Add_place - g_SPI_TX_Buffer_Remove_place) == (SPI_TX_BUFFER_SIZE - 1)); // the transmit is happening so wait for the buffer to make space
         }
     }
 
-	SPI_TX_Buffer[SPI_TX_Buffer_Add_place].Data = data;
-	SPI_TX_Buffer[SPI_TX_Buffer_Add_place].Channel = chip_select;
-	SPI_TX_Buffer[SPI_TX_Buffer_Add_place].HoldCS = chip_select_hold;
-	SPI_TX_Buffer_Add_place++;
+	g_SPI_TX_Buffer[g_SPI_TX_Buffer_Add_place].Data = data;
+	g_SPI_TX_Buffer[g_SPI_TX_Buffer_Add_place].Channel = chip_select;
+	g_SPI_TX_Buffer[g_SPI_TX_Buffer_Add_place].HoldCS = chip_select_hold;
+	g_SPI_TX_Buffer_Add_place++;
 
-    if(SPI_TX_Buffer_Add_place >= SPI_TX_BUFFER_SIZE)
+    if(g_SPI_TX_Buffer_Add_place >= SPI_TX_BUFFER_SIZE)
     {
-    	SPI_TX_Buffer_Add_place = 0;
+    	g_SPI_TX_Buffer_Add_place = 0;
     }
     SPI_TransmitInterrupt1(ON);
 }

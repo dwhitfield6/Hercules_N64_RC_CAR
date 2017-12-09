@@ -16,7 +16,7 @@
 #ifndef SYSTEM_H
 #define	SYSTEM_H
 
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -31,7 +31,7 @@
 /******************************************************************************/
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
 extern unsigned long GCLK;
 extern unsigned long HCLK;

@@ -18,7 +18,7 @@
 /******************************************************************************/
 /* Files to Include                                                           */
 /******************************************************************************/
-#include "HL_sys_common.h"    		// TMS570LC43xx Include file
+#include "HL_sys_common.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -29,9 +29,13 @@
 #include "USER.h"
 
 /******************************************************************************/
+/* Global Variable Declaration                                                */
+/******************************************************************************/
+volatile unsigned char g_TMR_Flag2 = FALSE;
+
+/******************************************************************************/
 /* Private Variable Declaration      	                                      */
 /******************************************************************************/
-volatile unsigned char TMR_Flag2 = FALSE;
 
 /******************************************************************************/
 /* N2HET1 instruction (used for N64 timing)                                   */
@@ -130,9 +134,9 @@ hetINSTRUCTION_t Timer2Program[] =
 };
 
 /******************************************************************************/
-/* User Global Variable Declaration                                           */
+/* Global Variable Declaration                                                */
 /******************************************************************************/
-volatile unsigned char MAIN_TimerFlag = FALSE;
+volatile unsigned char g_MAIN_TimerFlag = FALSE;
 
 /******************************************************************************/
 /* Functions                                                                  */
@@ -166,7 +170,7 @@ void InitN2HET1(void)
 	hetREG1->GCR |= CMS;
 	hetREG1->PFR = 0;		// LRPFC / 1
 	hetREG1->PFR |= 14; 	// HRPFC / 15
-	(void)memcpy((void *)hetRAM1, (const void *)Timer1Program, sizeof(Timer1Program));
+	memcpy((void *)hetRAM1, (const void *)Timer1Program, sizeof(Timer1Program));
 	hetREG1->PRY = N64_TIMER; // make the interrupt high priority
 }
 
@@ -181,14 +185,14 @@ void InitN2HET2(void)
 	hetREG2->GCR |= CMS;
 	hetREG2->PFR = 0;		// LRPFC / 1
 	hetREG2->PFR |= 14; 	// HRPFC / 15
-	(void)memcpy((void *)hetRAM2, (const void *)Timer2Program, sizeof(Timer2Program));
+	memcpy((void *)hetRAM2, (const void *)Timer2Program, sizeof(Timer2Program));
 	hetREG2->PRY = MISC_TIMER | DAC_TIMER | MAIN_TIMER; // make the interrupt high priority
 }
 
 /******************************************************************************/
 /* TMR_CalculatePeriod2
  *
- * The function takes in microseconds and retruns the period count for timer
+ * The function takes in microseconds and returns the period count for timer
  *  2.																		  */
 /******************************************************************************/
 unsigned long TMR_CalculatePeriod2(double US)
