@@ -55,7 +55,9 @@
  *
  * Interrupt service routine for SPI1 INT0 interrupt.                         */
 /******************************************************************************/
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(ISR_SPI1_INT0, "TI.ramfuncs")
+#endif
 #pragma CODE_STATE(ISR_SPI1_INT0, 32)
 #pragma INTERRUPT(ISR_SPI1_INT0, IRQ)
 void ISR_SPI1_INT0(void)
@@ -89,7 +91,9 @@ void ISR_SPI1_INT0(void)
  *
  * Interrupt service routine for SPI1 INT0 interrupt.                         */
 /******************************************************************************/
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(ISR_ECAP_N64, "TI.ramfuncs")
+#endif
 #pragma CODE_STATE(ISR_ECAP_N64, 32)
 #pragma INTERRUPT(ISR_ECAP_N64, IRQ)
 void ISR_ECAP_N64(void)
@@ -129,7 +133,9 @@ void ISR_ECAP_N64(void)
  *
  * Interrupt service routine for the N64 timer.	      	                      */
 /******************************************************************************/
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(ISR_Timer1, "TI.ramfuncs")
+#endif
 #pragma CODE_STATE(ISR_Timer1, 32)
 #pragma INTERRUPT(ISR_Timer1, IRQ)
 void ISR_Timer1(void)
@@ -168,7 +174,9 @@ void ISR_Timer1(void)
  *
  * Interrupt service routine for the MISC and DAC timer.       	              */
 /******************************************************************************/
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(ISR_Timer2, "TI.ramfuncs")
+#endif
 #pragma CODE_STATE(ISR_Timer2, 32)
 #pragma INTERRUPT(ISR_Timer2, IRQ)
 void ISR_Timer2(void)

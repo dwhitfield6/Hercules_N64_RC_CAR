@@ -1,7 +1,7 @@
 /** @file HL_nmpu.h
 *   @brief NMPU Driver Header File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *   
 *   This file contains:
 *   - Definitions
@@ -12,7 +12,7 @@
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 

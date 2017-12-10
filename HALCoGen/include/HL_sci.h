@@ -1,12 +1,12 @@
 /** @file HL_sci.h
 *   @brief SCI Driver Definition File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *   
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -146,6 +146,8 @@ void sciEnableNotification(sciBASE_t *sci, uint32 flags);
 void sciDisableNotification(sciBASE_t *sci, uint32 flags);
 void sciEnableLoopback(sciBASE_t *sci, loopBackType_t Loopbacktype);
 void sciDisableLoopback(sciBASE_t *sci);
+void sciEnterResetState(sciBASE_t *sci);
+void sciExitResetState(sciBASE_t *sci);
 /** @fn void sciNotification(sciBASE_t *sci, uint32 flags)
 *   @brief Interrupt callback
 *   @param[in] sci   - sci module base address

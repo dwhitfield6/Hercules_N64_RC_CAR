@@ -1,14 +1,14 @@
 /** @file HL_hal_stdtypes.h
 *   @brief HALCoGen standard types header File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *   
 *   This file contains:
 *   - Type and Global definitions which are relevant for all drivers.
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -133,21 +133,21 @@ typedef struct
 /*****************************************************************************/
 #ifndef STATUSTYPEDEFINED
   #define STATUSTYPEDEFINED
-  #define E_OK     0x00
+  #define E_OK     0x00U
 
   typedef unsigned char StatusType;
 #endif
 
 #ifndef E_NOT_OK
-#define E_NOT_OK   0x01
+#define E_NOT_OK   0x01U
 #endif
 
 #ifndef STD_ON
-#define STD_ON     0x01
+#define STD_ON     0x01U
 #endif
 
 #ifndef STD_OFF
-#define STD_OFF    0x00
+#define STD_OFF    0x00U
 #endif
 
 
@@ -162,15 +162,26 @@ typedef struct
     #define NULL ((void *) 0U)
 #endif
 
-#define TRUE 1
-#define FALSE 0
+/** @def TRUE
+*   @brief definition for TRUE
+*/
+#ifndef TRUE
+    #define TRUE true
+#endif
+
+/** @def FALSE
+*   @brief BOOLEAN definition for FALSE
+*/
+#ifndef FALSE
+    #define FALSE false
+#endif
 
 /*****************************************************************************/
 /* Define:       NULL_PTR                                                    */
 /* Description:  Void pointer to 0                                           */
 /*****************************************************************************/
 #ifndef NULL_PTR
-#define NULL_PTR ((void *)0x0)
+#define NULL_PTR ((void *)0x0U)
 #endif
 /* USER CODE BEGIN (2) */
 /* USER CODE END */

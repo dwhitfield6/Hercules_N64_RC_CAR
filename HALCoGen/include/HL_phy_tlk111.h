@@ -29,6 +29,7 @@ typedef enum phyTimeStamp
 #define PHY_ID2                           (3u)
 #define PHY_AUTONEG_ADV                   (4u)
 #define PHY_LINK_PARTNER_ABLTY            (5u)
+#define PHY_LINK_PARTNER_SPD              (16u)
 #define PHY_SWSCR1						  (9u)
 #define PHY_SWSCR2						  (10u)
 #define PHY_SWSCR3						  (11u)
@@ -138,6 +139,7 @@ extern boolean Tlk111LinkStatusGet(uint32 mdioBaseAddr, uint32 phyAddr,volatile 
 extern uint64 Tlk111GetTimeStamp(uint32 mdioBaseAddr, uint32 phyAddr, phyTimeStamp_t type);
 extern void Tlk111EnableLoopback(uint32 mdioBaseAddr, uint32 phyAddr);
 extern void Tlk111DisableLoopback(uint32 mdioBaseAddr, uint32 phyAddr);
+extern boolean Tlk111PartnerSpdGet(uint32 mdioBaseAddr, uint32 phyAddr, uint16 *ptnerAblty);
 
 #ifdef __cplusplus
 }

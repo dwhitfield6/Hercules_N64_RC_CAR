@@ -35,6 +35,7 @@ extern "C" {
 #define PhyEnableLoopback Dp83640EnableLoopback
 #define PhyDisableLoopback Dp83640DisableLoopback
 #define PhyGetTimeStamp Dp83640GetTimeStamp
+#define PhyPartnerSpdGet Dp83640PartnerSpdGet
 
 
 

@@ -1,7 +1,7 @@
 /** @file HL_sys_core.h
 *   @brief System Core Header File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *   
 *   This file contains:
 *   - Core Interface Functions
@@ -10,7 +10,7 @@
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -55,6 +55,60 @@ extern "C" {
 
 /* USER CODE BEGIN (0) */
 /* USER CODE END */
+
+/** @def USER_STACK_LENGTH
+*   @brief USER Mode Stack length (in bytes)
+*
+*   Alias for USER Mode Stack length (in bytes)
+*
+*	@note: Use this macro for USER Mode Stack length (in bytes)
+*/
+#define USER_STACK_LENGTH   0x00001000U
+
+/** @def SVC_STACK_LENGTH
+*   @brief SVC Mode Stack length (in bytes)
+*
+*   Alias for SVC Mode Stack length (in bytes)
+*
+*	@note: Use this macro for SVC Mode Stack length (in bytes)
+*/
+#define SVC_STACK_LENGTH    0x00000200U
+
+/** @def FIQ_STACK_LENGTH
+*   @brief FIQ Mode Stack length (in bytes)
+*
+*   Alias for FIQ Mode Stack length (in bytes)
+*
+*	@note: Use this macro for FIQ Mode Stack length (in bytes)
+*/
+#define FIQ_STACK_LENGTH    0x00000200U
+
+/** @def IRQ_STACK_LENGTH
+*   @brief IRQ Mode Stack length (in bytes)
+*
+*   Alias for IRQ Mode Stack length (in bytes)
+*
+*	@note: Use this macro for IRQ Mode Stack length (in bytes)
+*/
+#define IRQ_STACK_LENGTH    0x00000200U
+
+/** @def ABORT_STACK_LENGTH
+*   @brief ABORT Mode Stack length (in bytes)
+*
+*   Alias for ABORT Mode Stack length (in bytes)
+*
+*	@note: Use this macro for ABORT Mode Stack length (in bytes)
+*/
+#define ABORT_STACK_LENGTH  0x00000200U
+
+/** @def UNDEF_STACK_LENGTH
+*   @brief UNDEF Mode Stack length (in bytes)
+*
+*   Alias for UNDEF Mode Stack length (in bytes)
+*
+*	@note: Use this macro for UNDEF Mode Stack length (in bytes)
+*/
+#define UNDEF_STACK_LENGTH  0x00000200U
 
 /* System Core Interface Functions */
 

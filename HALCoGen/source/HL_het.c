@@ -1,12 +1,12 @@
 /** @file HL_het.c
 *   @brief HET Driver Implementation File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -1071,7 +1071,7 @@ static const hetINSTRUCTION_t het1PROGRAM[58U] =
 */
 /* SourceId : HET_SourceId_001 */
 /* DesignId : HET_DesignId_001 */
-/* Requirements : HL_SR363 */
+/* Requirements : HL_CONQ_HET_SR10 */
 void hetInit(void)
 {
     /** @b initialize @b HET */
@@ -1463,7 +1463,7 @@ void hetInit(void)
 */
 /* SourceId : HET_SourceId_002 */
 /* DesignId : HET_DesignId_002 */
-/* Requirements : HL_SR364 */
+/* Requirements : HL_CONQ_HET_SR11 */
 void pwmStart( hetRAMBASE_t * hetRAM, uint32 pwm)
 {
 
@@ -1490,7 +1490,7 @@ void pwmStart( hetRAMBASE_t * hetRAM, uint32 pwm)
 */
 /* SourceId : HET_SourceId_003 */
 /* DesignId : HET_DesignId_003 */
-/* Requirements : HL_SR365 */
+/* Requirements : HL_CONQ_HET_SR12 */
 void pwmStop( hetRAMBASE_t * hetRAM, uint32 pwm)
 {
     hetRAM->Instruction[(pwm << 1U) + 41U].Control  &= ~(uint32)0x00400000U;
@@ -1517,7 +1517,7 @@ void pwmStop( hetRAMBASE_t * hetRAM, uint32 pwm)
 */
 /* SourceId : HET_SourceId_004 */
 /* DesignId : HET_DesignId_004 */
-/* Requirements : HL_SR366 */
+/* Requirements : HL_CONQ_HET_SR13 */
 void pwmSetDuty(hetRAMBASE_t * hetRAM, uint32 pwm, uint32 pwmDuty)
 {
     uint32 action;
@@ -1572,7 +1572,7 @@ void pwmSetDuty(hetRAMBASE_t * hetRAM, uint32 pwm, uint32 pwmDuty)
 */
 /* SourceId : HET_SourceId_005 */
 /* DesignId : HET_DesignId_005 */
-/* Requirements : HL_SR367 */
+/* Requirements : HL_CONQ_HET_SR14 */
 void pwmSetSignal(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t signal)
 {
     uint32 action;
@@ -1629,7 +1629,7 @@ void pwmSetSignal(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t signal)
 */
 /* SourceId : HET_SourceId_006 */
 /* DesignId : HET_DesignId_006 */
-/* Requirements : HL_SR368 */
+/* Requirements : HL_CONQ_HET_SR15 */
 void pwmGetSignal(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t* signal)
 {
     uint32    pwmDuty   = (hetRAM->Instruction[(pwm << 1U) + 41U].Data - 128U) >> 7U;
@@ -1668,7 +1668,7 @@ void pwmGetSignal(hetRAMBASE_t * hetRAM, uint32 pwm, hetSIGNAL_t* signal)
 */
 /* SourceId : HET_SourceId_007 */
 /* DesignId : HET_DesignId_007 */
-/* Requirements : HL_SR369 */
+/* Requirements : HL_CONQ_HET_SR16 */
 void pwmEnableNotification(hetBASE_t * hetREG, uint32 pwm, uint32 notification)
 {
     hetREG->FLG     = notification << (pwm << 1U);
@@ -1697,7 +1697,7 @@ void pwmEnableNotification(hetBASE_t * hetREG, uint32 pwm, uint32 notification)
 */
 /* SourceId : HET_SourceId_008 */
 /* DesignId : HET_DesignId_008 */
-/* Requirements : HL_SR370 */
+/* Requirements : HL_CONQ_HET_SR17 */
 void pwmDisableNotification(hetBASE_t * hetREG, uint32 pwm, uint32 notification)
 {
     hetREG->INTENAC = notification << (pwm << 1U);
@@ -1723,7 +1723,7 @@ void pwmDisableNotification(hetBASE_t * hetREG, uint32 pwm, uint32 notification)
 */
 /* SourceId : HET_SourceId_009 */
 /* DesignId : HET_DesignId_009 */
-/* Requirements : HL_SR372 */
+/* Requirements : HL_CONQ_HET_SR19 */
 void edgeResetCounter(hetRAMBASE_t * hetRAM, uint32 edge)
 {
     hetRAM->Instruction[edge + 17U].Data = 0U;
@@ -1749,7 +1749,7 @@ void edgeResetCounter(hetRAMBASE_t * hetRAM, uint32 edge)
 */
 /* SourceId : HET_SourceId_010 */
 /* DesignId : HET_DesignId_010 */
-/* Requirements : HL_SR373 */
+/* Requirements : HL_CONQ_HET_SR20 */
 uint32 edgeGetCounter(hetRAMBASE_t * hetRAM, uint32 edge)
 {
     return hetRAM->Instruction[edge + 17U].Data >> 7U;
@@ -1773,7 +1773,7 @@ uint32 edgeGetCounter(hetRAMBASE_t * hetRAM, uint32 edge)
 */
 /* SourceId : HET_SourceId_011 */
 /* DesignId : HET_DesignId_011 */
-/* Requirements : HL_SR374 */
+/* Requirements : HL_CONQ_HET_SR21 */
 void edgeEnableNotification(hetBASE_t * hetREG, uint32 edge)
 {
     hetREG->FLG     = (uint32)0x20000U << edge;
@@ -1798,7 +1798,7 @@ void edgeEnableNotification(hetBASE_t * hetREG, uint32 edge)
 */
 /* SourceId : HET_SourceId_012 */
 /* DesignId : HET_DesignId_012 */
-/* Requirements : HL_SR375 */
+/* Requirements : HL_CONQ_HET_SR22 */
 void edgeDisableNotification(hetBASE_t * hetREG, uint32 edge)
 {
     hetREG->INTENAC = (uint32)0x20000U << edge;
@@ -1827,7 +1827,7 @@ void edgeDisableNotification(hetBASE_t * hetREG, uint32 edge)
 */
 /* SourceId : HET_SourceId_013 */
 /* DesignId : HET_DesignId_013 */
-/* Requirements : HL_SR377 */
+/* Requirements : HL_CONQ_HET_SR24 */
 void capGetSignal(hetRAMBASE_t * hetRAM, uint32 cap, hetSIGNAL_t *signal)
 {
     uint32    pwmDuty   = (hetRAM->Instruction[(cap << 1U) + 25U].Data) >> 7U;
@@ -1856,7 +1856,7 @@ void capGetSignal(hetRAMBASE_t * hetRAM, uint32 cap, hetSIGNAL_t *signal)
 */
 /* SourceId : HET_SourceId_014 */
 /* DesignId : HET_DesignId_014 */
-/* Requirements : HL_SR378 */
+/* Requirements : HL_CONQ_HET_SR25 */
 void hetResetTimestamp(hetRAMBASE_t * hetRAM)
 {
     hetRAM->Instruction[0U].Data = 0U;
@@ -1870,7 +1870,7 @@ void hetResetTimestamp(hetRAMBASE_t * hetRAM)
 */
 /* SourceId : HET_SourceId_015 */
 /* DesignId : HET_DesignId_015 */
-/* Requirements : HL_SR379 */
+/* Requirements : HL_CONQ_HET_SR26 */
 uint32 hetGetTimestamp(hetRAMBASE_t * hetRAM)
 {
     return hetRAM->Instruction[57U].Data;
@@ -1897,7 +1897,7 @@ uint32 hetGetTimestamp(hetRAMBASE_t * hetRAM)
 */
 /* SourceId : HET_SourceId_016 */
 /* DesignId : HET_DesignId_016 */
-/* Requirements : HL_SR379 */
+/* Requirements : HL_CONQ_HET_SR29 */
 void het1GetConfigValue(het_config_reg_t *config_reg, config_value_type_t type)
 {
     if (type == InitialValue)

@@ -82,7 +82,9 @@ void InitPOTGas(void)
 	POT_SetGas(GAS_START);
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(POT_SendDataSteering, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* POT_SendDataSteering
  *
@@ -109,7 +111,9 @@ void POT_SendDataSteering(ENUM_POT_REG reg, unsigned short data)
 	}
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(POT_SendDataGas, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* POT_SendDataGas
  *

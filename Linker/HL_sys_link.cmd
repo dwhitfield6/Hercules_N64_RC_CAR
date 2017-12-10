@@ -59,8 +59,8 @@ MEMORY
     VECTORS (X)  : origin=0x00000000 length=0x00000020
     FLASH0  (RX) : origin=0x00000020 length=0x001FFFE0
     FLASH1  (RX) : origin=0x00200000 length=0x00200000
-    STACKS  (RW) : origin=0x08000000 length=0x00001500
-    RAM     (RW) : origin=0x08001500 length=0x0007EB00
+    STACKS  (RW) : origin=0x08000000 length=0x00001600
+    RAM     (RW) : origin=0x08001600 length=0x0007EA00
 
 /* USER CODE BEGIN (3) */
 /* USER CODE END */
@@ -85,7 +85,7 @@ SECTIONS
     .bss     : {} > RAM
     .data    : {} > RAM
     .sysmem  : {} > RAM
-	
+
     TI.ramfuncs : LOAD = FLASH0,
               RUN = RAM,
               LOAD_START(__RamfuncsLoadStart),

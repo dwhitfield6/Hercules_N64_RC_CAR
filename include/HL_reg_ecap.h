@@ -1,7 +1,7 @@
 /** @file HL_reg_ecap.h
 *   @brief ECAP Register Layer Header File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *   
 *   This file contains:
 *   - Definitions
@@ -12,7 +12,7 @@
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -100,10 +100,10 @@ typedef volatile struct ecapBASE
    uint32 CAP2;      /**<  0x000C Capture 2 Register*/
    uint32 CAP3;      /**<  0x0010 Capture 3 Register*/
    uint32 CAP4;      /**<  0x0014 Capture 4 Register*/
-   uint32 rsvd1[4U]; /**<  0x0018 Reserved*/
-   uint16 ECCTL2;    /**<  0x0028 Capture Control Reg 1 Register*/
-   uint16 ECCTL1;    /**<  0x002A Capture Control Reg 2 Register*/
-   uint16 ECFLG;     /**<  0x002E Interrupt flags Register*/
+   uint16 rsvd1[8U]; /**<  0x0018 Reserved*/
+   uint16 ECCTL2;    /**<  0x002A Capture Control Reg 2 Register*/
+   uint16 ECCTL1;    /**<  0x0028 Capture Control Reg 1 Register*/
+   uint16 ECFLG;     /**<  0x002E Interrupt flags Register*/ 
    uint16 ECEINT;    /**<  0x002C Interrupt enable Register*/
    uint16 ECFRC;     /**<  0x0032 Interrupt force Register*/
    uint16 ECCLR;     /**<  0x0030 Interrupt clear Register*/

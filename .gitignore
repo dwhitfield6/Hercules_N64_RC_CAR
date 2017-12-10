@@ -1,3 +1,4 @@
 Debug/
 *.bak
 *.obj
+.settings/org.eclipse.core.resources.prefs

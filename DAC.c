@@ -50,7 +50,9 @@ void InitDAC(void)
 	DAC_SendData(DAC_B, DAC_MIDPOINT);
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(DAC_SendData, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* DAC_SendData
  *

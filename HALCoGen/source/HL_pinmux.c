@@ -1,12 +1,12 @@
 /** @file HL_pinmux.c 
 *   @brief PINMUX Driver Implementation File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -253,7 +253,7 @@ void muxInit(void){
 	
 	pinMuxReg->PINMUX[9] = PINMUX_BALL_R4_EMIF_nCAS | PINMUX_BALL_N17_EMIF_nCS_0 | PINMUX_BALL_L17_EMIF_nCS_2;
 	
-	pinMuxReg->PINMUX[10] = PINMUX_BALL_K17_EMIF_nCS_3 | PINMUX_BALL_M17_EMIF_nCSl_4 | PINMUX_BALL_R3_EMIF_nRAS | PINMUX_BALL_P3_EMIF_nWAIT;
+	pinMuxReg->PINMUX[10] = PINMUX_BALL_K17_EMIF_nCS_3 | PINMUX_BALL_M17_EMIF_nCS_4 | PINMUX_BALL_R3_EMIF_nRAS | PINMUX_BALL_P3_EMIF_nWAIT;
 	
 	pinMuxReg->PINMUX[11] = PINMUX_BALL_D17_EMIF_nWE | PINMUX_BALL_E9_ETMDATA_08 | PINMUX_BALL_E8_ETMDATA_09 | PINMUX_BALL_E7_ETMDATA_10;
 	

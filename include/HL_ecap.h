@@ -1,7 +1,7 @@
 /** @file HL_ecap.h
 *   @brief ECAP Driver Header File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *   
 *   This file contains:
 *   - Definitions
@@ -12,7 +12,7 @@
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -167,9 +167,9 @@ typedef struct ecap_config_reg
 }ecap_config_reg_t;
 
 #define ECAP1_CTRPHS_CONFIGVALUE    0x00000000U
-#define ECAP1_ECCTL1_CONFIGVALUE    ((uint16)((uint16)RISING_EDGE << 0U) | (uint16)((uint16)RESET_DISABLE << 1U) | (uint16)((uint16)RISING_EDGE << 2U) | (uint16)((uint16)RESET_DISABLE << 3U) | (uint16)((uint16)RISING_EDGE << 4U)| (uint16)((uint16)RESET_DISABLE << 5U) | (uint16)((uint16)RISING_EDGE << 6U) | (uint16)((uint16)RESET_DISABLE << 7U) | (uint16)((uint16)0U << 8U) | (uint16)((uint16)0U << 9U))
-#define ECAP1_ECCTL2_CONFIGVALUE	((uint16)((uint16)ONE_SHOT << 0U) | (uint16)((uint16)CAPTURE_EVENT1 << 1U) | (uint16)((uint16)0U << 9U) | (uint16)0x00000010U)
-#define ECAP1_ECEINT_CONFIGVALUE	(0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U  | 0x0000U)
+#define ECAP1_ECCTL1_CONFIGVALUE    ((uint16)((uint16)RISING_EDGE << 0U) | (uint16)((uint16)RESET_DISABLE << 1U) | (uint16)((uint16)FALLING_EDGE << 2U) | (uint16)((uint16)RESET_DISABLE << 3U) | (uint16)((uint16)RISING_EDGE << 4U)| (uint16)((uint16)RESET_DISABLE << 5U) | (uint16)((uint16)RISING_EDGE << 6U) | (uint16)((uint16)RESET_DISABLE << 7U) | (uint16)((uint16)0U << 8U) | (uint16)((uint16)0U << 9U))
+#define ECAP1_ECCTL2_CONFIGVALUE	((uint16)((uint16)CONTINUOUS << 0U) | (uint16)((uint16)CAPTURE_EVENT1 << 1U) | (uint16)((uint16)0U << 9U) | (uint16)0x00000010U)
+#define ECAP1_ECEINT_CONFIGVALUE	(0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U  | 0x0080U)
 
 #define ECAP2_CTRPHS_CONFIGVALUE    0x00000000U
 #define ECAP2_ECCTL1_CONFIGVALUE    ((uint16)((uint16)RISING_EDGE << 0U) | (uint16)((uint16)RESET_DISABLE << 1U) | (uint16)((uint16)RISING_EDGE << 2U) | (uint16)((uint16)RESET_DISABLE << 3U) | (uint16)((uint16)RISING_EDGE << 4U)| (uint16)((uint16)RESET_DISABLE << 5U) | (uint16)((uint16)RISING_EDGE << 6U) | (uint16)((uint16)RESET_DISABLE << 7U) | (uint16)((uint16)0U << 8U) | (uint16)((uint16)0U << 9U))
@@ -182,9 +182,9 @@ typedef struct ecap_config_reg
 #define ECAP3_ECEINT_CONFIGVALUE	(0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U  | 0x0000U)
 
 #define ECAP4_CTRPHS_CONFIGVALUE    0x00000000U
-#define ECAP4_ECCTL1_CONFIGVALUE    ((uint16)((uint16)RISING_EDGE << 0U) | (uint16)((uint16)RESET_DISABLE << 1U) | (uint16)((uint16)RISING_EDGE << 2U) | (uint16)((uint16)RESET_DISABLE << 3U) | (uint16)((uint16)RISING_EDGE << 4U)| (uint16)((uint16)RESET_DISABLE << 5U) | (uint16)((uint16)RISING_EDGE << 6U) | (uint16)((uint16)RESET_DISABLE << 7U) | (uint16)((uint16)0U << 8U) | (uint16)((uint16)0U << 9U))
-#define ECAP4_ECCTL2_CONFIGVALUE	((uint16)((uint16)ONE_SHOT << 0U) | (uint16)((uint16)CAPTURE_EVENT1 << 1U) | (uint16)((uint16)0U << 9U) | (uint16)0x00000010U)
-#define ECAP4_ECEINT_CONFIGVALUE	(0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U  | 0x0000U)
+#define ECAP4_ECCTL1_CONFIGVALUE    ((uint16)((uint16)RISING_EDGE << 0U) | (uint16)((uint16)RESET_ENABLE << 1U) | (uint16)((uint16)FALLING_EDGE << 2U) | (uint16)((uint16)RESET_ENABLE << 3U) | (uint16)((uint16)RISING_EDGE << 4U)| (uint16)((uint16)RESET_DISABLE << 5U) | (uint16)((uint16)RISING_EDGE << 6U) | (uint16)((uint16)RESET_DISABLE << 7U) | (uint16)((uint16)1U << 8U) | (uint16)((uint16)0U << 9U))
+#define ECAP4_ECCTL2_CONFIGVALUE	((uint16)((uint16)CONTINUOUS << 0U) | (uint16)((uint16)CAPTURE_EVENT2 << 1U) | (uint16)((uint16)0U << 9U) | (uint16)0x00000010U)
+#define ECAP4_ECEINT_CONFIGVALUE	(0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U | 0x0000U  | 0x0080U)
 
 #define ECAP5_CTRPHS_CONFIGVALUE    0x00000000U
 #define ECAP5_ECCTL1_CONFIGVALUE    ((uint16)((uint16)RISING_EDGE << 0U) | (uint16)((uint16)RESET_DISABLE << 1U) | (uint16)((uint16)RISING_EDGE << 2U) | (uint16)((uint16)RESET_DISABLE << 3U) | (uint16)((uint16)RISING_EDGE << 4U)| (uint16)((uint16)RESET_DISABLE << 5U) | (uint16)((uint16)RISING_EDGE << 6U) | (uint16)((uint16)RESET_DISABLE << 7U) | (uint16)((uint16)0U << 8U) | (uint16)((uint16)0U << 9U))

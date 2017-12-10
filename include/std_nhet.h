@@ -1,11 +1,11 @@
 /** @file HL_std_nhet.h
 *   @brief NHET Instruction Definition File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com 
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com 
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -218,7 +218,7 @@ typedef struct mcmp_format
   uint32 en_pin_action        : 1 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 sub_opcode           : 1 ; 
   uint32 order                : 1 ; 
   uint32 pin_action           : 1 ;
@@ -258,7 +258,7 @@ typedef struct mov64_format
   uint32 en_pin_action        : 1 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 compare_mode         : 2 ;
   uint32 pin_action           : 1 ;
   uint32 opposite_action      : 1 ;
@@ -297,7 +297,7 @@ typedef struct dadm64_format
   uint32 en_pin_action        : 1 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 compare_mode         : 2 ;
   uint32 pin_action           : 1 ;
   uint32 opposite_action      : 1 ;
@@ -336,7 +336,7 @@ typedef struct RADM64_format
   uint32 en_pin_action        : 1 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 compare_mode         : 2 ;
   uint32 pin_action           : 1 ;
   uint32 opposite_action      : 1 ;
@@ -373,7 +373,8 @@ typedef struct MOV32_format
   uint32 auto_read_clear      : 1 ;
   uint32                      : 3 ;
   uint32 z_flag               : 1 ;
-  uint32                      : 15 ;
+  uint32                      : 14 ;
+  uint32 ext_reg              : 1 ;
   uint32 init_flag            : 1 ;
   uint32 sub_opcode           : 1 ;   
   uint32 move_type            : 2 ;     
@@ -408,7 +409,8 @@ typedef struct ADM32_format
  
   uint32                      : 5 ;
   uint32 auto_read_clear      : 1 ;
-  uint32                      : 19 ;
+  uint32                      : 18 ;
+  uint32 ext_reg              : 1 ;
   uint32 init_flag            : 1 ;
   uint32 sub_opcode           : 1 ;
   uint32 move_type            : 2 ;
@@ -442,7 +444,7 @@ typedef struct ADCNST_format
   uint32 remote_address       : 9 ;
  
   uint32                      : 5 ;
-  uint32 control              : 1 ;  /* pk */
+  uint32 control              : 1 ;
   uint32                      : 1 ;
   uint32 constant             : 25 ;
  
@@ -765,13 +767,15 @@ typedef union
 /*---------------------------------------------*/
 typedef struct CNT_format                     
 {
-  uint32                      : 9 ;        
+  uint32                      : 6 ;        
+  uint32 reqnum               : 3 ;
   uint32 brk                  : 1 ;          
   uint32 next_program_address : 9 ;          
   uint32 op_code              : 4 ;
   uint32 angle_cnt            : 1 ;
   uint32 t_register_select    : 1 ;
   uint32 ab_register_select   : 1 ;
+  uint32 comp_select          : 1 ; 
   uint32                      : 4 ;
   uint32 interrupt_enable     : 1 ;
  
@@ -841,7 +845,7 @@ typedef struct pcnt_format
   uint32 op_code              : 4 ;
   uint32 interrupt_enable     : 1 ;
   uint32 period_pulse_select  : 2 ;
-  uint32                      : 1 ;
+  uint32 hr_lr                : 1 ;
   uint32 pin_select           : 5 ;
 
   uint32                      : 3 ;
@@ -895,7 +899,7 @@ typedef union
 } SCNT_INSTRUCTION;
 
 
-
+
 /*---------------------------------------------*/
 /* ACNT INSTRUCTION                            */
 /*---------------------------------------------*/
@@ -950,7 +954,7 @@ typedef struct ecnt_format
   uint32                      : 3 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 count_cond           : 3 ;
   uint32                      : 1 ;
   uint32 t_register_select    : 1 ;
@@ -983,7 +987,8 @@ typedef struct rcnt_format
   uint32 op_code              : 4 ;
   uint32                      : 1 ;
   uint32 count_mode           : 2 ;
-  uint32                      : 5 ;
+  uint32 step_width           : 2 ;
+  uint32                      : 3 ;
   uint32 count_mode1          : 1 ;
  
   uint32                      : 3 ;
@@ -1139,7 +1144,7 @@ typedef struct wcap_format
   uint32                      : 3 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 capture_condition    : 2 ;
   uint32                      : 2 ;
   uint32 t_register_select    : 1 ;
@@ -1177,7 +1182,7 @@ typedef struct wcape_format
   uint32                      : 3 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 capture_condition    : 2 ;
   uint32                      : 2 ;
   uint32 t_register_select    : 1 ;
@@ -1198,7 +1203,7 @@ typedef union
  
 
 /*---------------------------------------------*/
-/* BR   INSTRUCTION                            */
+/* BR INSTRUCTION                              */
 /*---------------------------------------------*/
 typedef struct br_format                     
 {
@@ -1229,8 +1234,7 @@ typedef struct br_format
   uint32 interrupt_enable     : 1 ;
  
   
-  uint32 data                 : 25 ;
-  uint32 hr_data              : 7 ;
+  uint32                      : 32 ;
  
 } BR_FIELDS ;      
 
@@ -1261,7 +1265,7 @@ typedef struct shft_format
   uint32                      : 3 ;
   uint32 cond_addr            : 9 ;
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 shift_condition      : 2 ;
   uint32                      : 2 ;
   uint32 t_register_select    : 1 ;
@@ -1313,7 +1317,8 @@ typedef struct acmp_format
   uint32 t_register_select    : 1 ;
   uint32                      : 1 ;
   uint32 pin_action           : 1 ;
-  uint32                      : 3 ;
+  uint32 ext_reg              : 1 ;  
+  uint32                      : 2 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ; 
   uint32 en_pin_action        : 1 ;
@@ -1440,7 +1445,7 @@ typedef struct mcmp_format
   uint32 pin_action           : 1 ;
   uint32 order                : 1 ; 
   uint32 sub_opcode           : 1 ;  
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32 en_pin_action        : 1 ;
@@ -1478,7 +1483,7 @@ typedef struct mov64_format
   uint32 opposite_action      : 1 ;
   uint32 pin_action           : 1 ;
   uint32 compare_mode         : 2 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32 en_pin_action        : 1 ;
@@ -1516,7 +1521,7 @@ typedef struct dadm64_format
   uint32 opposite_action      : 1 ;
   uint32 pin_action           : 1 ;
   uint32 compare_mode         : 2 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32 en_pin_action        : 1 ;
@@ -1554,7 +1559,7 @@ typedef struct RADM64_format
   uint32 opposite_action      : 1 ;
   uint32 pin_action           : 1 ;
   uint32 compare_mode         : 2 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32 en_pin_action        : 1 ;
@@ -1593,7 +1598,8 @@ typedef struct MOV32_format
   uint32 move_type            : 2 ;
   uint32 sub_opcode           : 1 ;
   uint32 init_flag            : 1 ;
-  uint32                      : 15 ;
+  uint32 ext_reg              : 1 ;
+  uint32                      : 14 ;
   uint32 z_flag               : 1 ;
   uint32                      : 3 ;
   uint32 auto_read_clear      : 1 ;
@@ -1629,7 +1635,8 @@ typedef struct ADM32_format
   uint32 move_type            : 2 ;
   uint32 sub_opcode           : 1 ;
   uint32 init_flag            : 1 ;
-  uint32                      : 19 ;
+  uint32 ext_reg              : 1 ;
+  uint32                      : 18 ;
   uint32 auto_read_clear      : 1 ;
   uint32                      : 5 ; 
   
@@ -1659,6 +1666,7 @@ typedef struct ADCNST_format
  
   uint32 constant             : 25 ;
   uint32                      : 1 ;
+  uint32 control              : 1 ;
   uint32                      : 5 ; 
   
   uint32 hr_data              : 7 ;
@@ -1993,15 +2001,17 @@ typedef union
 typedef struct CNT_format                     
 {
   uint32 interrupt_enable     : 1 ;         
-  uint32                      : 4 ;        
+  uint32                      : 4 ;
+  uint32 comp_select          : 1 ;  
   uint32 ab_register_select   : 1 ;          
   uint32 t_register_select    : 1 ;
   uint32 angle_cnt            : 1 ;
   uint32 op_code              : 4 ;
   uint32 next_program_address : 9 ;
   uint32 brk                  : 1 ;  
-  uint32                      : 9 ;  
-
+  uint32 reqnum               : 3 ;
+  uint32                      : 6 ;        
+  
   uint32 max                  : 25 ;
   uint32                      : 1 ;
   uint32 auto_read_clear      : 1 ;
@@ -2059,7 +2069,7 @@ typedef union
 typedef struct pcnt_format                     
 {
   uint32 pin_select           : 5 ;
-  uint32                      : 1 ;
+  uint32 hr_lr                : 1 ;
   uint32 period_pulse_select  : 2 ;          
   uint32 interrupt_enable     : 1 ;          
   uint32 op_code              : 4 ;
@@ -2167,7 +2177,7 @@ typedef struct ecnt_format
   uint32 t_register_select    : 1 ;
   uint32                      : 1 ;
   uint32 count_cond           : 3 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32                      : 3 ;
@@ -2195,7 +2205,8 @@ typedef struct rcnt_format
 {
 
   uint32 count_mode1          : 1 ;
-  uint32                      : 5 ;
+  uint32                      : 3 ;
+  uint32 step_width           : 2 ;
   uint32 count_mode           : 2 ;
   uint32                      : 1 ;
   uint32 op_code              : 4 ;
@@ -2294,7 +2305,7 @@ typedef union
   DJZ_FIELDS  djz   ; 
   HET_MEMORY   memory ;
 } DJZ_INSTRUCTION;
-
+
 /*---------------------------------------------*/
 /* PWCNT INSTRUCTION                           */
 /*---------------------------------------------*/
@@ -2354,7 +2365,7 @@ typedef struct wcap_format
   uint32 t_register_select    : 1 ;
   uint32                      : 2 ;
   uint32 capture_condition    : 2 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32                      : 3 ;
@@ -2391,7 +2402,7 @@ typedef struct wcape_format
   uint32 t_register_select    : 1 ;
   uint32                      : 2 ;
   uint32 capture_condition    : 2 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32 previous_bit         : 1 ;
@@ -2412,7 +2423,7 @@ typedef union
  
 
 /*---------------------------------------------*/
-/* BR   INSTRUCTION                            */
+/* BR INSTRUCTION                              */
 /*---------------------------------------------*/
 typedef struct br_format                     
 {
@@ -2424,10 +2435,14 @@ typedef struct br_format
   uint32                      : 6 ;
 
   uint32 interrupt_enable     : 1 ;
-  uint32                      : 2 ;
+  uint32                      : 2 ; 
+#if HET_v2
+  uint32 branch_condition     : 5 ;
+#else 
   uint32                      : 1 ;
   uint32                      : 1 ;
   uint32 branch_condition     : 3 ;
+#endif    
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32                      : 3 ;
@@ -2436,8 +2451,8 @@ typedef struct br_format
   uint32 request              : 2 ;
   uint32                      : 3 ; 
   
-  uint32 hr_data              : 7 ;
-  uint32 data                 : 25 ;
+  uint32                      : 32 ;
+    
 
 } BR_FIELDS ;      
 
@@ -2466,7 +2481,7 @@ typedef struct shft_format
   uint32 t_register_select    : 1 ;
   uint32                      : 2 ;
   uint32 shift_condition      : 2 ;
-  uint32                      : 1 ;
+  uint32 ext_reg              : 1 ;
   uint32 pin_select           : 5 ;
   uint32 cond_addr            : 9 ;
   uint32                      : 3 ;

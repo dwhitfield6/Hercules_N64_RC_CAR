@@ -191,7 +191,9 @@ void SPI_SetPins(unsigned char state)
 	}
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(SPI_SendByte, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* SPI_SendByte
  *
@@ -204,7 +206,9 @@ void SPI_SendByte(unsigned char data, unsigned char chip_select, unsigned char c
 	spiREG1->DAT1 = data | temp << 16L | (((unsigned long)chip_select_hold & 0x1) << 28L);
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(SPI_AddToTXBuffer, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* SPI_AddToTXBuffer
  *

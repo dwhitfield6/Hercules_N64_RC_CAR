@@ -60,12 +60,15 @@ extern unsigned long __RamfuncsRunStart;
 /******************************************************************************/
 int main (void)
 {
+#ifdef USE_RAMFUNC
 	char *src;
 	char *end;
 	char *dest;
+#endif
 
 	_disable_IRQ_interrupt_();
 
+#ifdef USE_RAMFUNC
 	/* Copy the Ram functions */
 	src  = (char *)&__RamfuncsLoadStart;
 	end  = (char *)&__RamfuncsLoadEnd;
@@ -76,6 +79,7 @@ int main (void)
 	}
 	NOP();
 	NOP();
+#endif
 
 	_cacheEnable_();
 	_dCacheInvalidate_();
@@ -84,7 +88,9 @@ int main (void)
 	fastmain();
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(fastmain, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* fastmain
  *
@@ -156,7 +162,22 @@ void fastmain(void)
     			/* update throttle */
     			if(g_N64_New.A || g_N64_New.B)
     			{
-    				/* A is pressed and B is not */
+    				/* A or B is pressed */
+#ifdef N64_NO_PARTIAL_THROTTLE
+    				if((g_N64_New.A) && (!g_N64_New.B))
+					{
+						POT_SetGas(0); // full speed forward
+					}
+    				else if((!g_N64_New.A) && (g_N64_New.B))
+					{
+    					POT_SetGas(255); // full speed backward
+					}
+    				else
+    				{
+    					/* user is pushing both A and B*/
+    					POT_SetGas(GAS_START);
+    				}
+#else
     				if(((g_N64_New.Joystick[Y] > Y_MIDPOINT_HIGH) && g_N64_New.A) || ((g_N64_New.Joystick[Y] < Y_MIDPOINT_LOW) && g_N64_New.B))
     				{
     					/* user is pushing forward or backward and its in range */
@@ -167,6 +188,7 @@ void fastmain(void)
     					/* user is pushing forward or backward and its not in range */
     					POT_SetGas(GAS_START);
     				}
+#endif
     			}
     			else
     			{

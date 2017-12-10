@@ -71,7 +71,9 @@ void InitN64(void)
 	memset(&g_N64_Old, 0, sizeof(TYPE_N64_BUT));
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(N64_BuildCode, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* N64_GetButtonState
  *
@@ -112,7 +114,9 @@ void N64_BuildCode(ENUM_N64_REG action)
 	g_N64_Buffer_Code[place++] = 1;
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(N64_DecodeTiming, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* N64_DecodeTiming
  *
@@ -340,7 +344,9 @@ unsigned char N64_DecodeTiming(TYPE_N64_BUT* buttons)
 	return PASS;
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(N64_SendReset, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* N64_SendReset
  *
@@ -352,7 +358,9 @@ void N64_SendReset(void)
 	TMR_N2HET1_InterruptEnable(N64_TIMER);
 }
 
+#ifdef USE_RAMFUNC
 #pragma CODE_SECTION(N64_GetButtonState, "TI.ramfuncs")
+#endif
 /******************************************************************************/
 /* N64_GetButtonState
  *

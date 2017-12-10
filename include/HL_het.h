@@ -1,12 +1,12 @@
 /** @file HL_het.h
 *   @brief HET Driver Definition File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -335,6 +335,274 @@ typedef struct het_config_reg
 	uint32 CONFIG_PSL;
 	uint32 CONFIG_PCR;
 } het_config_reg_t;
+
+/* Configuration registers initial value for HET1*/
+#define HET1_DIR_CONFIGVALUE     ((uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_PDR_CONFIGVALUE     ((uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_PULDIS_CONFIGVALUE  ((uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_PSL_CONFIGVALUE     ((uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+                                | (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_HRSH_CONFIGVALUE    ((uint32)0x00008000U \
+								| (uint32)0x00004000U \
+								| (uint32)0x00002000U \
+								| (uint32)0x00001000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000008U \
+								| (uint32)0x00000004U \
+								| (uint32)0x00000002U \
+								| (uint32)0x00000001U)
+
+#define HET1_AND_CONFIGVALUE     ((uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_XOR_CONFIGVALUE     ((uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_PFR_CONFIGVALUE      (((uint32)6U << 8U) | (uint32)0U)
+
+
+#define HET1_PRY_CONFIGVALUE     ((uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00020000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_INTENAC_CONFIGVALUE  ((uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00020000U \
+								| (uint32)0x00040000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+								
+#define HET1_INTENAS_CONFIGVALUE ((uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00020000U \
+								| (uint32)0x00040000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U \
+								| (uint32)0x00000000U)
+
+#define HET1_PCR_CONFIGVALUE      ((uint32)0x00000005U)
+#define HET1_GCR_CONFIGVALUE      ( 0x00000001U \
+								| (uint32)((uint32)0U << 24U) \
+								| (uint32)((uint32)1U << 16U) \
+								| (0x00020000U))
 
 
 

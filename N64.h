@@ -51,6 +51,16 @@ typedef enum e_n64
 
 
 /******************************************************************************/
+/* N64_NO_PARTIAL_THROTTLE
+ *
+ * If this is defined then the car goes at full speed forward when A is pressed
+ *  and full speed backwards when B is pressed. If its not defined, the
+ *   throttle followed the joystick and A and B.
+ * 														                      */
+/******************************************************************************/
+#define N64_NO_PARTIAL_THROTTLE
+
+/******************************************************************************/
 /* Y_MIDPOINT_HIGH
  *
  * This is the threshold to move the throttle forward until we register it

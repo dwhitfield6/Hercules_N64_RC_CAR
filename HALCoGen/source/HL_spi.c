@@ -1,11 +1,11 @@
 /** @file spi.c
 *   @brief SPI Driver Implementation File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -68,7 +68,7 @@ static volatile struct g_spiPacket
 */
 /* SourceId : SPI_SourceId_001 */
 /* DesignId : SPI_DesignId_001 */
-/* Requirements : HL_SR126 */
+/* Requirements : HL_CONQ_SPI_SR7, HL_CONQ_SPI_SR8 */
 void spiInit(void)
 {
 /* USER CODE BEGIN (2) */
@@ -276,7 +276,7 @@ void spiInit(void)
 */
 /* SourceId : SPI_SourceId_002 */
 /* DesignId : SPI_DesignId_002 */
-/* Requirements : HL_SR128 */
+/* Requirements : HL_CONQ_SPI_SR9 */
 void spiSetFunctional(spiBASE_t *spi, uint32 port)
 {
 /* USER CODE BEGIN (4) */
@@ -302,7 +302,7 @@ void spiSetFunctional(spiBASE_t *spi, uint32 port)
 */
 /* SourceId : SPI_SourceId_003 */
 /* DesignId : SPI_DesignId_007 */
-/* Requirements : HL_SR133 */
+/* Requirements : HL_CONQ_SPI_SR14 */
 uint32 spiReceiveData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * destbuff)
 {
 /* USER CODE BEGIN (6) */
@@ -360,7 +360,7 @@ uint32 spiReceiveData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize,
 */
 /* SourceId : SPI_SourceId_004 */
 /* DesignId : SPI_DesignId_008 */
-/* Requirements : HL_SR134 */
+/* Requirements : HL_CONQ_SPI_SR15 */
 void spiGetData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * destbuff)
 {
      uint32 index = (spi == spiREG1) ? 0U :((spi==spiREG2) ? 1U : ((spi==spiREG3) ? 2U:((spi==spiREG4) ? 3U:4U)));
@@ -393,7 +393,7 @@ void spiGetData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint1
 */
 /* SourceId : SPI_SourceId_005 */
 /* DesignId : SPI_DesignId_005 */
-/* Requirements : HL_SR131 */
+/* Requirements : HL_CONQ_SPI_SR12 */
 uint32 spiTransmitData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff)
 {
     volatile uint32 SpiBuf;
@@ -455,7 +455,7 @@ uint32 spiTransmitData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize
 */
 /* SourceId : SPI_SourceId_006 */
 /* DesignId : SPI_DesignId_006 */
-/* Requirements : HL_SR132 */
+/* Requirements : HL_CONQ_SPI_SR13 */
 void spiSendData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff)
 {
         uint32 index = (spi == spiREG1) ? 0U :((spi==spiREG2) ? 1U : ((spi==spiREG3) ? 2U:((spi==spiREG4) ? 3U:4U)));
@@ -489,7 +489,7 @@ void spiSendData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint
 */
 /* SourceId : SPI_SourceId_007 */
 /* DesignId : SPI_DesignId_009 */
-/* Requirements : HL_SR135 */
+/* Requirements : HL_CONQ_SPI_SR16 */
 uint32 spiTransmitAndReceiveData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff, uint16 * destbuff)
 {
     uint16 Tx_Data;
@@ -554,7 +554,7 @@ uint32 spiTransmitAndReceiveData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32
 */
 /* SourceId : SPI_SourceId_008 */
 /* DesignId : SPI_DesignId_010 */
-/* Requirements : HL_SR136 */
+/* Requirements : HL_CONQ_SPI_SR17 */
 void spiSendAndGetData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize, uint16 * srcbuff, uint16 * destbuff)
 {
 
@@ -587,7 +587,7 @@ void spiSendAndGetData(spiBASE_t *spi, spiDAT1_t *dataconfig_t, uint32 blocksize
 */
 /* SourceId : SPI_SourceId_009 */
 /* DesignId : SPI_DesignId_013 */
-/* Requirements : HL_SR139 */
+/* Requirements : HL_CONQ_SPI_SR20 */
 SpiDataStatus_t SpiTxStatus(spiBASE_t *spi)
 {
 
@@ -611,7 +611,7 @@ SpiDataStatus_t SpiTxStatus(spiBASE_t *spi)
 */
 /* SourceId : SPI_SourceId_010 */
 /* DesignId : SPI_DesignId_014 */
-/* Requirements : HL_SR140 */
+/* Requirements : HL_CONQ_SPI_SR21 */
 SpiDataStatus_t SpiRxStatus(spiBASE_t *spi)
 {
 
@@ -634,7 +634,7 @@ SpiDataStatus_t SpiRxStatus(spiBASE_t *spi)
 */
 /* SourceId : SPI_SourceId_011 */
 /* DesignId : SPI_DesignId_011 */
-/* Requirements : HL_SR137 */
+/* Requirements : HL_CONQ_SPI_SR18 */
 void spiEnableLoopback(spiBASE_t *spi, loopBackType_t Loopbacktype)
 {
 /* USER CODE BEGIN (23) */
@@ -662,7 +662,7 @@ void spiEnableLoopback(spiBASE_t *spi, loopBackType_t Loopbacktype)
 */
 /* SourceId : SPI_SourceId_012 */
 /* DesignId : SPI_DesignId_012 */
-/* Requirements : HL_SR138 */
+/* Requirements : HL_CONQ_SPI_SR19 */
 void spiDisableLoopback(spiBASE_t *spi)
 {
 /* USER CODE BEGIN (26) */
@@ -685,7 +685,7 @@ void spiDisableLoopback(spiBASE_t *spi)
 */
 /* SourceId : SPI_SourceId_013 */
 /* DesignId : SPI_DesignId_003 */
-/* Requirements : HL_SR129 */
+/* Requirements : HL_CONQ_SPI_SR10 */
 void spiEnableNotification(spiBASE_t *spi, uint32 flags)
 {
 /* USER CODE BEGIN (29) */
@@ -707,7 +707,7 @@ void spiEnableNotification(spiBASE_t *spi, uint32 flags)
 */
 /* SourceId : SPI_SourceId_014 */
 /* DesignId : SPI_DesignId_004 */
-/* Requirements : HL_SR130 */
+/* Requirements : HL_CONQ_SPI_SR11 */
 void spiDisableNotification(spiBASE_t *spi, uint32 flags)
 {
 /* USER CODE BEGIN (32) */
@@ -736,7 +736,7 @@ void spiDisableNotification(spiBASE_t *spi, uint32 flags)
 */
 /* SourceId : SPI_SourceId_015 */
 /* DesignId : SPI_DesignId_015 */
-/* Requirements : HL_SR144 */
+/* Requirements : HL_CONQ_SPI_SR24 */
 void spi1GetConfigValue(spi_config_reg_t *config_reg, config_value_type_t type)
 {
     if (type == InitialValue)
@@ -789,7 +789,7 @@ void spi1GetConfigValue(spi_config_reg_t *config_reg, config_value_type_t type)
 #pragma INTERRUPT(mibspi1LowLevelInterrupt, IRQ)
 /* SourceId : SPI_SourceId_020 */
 /* DesignId : SPI_DesignId_016 */
-/* Requirements : HL_SR141, HL_SR142, HL_SR143 */
+/* Requirements : HL_CONQ_SPI_SR22, HL_CONQ_SPI_SR23, HL_CONQ_SPI_SR30  */
 void mibspi1LowLevelInterrupt(void)
 {
 
@@ -891,7 +891,7 @@ void mibspi1LowLevelInterrupt(void)
 #pragma INTERRUPT(mibspi1HighLevelInterrupt, IRQ)
 /* SourceId : SPI_SourceId_021 */
 /* DesignId : SPI_DesignId_016 */
-/* Requirements : HL_SR141, HL_SR142, HL_SR143 */
+/* Requirements : HL_CONQ_SPI_SR22, HL_CONQ_SPI_SR23, HL_CONQ_SPI_SR29  */
 void mibspi1HighLevelInterrupt(void)
 {
 

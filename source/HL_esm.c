@@ -1,7 +1,7 @@
 /** @file HL_esm.c
 *   @brief Esm Driver Source File
-*   @date 28.Aug.2015
-*   @version 04.05.01
+*   @date 07-July-2017
+*   @version 04.07.00
 *
 *   This file contains:
 *   - API Functions
@@ -10,7 +10,7 @@
 */
 
 /* 
-* Copyright (C) 2009-2015 Texas Instruments Incorporated - www.ti.com  
+* Copyright (C) 2009-2016 Texas Instruments Incorporated - www.ti.com  
 * 
 * 
 *  Redistribution and use in source and binary forms, with or without 
@@ -66,6 +66,9 @@
 /* USER CODE BEGIN (2) */
 /* USER CODE END */
 
+/* SourceId : ESM_SourceId_001 */
+/* DesignId : ESM_DesignId_001 */
+/* Requirements : HL_CONQ_ESM_SR2 */
 void esmInit(void)
 {
 /* USER CODE BEGIN (3) */
@@ -420,6 +423,9 @@ void esmInit(void)
 *
 *   Returns the error status.
 */
+/* SourceId : ESM_SourceId_002 */
+/* DesignId : ESM_DesignId_002 */
+/* Requirements : HL_CONQ_ESM_SR3 */
 uint32 esmError(void)
 {
     uint32 status;
@@ -443,6 +449,9 @@ uint32 esmError(void)
 *
 *   Enable Group 1 Channels Error Signals propagation to the error pin.
 */
+/* SourceId : ESM_SourceId_003 */
+/* DesignId : ESM_DesignId_003 */
+/* Requirements : HL_CONQ_ESM_SR4 */
 void esmEnableError(uint64 channels)
 {
 /* USER CODE BEGIN (7) */
@@ -462,6 +471,9 @@ void esmEnableError(uint64 channels)
 *
 *   Enable Group 1 Channels Error Signals propagation to the error pin.
 */
+/* SourceId : ESM_SourceId_004 */
+/* DesignId : ESM_DesignId_004 */
+/* Requirements : HL_CONQ_ESM_SR4 */
 void esmEnableErrorUpper(uint64 channels)
 {
 /* USER CODE BEGIN (9) */
@@ -479,6 +491,9 @@ void esmEnableErrorUpper(uint64 channels)
 *
 *   Disable Group 1 Channels Error Signals propagation to the error pin.
 */
+/* SourceId : ESM_SourceId_005 */
+/* DesignId : ESM_DesignId_005 */
+/* Requirements : HL_CONQ_ESM_SR5 */
 void esmDisableError(uint64 channels)
 {
 /* USER CODE BEGIN (11) */
@@ -498,6 +513,9 @@ void esmDisableError(uint64 channels)
 *
 *   Disable Group 1 Channels Error Signals propagation to the error pin.
 */
+/* SourceId : ESM_SourceId_006 */
+/* DesignId : ESM_DesignId_006 */
+/* Requirements : HL_CONQ_ESM_SR5 */
 void esmDisableErrorUpper(uint64 channels)
 {
 /* USER CODE BEGIN (13) */
@@ -513,6 +531,9 @@ void esmDisableErrorUpper(uint64 channels)
 *
 *   Trigger error pin reset and switch back to normal operation.
 */
+/* SourceId : ESM_SourceId_007 */
+/* DesignId : ESM_DesignId_007 */
+/* Requirements : HL_CONQ_ESM_SR6 */
 void esmTriggerErrorPinReset(void)
 {
 /* USER CODE BEGIN (15) */
@@ -530,6 +551,9 @@ void esmTriggerErrorPinReset(void)
 *
 *   Activates normal operation mode.
 */
+/* SourceId : ESM_SourceId_008 */
+/* DesignId : ESM_DesignId_008 */
+/* Requirements : HL_CONQ_ESM_SR7 */
 void esmActivateNormalOperation(void)
 {
 /* USER CODE BEGIN (17) */
@@ -549,6 +573,9 @@ void esmActivateNormalOperation(void)
 *
 *   Enable Group 1 Channels Interrupts.
 */
+/* SourceId : ESM_SourceId_009 */
+/* DesignId : ESM_DesignId_009 */
+/* Requirements : HL_CONQ_ESM_SR8 */
 void esmEnableInterrupt(uint64 channels)
 {
 /* USER CODE BEGIN (19) */
@@ -568,6 +595,9 @@ void esmEnableInterrupt(uint64 channels)
 *
 *   Enable Group 1 Channels Interrupts.
 */
+/* SourceId : ESM_SourceId_010 */
+/* DesignId : ESM_DesignId_010 */
+/* Requirements : HL_CONQ_ESM_SR8 */
 void esmEnableInterruptUpper(uint64 channels)
 {
 /* USER CODE BEGIN (21) */
@@ -585,6 +615,9 @@ void esmEnableInterruptUpper(uint64 channels)
 *
 *   Disable Group 1 Channels Interrupts.
 */
+/* SourceId : ESM_SourceId_011 */
+/* DesignId : ESM_DesignId_011 */
+/* Requirements : HL_CONQ_ESM_SR9 */
 void esmDisableInterrupt(uint64 channels)
 {
 /* USER CODE BEGIN (23) */
@@ -604,6 +637,9 @@ void esmDisableInterrupt(uint64 channels)
 *
 *   Disable Group 1 Channels Interrupts.
 */
+/* SourceId : ESM_SourceId_012 */
+/* DesignId : ESM_DesignId_012 */
+/* Requirements : HL_CONQ_ESM_SR9 */
 void esmDisableInterruptUpper(uint64 channels)
 {
 /* USER CODE BEGIN (25) */
@@ -623,6 +659,9 @@ void esmDisableInterruptUpper(uint64 channels)
 *
 *   Set Group 1 Channels Interrupts levels.
 */
+/* SourceId : ESM_SourceId_013 */
+/* DesignId : ESM_DesignId_013 */
+/* Requirements : HL_CONQ_ESM_SR10 */
 void esmSetInterruptLevel(uint64 channels, uint64 flags)
 {
 /* USER CODE BEGIN (27) */
@@ -646,6 +685,9 @@ void esmSetInterruptLevel(uint64 channels, uint64 flags)
 *
 *   Set Group 1 Channels Interrupts levels.
 */
+/* SourceId : ESM_SourceId_014 */
+/* DesignId : ESM_DesignId_014 */
+/* Requirements : HL_CONQ_ESM_SR10 */
 void esmSetInterruptLevelUpper(uint64 channels, uint64 flags)
 {
 /* USER CODE BEGIN (29) */
@@ -667,6 +709,9 @@ void esmSetInterruptLevelUpper(uint64 channels, uint64 flags)
 *
 *   Clear Group error status.
 */
+/* SourceId : ESM_SourceId_015 */
+/* DesignId : ESM_DesignId_015 */
+/* Requirements : HL_CONQ_ESM_SR14 */
 void esmClearStatus(uint32 group, uint64 channels)
 {
 /* USER CODE BEGIN (31) */
@@ -690,6 +735,9 @@ void esmClearStatus(uint32 group, uint64 channels)
 *
 *   Clear Group error status.
 */
+/* SourceId : ESM_SourceId_016 */
+/* DesignId : ESM_DesignId_016 */
+/* Requirements : HL_CONQ_ESM_SR14 */
 void esmClearStatusUpper(uint32 group, uint64 channels)
 {
 /* USER CODE BEGIN (33) */
@@ -707,6 +755,9 @@ void esmClearStatusUpper(uint32 group, uint64 channels)
 *
 *   Clear Group 2 error status buffer.
 */
+/* SourceId : ESM_SourceId_017 */
+/* DesignId : ESM_DesignId_017 */
+/* Requirements : HL_CONQ_ESM_SR15 */
 void esmClearStatusBuffer(uint32 channels)
 {
 /* USER CODE BEGIN (35) */
@@ -726,6 +777,9 @@ void esmClearStatusBuffer(uint32 channels)
 *
 *   Set counter preload value.
 */
+/* SourceId : ESM_SourceId_018 */
+/* DesignId : ESM_DesignId_018 */
+/* Requirements : HL_CONQ_ESM_SR11 */
 void esmSetCounterPreloadValue(uint32 value)
 {
 /* USER CODE BEGIN (37) */
@@ -748,6 +802,9 @@ void esmSetCounterPreloadValue(uint32 value)
 *
 *   Returns the channels status of selected group.
 */
+/* SourceId : ESM_SourceId_019 */
+/* DesignId : ESM_DesignId_019 */
+/* Requirements : HL_CONQ_ESM_SR12 */
 uint64 esmGetStatus(uint32 group, uint64 channels)
 {
     uint64 status;
@@ -784,6 +841,9 @@ uint64 esmGetStatus(uint32 group, uint64 channels)
 *
 *   Returns the channels status of selected group.
 */
+/* SourceId : ESM_SourceId_020 */
+/* DesignId : ESM_DesignId_020 */
+/* Requirements : HL_CONQ_ESM_SR12 */
 uint64 esmGetStatusUpper(uint32 group, uint64 channels)
 {
     uint64 status;
@@ -810,6 +870,9 @@ uint64 esmGetStatusUpper(uint32 group, uint64 channels)
 *
 *   Returns the group 2 buffered status of selected channels.
 */
+/* SourceId : ESM_SourceId_021 */
+/* DesignId : ESM_DesignId_021 */
+/* Requirements : HL_CONQ_ESM_SR17 */
 uint32 esmGetStatusBuffer(uint32 channels)
 {
     uint32 status;
@@ -831,6 +894,9 @@ uint32 esmGetStatusBuffer(uint32 channels)
 *
 *   Returns the ESM Self test status.
 */
+/* SourceId : ESM_SourceId_022 */
+/* DesignId : ESM_DesignId_022 */
+/* Requirements : HL_CONQ_ESM_SR16 */
 esmSelfTestFlag_t esmEnterSelfTest(void)
 {
     esmSelfTestFlag_t status;
@@ -866,6 +932,9 @@ esmSelfTestFlag_t esmEnterSelfTest(void)
 *
 *   Returns the ESM Self test status.
 */
+/* SourceId : ESM_SourceId_023 */
+/* DesignId : ESM_DesignId_023 */
+/* Requirements : HL_CONQ_ESM_SR17 */
 esmSelfTestFlag_t esmSelfTestStatus(void)
 {
     esmSelfTestFlag_t status;
@@ -911,6 +980,9 @@ esmSelfTestFlag_t esmSelfTestStatus(void)
 *
 */
 
+/* SourceId : ESM_SourceId_024 */
+/* DesignId : ESM_DesignId_024 */
+/* Requirements : HL_CONQ_ESM_SR18 */
 void esmGetConfigValue(esm_config_reg_t *config_reg, config_value_type_t type)
 {
     if (type == InitialValue)
@@ -953,6 +1025,9 @@ void esmGetConfigValue(esm_config_reg_t *config_reg, config_value_type_t type)
 #pragma CODE_STATE(esmHighInterrupt, 32)
 #pragma INTERRUPT(esmHighInterrupt, FIQ)
 
+/* SourceId : ESM_SourceId_025 */
+/* DesignId : ESM_DesignId_025 */
+/* Requirements : HL_CONQ_ESM_SR19 */
 void esmHighInterrupt(void)
 {
     /* Note : Group 1 Error           */
